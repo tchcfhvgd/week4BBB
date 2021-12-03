@@ -10,6 +10,9 @@
 #ifndef INCLUDED_FreeplayState
 #include <FreeplayState.h>
 #endif
+#ifndef INCLUDED_LoadingState
+#include <LoadingState.h>
+#endif
 #ifndef INCLUDED_MusicBeatState
 #include <MusicBeatState.h>
 #endif
@@ -21,6 +24,9 @@
 #endif
 #ifndef INCLUDED_PlayerSettings
 #include <PlayerSettings.h>
+#endif
+#ifndef INCLUDED_TitleState
+#include <TitleState.h>
 #endif
 #ifndef INCLUDED_flixel_FlxBasic
 #include <flixel/FlxBasic.h>
@@ -58,15 +64,6 @@
 #ifndef INCLUDED_flixel_addons_ui_interfaces_IFlxUIState
 #include <flixel/addons/ui/interfaces/IFlxUIState.h>
 #endif
-#ifndef INCLUDED_flixel_animation_FlxAnimation
-#include <flixel/animation/FlxAnimation.h>
-#endif
-#ifndef INCLUDED_flixel_animation_FlxAnimationController
-#include <flixel/animation/FlxAnimationController.h>
-#endif
-#ifndef INCLUDED_flixel_animation_FlxBaseAnimation
-#include <flixel/animation/FlxBaseAnimation.h>
-#endif
 #ifndef INCLUDED_flixel_group_FlxTypedGroup
 #include <flixel/group/FlxTypedGroup.h>
 #endif
@@ -82,6 +79,15 @@
 #ifndef INCLUDED_flixel_math_FlxPoint
 #include <flixel/math/FlxPoint.h>
 #endif
+#ifndef INCLUDED_flixel_system_FlxSound
+#include <flixel/system/FlxSound.h>
+#endif
+#ifndef INCLUDED_flixel_system_FlxSoundGroup
+#include <flixel/system/FlxSoundGroup.h>
+#endif
+#ifndef INCLUDED_flixel_system_frontEnds_SoundFrontEnd
+#include <flixel/system/frontEnds/SoundFrontEnd.h>
+#endif
 #ifndef INCLUDED_flixel_tweens_FlxEase
 #include <flixel/tweens/FlxEase.h>
 #endif
@@ -91,11 +97,17 @@
 #ifndef INCLUDED_flixel_tweens_misc_VarTween
 #include <flixel/tweens/misc/VarTween.h>
 #endif
+#ifndef INCLUDED_flixel_util_FlxAxes
+#include <flixel/util/FlxAxes.h>
+#endif
 #ifndef INCLUDED_flixel_util_IFlxDestroyable
 #include <flixel/util/IFlxDestroyable.h>
 #endif
 #ifndef INCLUDED_flixel_util_IFlxPooled
 #include <flixel/util/IFlxPooled.h>
+#endif
+#ifndef INCLUDED_haxe_Log
+#include <haxe/Log.h>
 #endif
 #ifndef INCLUDED_openfl_display_DisplayObject
 #include <openfl/display/DisplayObject.h>
@@ -121,10 +133,7 @@
 
 HX_DEFINE_STACK_FRAME(_hx_pos_bbbe7573d69ec70b_20_new,"ChooseSubState","new",0x7e952b7a,"ChooseSubState.new","ChooseSubState.hx",20,0x1d446136)
 HX_LOCAL_STACK_FRAME(_hx_pos_bbbe7573d69ec70b_27_create,"ChooseSubState","create",0xd4087822,"ChooseSubState.create","ChooseSubState.hx",27,0x1d446136)
-static const int _hx_array_data_198fa688_2[] = {
-	(int)0,(int)1,
-};
-HX_LOCAL_STACK_FRAME(_hx_pos_bbbe7573d69ec70b_49_update,"ChooseSubState","update",0xdefe972f,"ChooseSubState.update","ChooseSubState.hx",49,0x1d446136)
+HX_LOCAL_STACK_FRAME(_hx_pos_bbbe7573d69ec70b_47_update,"ChooseSubState","update",0xdefe972f,"ChooseSubState.update","ChooseSubState.hx",47,0x1d446136)
 
 void ChooseSubState_obj::__construct(){
             	HX_STACKFRAME(&_hx_pos_bbbe7573d69ec70b_20_new)
@@ -170,54 +179,81 @@ HXLINE(  30)		 ::flixel::FlxSprite bg =  ::flixel::FlxSprite_obj::__alloc( HX_CT
 HXLINE(  31)		bg->set_alpha(( (Float)(0) ));
 HXLINE(  32)		bg->scrollFactor->set(null(),null());
 HXLINE(  33)		this->add(bg);
-HXLINE(  35)		 ::flixel::FlxSprite selectorImage =  ::flixel::FlxSprite_obj::__alloc( HX_CTX ,0,0,null());
+HXLINE(  35)		 ::flixel::FlxSprite _hx_tmp =  ::flixel::FlxSprite_obj::__alloc( HX_CTX ,600,430,null());
 HXDLIN(  35)		::String library = null();
-HXDLIN(  35)		 ::flixel::FlxSprite selectorImage1 = selectorImage->loadGraphic(::Paths_obj::getPath(((HX_("images/",77,50,74,c1) + HX_("bigChungus",27,60,f3,42)) + HX_(".png",3b,2d,bd,1e)),HX_("IMAGE",3b,57,57,3b),library),true,415,415,null(),null());
-HXLINE(  36)		selectorImage1->set_antialiasing(true);
-HXLINE(  37)		selectorImage1->animation->add(HX_("base",11,e8,10,41),::Array_obj< int >::fromData( _hx_array_data_198fa688_2,2),0,false,false,null());
-HXLINE(  38)		selectorImage1->set_alpha(( (Float)(0) ));
-HXLINE(  39)		selectorImage1->scrollFactor->set(null(),null());
-HXLINE(  40)		this->add(selectorImage1);
-HXLINE(  41)		selectorImage1->animation->play(HX_("base",11,e8,10,41),null(),null(),null());
-HXLINE(  43)		::flixel::tweens::FlxTween_obj::tween(bg, ::Dynamic(::hx::Anon_obj::Create(1)
-            			->setFixed(0,HX_("alpha",5e,a7,96,21),((Float)0.6))),((Float)0.4), ::Dynamic(::hx::Anon_obj::Create(1)
+HXDLIN(  35)		this->selectorImage = _hx_tmp->loadGraphic(::Paths_obj::getPath(((HX_("images/",77,50,74,c1) + HX_("bigChungus",27,60,f3,42)) + HX_(".png",3b,2d,bd,1e)),HX_("IMAGE",3b,57,57,3b),library),null(),null(),null(),null(),null());
+HXLINE(  36)		this->selectorImage->set_antialiasing(true);
+HXLINE(  37)		this->selectorImage->set_alpha(( (Float)(0) ));
+HXLINE(  38)		this->selectorImage->scrollFactor->set(null(),null());
+HXLINE(  39)		this->selectorImage->screenCenter(::flixel::util::FlxAxes_obj::X_dyn());
+HXLINE(  40)		this->add(this->selectorImage);
+HXLINE(  42)		::flixel::tweens::FlxTween_obj::tween(bg, ::Dynamic(::hx::Anon_obj::Create(1)
+            			->setFixed(0,HX_("alpha",5e,a7,96,21),((Float)0.8))),((Float)0.4), ::Dynamic(::hx::Anon_obj::Create(1)
             			->setFixed(0,HX_("ease",ee,8b,0c,43),::flixel::tweens::FlxEase_obj::quartInOut_dyn())));
-HXLINE(  44)		::flixel::tweens::FlxTween_obj::tween(selectorImage1, ::Dynamic(::hx::Anon_obj::Create(2)
-            			->setFixed(0,HX_("y",79,00,00,00),20)
-            			->setFixed(1,HX_("alpha",5e,a7,96,21),1)),((Float)0.4), ::Dynamic(::hx::Anon_obj::Create(1)
+HXLINE(  43)		::flixel::tweens::FlxTween_obj::tween(this->selectorImage, ::Dynamic(::hx::Anon_obj::Create(1)
+            			->setFixed(0,HX_("alpha",5e,a7,96,21),1)),((Float)0.4), ::Dynamic(::hx::Anon_obj::Create(1)
             			->setFixed(0,HX_("ease",ee,8b,0c,43),::flixel::tweens::FlxEase_obj::quartInOut_dyn())));
             	}
 
 
 void ChooseSubState_obj::update(Float elapsed){
-            	HX_GC_STACKFRAME(&_hx_pos_bbbe7573d69ec70b_49_update)
-HXLINE(  50)		this->super::update(elapsed);
-HXLINE(  52)		bool leftP = ::PlayerSettings_obj::player1->controls->_leftP->check();
-HXLINE(  53)		bool rightP = ::PlayerSettings_obj::player1->controls->_rightP->check();
-HXLINE(  54)		bool accepted = ::PlayerSettings_obj::player1->controls->_accept->check();
-HXLINE(  56)		if (leftP) {
-HXLINE(  58)			 ::ChooseSubState _hx_tmp = ::hx::ObjectPtr<OBJ_>(this);
-HXDLIN(  58)			_hx_tmp->curSelected = (_hx_tmp->curSelected - 1);
+            	HX_GC_STACKFRAME(&_hx_pos_bbbe7573d69ec70b_47_update)
+HXLINE(  48)		this->super::update(elapsed);
+HXLINE(  50)		bool leftP = ::PlayerSettings_obj::player1->controls->_leftP->check();
+HXLINE(  51)		bool rightP = ::PlayerSettings_obj::player1->controls->_rightP->check();
+HXLINE(  52)		bool accepted = ::PlayerSettings_obj::player1->controls->_accept->check();
+HXLINE(  54)		bool _hx_tmp;
+HXDLIN(  54)		if (leftP) {
+HXLINE(  54)			_hx_tmp = (this->curSelected >= 1);
             		}
             		else {
-HXLINE(  60)			if (rightP) {
-HXLINE(  62)				 ::ChooseSubState _hx_tmp = ::hx::ObjectPtr<OBJ_>(this);
-HXDLIN(  62)				_hx_tmp->curSelected = (_hx_tmp->curSelected + 1);
+HXLINE(  54)			_hx_tmp = false;
+            		}
+HXDLIN(  54)		if (_hx_tmp) {
+HXLINE(  56)			 ::flixel::_hx_system::frontEnds::SoundFrontEnd _hx_tmp = ::flixel::FlxG_obj::sound;
+HXDLIN(  56)			_hx_tmp->play(::Paths_obj::sound(HX_("scrollMenu",4c,d4,18,06),null()),null(),null(),null(),null(),null());
+HXLINE(  57)			 ::ChooseSubState _hx_tmp1 = ::hx::ObjectPtr<OBJ_>(this);
+HXDLIN(  57)			_hx_tmp1->curSelected = (_hx_tmp1->curSelected - 1);
+            		}
+            		else {
+HXLINE(  59)			bool _hx_tmp;
+HXDLIN(  59)			if (rightP) {
+HXLINE(  59)				_hx_tmp = (this->curSelected <= 1);
+            			}
+            			else {
+HXLINE(  59)				_hx_tmp = false;
+            			}
+HXDLIN(  59)			if (_hx_tmp) {
+HXLINE(  61)				 ::flixel::_hx_system::frontEnds::SoundFrontEnd _hx_tmp = ::flixel::FlxG_obj::sound;
+HXDLIN(  61)				_hx_tmp->play(::Paths_obj::sound(HX_("scrollMenu",4c,d4,18,06),null()),null(),null(),null(),null(),null());
+HXLINE(  62)				 ::ChooseSubState _hx_tmp1 = ::hx::ObjectPtr<OBJ_>(this);
+HXDLIN(  62)				_hx_tmp1->curSelected = (_hx_tmp1->curSelected + 1);
             			}
             		}
 HXLINE(  64)		if ((this->curSelected == 1)) {
-HXLINE(  65)			this->selectorImage->animation->_curAnim->set_curFrame(0);
+HXLINE(  65)			::haxe::Log_obj::trace(HX_("gay",1f,7d,4e,00),::hx::SourceInfo(HX_("source/ChooseSubState.hx",c2,3f,2b,60),65,HX_("ChooseSubState",88,a6,8f,19),HX_("update",09,86,05,87)));
             		}
             		else {
-HXLINE(  67)			this->selectorImage->animation->_curAnim->set_curFrame(1);
+HXLINE(  66)			if ((this->curSelected == 2)) {
+HXLINE(  67)				::haxe::Log_obj::trace(HX_("homo",29,ca,12,45),::hx::SourceInfo(HX_("source/ChooseSubState.hx",c2,3f,2b,60),67,HX_("ChooseSubState",88,a6,8f,19),HX_("update",09,86,05,87)));
+            			}
+            			else {
+HXLINE(  69)				::haxe::Log_obj::trace(HX_("i fucked up",ee,1b,6e,5b),::hx::SourceInfo(HX_("source/ChooseSubState.hx",c2,3f,2b,60),69,HX_("ChooseSubState",88,a6,8f,19),HX_("update",09,86,05,87)));
+            			}
             		}
-HXLINE(  69)		if (::PlayerSettings_obj::player1->controls->_back->check()) {
-HXLINE(  71)			this->close();
+HXLINE(  70)		if (::PlayerSettings_obj::player1->controls->_back->check()) {
+HXLINE(  72)			this->close();
+HXLINE(  73)			{
+HXLINE(  73)				 ::flixel::FlxState nextState = ::LoadingState_obj::getNextState(( ( ::flixel::FlxState)( ::TitleState_obj::__alloc( HX_CTX ,null(),null())) ),false);
+HXDLIN(  73)				if (::flixel::FlxG_obj::game->_state->switchTo(nextState)) {
+HXLINE(  73)					::flixel::FlxG_obj::game->_requestedState = nextState;
+            				}
+            			}
             		}
-HXLINE(  73)		if (accepted) {
-HXLINE(  75)			 ::flixel::FlxState nextState =  ::FreeplayState_obj::__alloc( HX_CTX ,null(),null());
-HXDLIN(  75)			if (::flixel::FlxG_obj::game->_state->switchTo(nextState)) {
-HXLINE(  75)				::flixel::FlxG_obj::game->_requestedState = nextState;
+HXLINE(  75)		if (accepted) {
+HXLINE(  77)			 ::flixel::FlxState nextState = ::LoadingState_obj::getNextState(( ( ::flixel::FlxState)( ::FreeplayState_obj::__alloc( HX_CTX ,null(),null())) ),false);
+HXDLIN(  77)			if (::flixel::FlxG_obj::game->_state->switchTo(nextState)) {
+HXLINE(  77)				::flixel::FlxG_obj::game->_requestedState = nextState;
             			}
             		}
             	}
