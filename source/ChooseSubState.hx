@@ -32,17 +32,15 @@ class ChooseSubState extends MusicBeatSubstate
 		bg.scrollFactor.set();
 		add(bg);
 
-		var selectorImage = new FlxSprite(0, 0).loadGraphic(Paths.image('bigChungus'), true, 415, 415);
+		selectorImage = new FlxSprite(600, 430).loadGraphic(Paths.image('bigChungus'));
 		selectorImage.antialiasing = true;
-		selectorImage.animation.add('base', [0, 1], 0, false, false);
 		selectorImage.alpha = 0;
 		selectorImage.scrollFactor.set();
+		selectorImage.screenCenter(X);
 		add(selectorImage);
-		selectorImage.animation.play('base');
 
-		FlxTween.tween(bg, {alpha: 0.6}, 0.4, {ease: FlxEase.quartInOut});
-		FlxTween.tween(selectorImage, {alpha: 1, y: 20}, 0.4, {ease: FlxEase.quartInOut});
-		//FlxTween.tween(selectorImage, {alpha: 1}, 0.4, {ease: FlxEase.quartInOut});
+		FlxTween.tween(bg, {alpha: 0.8}, 0.4, {ease: FlxEase.quartInOut});
+		FlxTween.tween(selectorImage, {alpha: 1}, 0.4, {ease: FlxEase.quartInOut});
 	}
 
 	override function update(elapsed:Float)
@@ -53,22 +51,26 @@ class ChooseSubState extends MusicBeatSubstate
 		var rightP = controls.RIGHT_P;
 		var accepted = controls.ACCEPT;
 
-		if (leftP)
+		if (leftP && curSelected >= 1)
 		{
+			FlxG.sound.play(Paths.sound('scrollMenu'));
 			curSelected -= 1;
    
-		}else if (rightP)
+		}else if (rightP && curSelected <= 1)
 		{
+			FlxG.sound.play(Paths.sound('scrollMenu'));
 			curSelected += 1;
 		}
 		if(curSelected == 1)
-			selectorImage.animation.curAnim.curFrame = 0;
+			trace('gay');
+		else if (curSelected == 2)
+			trace('homo');
 		else
-			selectorImage.animation.curAnim.curFrame = 1;
-		
+			trace('i fucked up');
 		if (controls.BACK)
 		{
 			close();
+			LoadingState.loadAndSwitchState(new TitleState());
 		}
 		if (accepted)
 		{
