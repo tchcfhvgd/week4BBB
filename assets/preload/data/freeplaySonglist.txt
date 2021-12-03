@@ -1,0 +1,12 @@
+Nap-Time:baby:2
+Kidz-Bop:baby:2
+Baby-Blue:baby:2
+Temper-Tantrum:evil-baby:3
+Babys-Revenge:evil-baby:3
+Un-Adieu:evil-baby:3
+Trackstar:running-goblin:3
+Gametoons:gametoons:4
+Baby-Bob:bob:5
+Just-Like-You:bob-ron:5
+Insignificance:bobcreature:5
+Kitty:baby:4
