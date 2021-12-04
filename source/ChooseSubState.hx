@@ -36,7 +36,7 @@ class ChooseSubState extends MusicBeatSubstate
 		selectorImage.antialiasing = true;
 		selectorImage.alpha = 0;
 		selectorImage.scrollFactor.set();
-		selectorImage.screenCenter(X);
+		selectorImage.screenCenter();
 		add(selectorImage);
 
 		FlxTween.tween(bg, {alpha: 0.8}, 0.4, {ease: FlxEase.quartInOut});
@@ -51,22 +51,20 @@ class ChooseSubState extends MusicBeatSubstate
 		var rightP = controls.RIGHT_P;
 		var accepted = controls.ACCEPT;
 
-		if (leftP && curSelected >= 1)
+		if (leftP && curSelected >= 2)
 		{
 			FlxG.sound.play(Paths.sound('scrollMenu'));
 			curSelected -= 1;
-   
+			
 		}else if (rightP && curSelected <= 1)
 		{
 			FlxG.sound.play(Paths.sound('scrollMenu'));
 			curSelected += 1;
 		}
-		if(curSelected == 1)
-			trace('gay');
-		else if (curSelected == 2)
-			trace('homo');
-		else
-			trace('i fucked up');
+		//if(curSelected == 1)
+			
+		//else if (curSelected == 2)
+			
 		if (controls.BACK)
 		{
 			close();
@@ -74,8 +72,10 @@ class ChooseSubState extends MusicBeatSubstate
 		}
 		if (accepted)
 		{
-			LoadingState.loadAndSwitchState(new FreeplayState());
+			if(curSelected == 1)
+				LoadingState.loadAndSwitchState(new FreeplayState());
+			if(curSelected == 2)
+				LoadingState.loadAndSwitchState(new FreeplayState());
 		}
-		
 	}
 }
