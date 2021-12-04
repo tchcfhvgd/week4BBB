@@ -38,14 +38,22 @@ class ChooseSubState extends MusicBeatSubstate
 		selectorImage.alpha = 0;
 		selectorImage.scrollFactor.set();
 		selectorImage.screenCenter();
+		selectorImage.y -= 50;
 		add(selectorImage);
 
-		arrowThing = new FlxSprite(600, 430).loadGraphic(Paths.image('arrowLmao'));
-		arrowThing.x = selectorImage.x;
-		arrowThing.y = selectorImage.y + 196;
+		arrowThing = new FlxSprite(600, 430).loadGraphic(Paths.image('arrowKek'), true, 60, 100);
+		arrowThing.animation.add('ok', [0, 1], 4, true, true);
+		arrowThing.screenCenter();
+		arrowThing.y = 445;
+		arrowThing.alpha = 0;
+		trace(arrowThing.y);
+		trace(arrowThing.x);
+		add(arrowThing);
+		arrowThing.animation.play('ok');
 
 		FlxTween.tween(bg, {alpha: 0.8}, 0.4, {ease: FlxEase.quartInOut});
 		FlxTween.tween(selectorImage, {alpha: 1}, 0.4, {ease: FlxEase.quartInOut});
+		FlxTween.tween(arrowThing, {alpha: 1}, 0.4, {ease: FlxEase.quartInOut});
 	}
 
 	override function update(elapsed:Float)
@@ -67,10 +75,13 @@ class ChooseSubState extends MusicBeatSubstate
 			curSelected += 1;
 		}
 		if(curSelected == 1)
-			arrowThing.x = selectorImage.x - 100;
+		{
+			arrowThing.x = 403;
+		}
 		else if (curSelected == 2)
-			arrowThing.x = selectorImage.x + 100;
-			
+		{
+			arrowThing.x = 817;
+		}
 		if (controls.BACK)
 		{
 			close();
@@ -79,9 +90,15 @@ class ChooseSubState extends MusicBeatSubstate
 		if (accepted)
 		{
 			if(curSelected == 1)
+			{
+				FreeplayState.bonusOrNot = false;
 				LoadingState.loadAndSwitchState(new FreeplayState());
+			}
 			if(curSelected == 2)
+			{
+				FreeplayState.bonusOrNot = true;
 				LoadingState.loadAndSwitchState(new FreeplayState());
+			}
 		}
 	}
 }

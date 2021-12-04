@@ -32,6 +32,8 @@ class FreeplayState extends MusicBeatState
 	var intendedScore:Int = 0;
 	var wiggleShit:WiggleEffect = new WiggleEffect();
 
+	public static var bonusOrNot:Bool = false;
+
 	private var grpSongs:FlxTypedGroup<Alphabet>;
 	private var curPlaying:Bool = false;
 
@@ -39,7 +41,9 @@ class FreeplayState extends MusicBeatState
 
 	override function create()
 	{
+		//if (bonusOrNot)
 		var initSonglist = CoolUtil.coolTextFile(Paths.txt('freeplaySonglist'));
+		
 
 		for (i in 0...initSonglist.length)
 		{
