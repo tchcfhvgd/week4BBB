@@ -22,6 +22,7 @@ class ChooseSubState extends MusicBeatSubstate
 
 	var curSelected:Int = 1;	
 	var selectorImage:FlxSprite;
+	var arrowThing:FlxSprite;
 
 	override function create()
 	{
@@ -38,6 +39,10 @@ class ChooseSubState extends MusicBeatSubstate
 		selectorImage.scrollFactor.set();
 		selectorImage.screenCenter();
 		add(selectorImage);
+
+		arrowThing = new FlxSprite(600, 430).loadGraphic(Paths.image('arrowLmao'));
+		arrowThing.x = selectorImage.x;
+		arrowThing.y = selectorImage.y + 196;
 
 		FlxTween.tween(bg, {alpha: 0.8}, 0.4, {ease: FlxEase.quartInOut});
 		FlxTween.tween(selectorImage, {alpha: 1}, 0.4, {ease: FlxEase.quartInOut});
@@ -61,9 +66,10 @@ class ChooseSubState extends MusicBeatSubstate
 			FlxG.sound.play(Paths.sound('scrollMenu'));
 			curSelected += 1;
 		}
-		//if(curSelected == 1)
-			
-		//else if (curSelected == 2)
+		if(curSelected == 1)
+			arrowThing.x = selectorImage.x - 100;
+		else if (curSelected == 2)
+			arrowThing.x = selectorImage.x + 100;
 			
 		if (controls.BACK)
 		{

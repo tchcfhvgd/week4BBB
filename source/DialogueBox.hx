@@ -246,12 +246,6 @@ class DialogueBox extends FlxSpriteGroup
 
 					switch (PlayState.SONG.song.toLowerCase())
 					{
-						case 'nap-time':
-							FlxG.sound.music.fadeOut(2.2, 0);
-						case 'kidz-bop':
-							FlxG.sound.music.fadeOut(2.2, 0);
-						case 'baby-blue':
-							FlxG.sound.music.fadeOut(2.2, 0);
 						case defualt:
 							FlxG.sound.music.fadeOut(2.2, 0);
 					}
