@@ -243,9 +243,9 @@ class AlphaCharacter extends FlxSprite
 {
 	public static var alphabet:String = "abcdefghijklmnopqrstuvwxyz";
 
-	public static var numbers:String = "1234567890";
+	public static var numbers:String = "";
 
-	public static var symbols:String = "|~#$%()*+-:;<=>@[]^_.,'!? ";
+	public static var symbols:String = "";
 
 	public var row:Int = 0;
 
@@ -260,7 +260,7 @@ class AlphaCharacter extends FlxSprite
 
 	public function createBold(letter:String)
 	{
-		animation.addByPrefix(letter, letter.toUpperCase() + " bold", 24);
+		animation.addByPrefix(letter, letter.toUpperCase() + " capital", 24);
 		animation.play(letter);
 		updateHitbox();
 	}
@@ -295,62 +295,10 @@ class AlphaCharacter extends FlxSprite
 	{
 		switch (letter)
 		{
-			case '.':
-				animation.addByPrefix(letter, 'period', 24);
+			default:
+				animation.addByPrefix(letter, 'A capital', 24);
 				animation.play(letter);
 				y += 50;
-			case "'":
-				animation.addByPrefix(letter, 'apostraphie', 24);
-				animation.play(letter);
-				y -= 0;
-			case "?":
-				animation.addByPrefix(letter, 'question mark', 24);
-				animation.play(letter);
-			case "!":
-				animation.addByPrefix(letter, 'exclamation point', 24);
-				animation.play(letter);
-			case '_':
-				animation.addByPrefix(letter, '_', 24);
-				animation.play(letter);
-				y += 50;
-			case "#":
-				animation.addByPrefix(letter, '#', 24);
-				animation.play(letter);
-			case "$":
-				animation.addByPrefix(letter, '$', 24);
-				animation.play(letter);
-			case "%":
-				animation.addByPrefix(letter, '%', 24);
-				animation.play(letter);
-			case "&":
-				animation.addByPrefix(letter, '&', 24);
-				animation.play(letter);
-			case "(":
-				animation.addByPrefix(letter, '(', 24);
-				animation.play(letter);
-			case ")":
-				animation.addByPrefix(letter, ')', 24);
-				animation.play(letter);
-			case "+":
-				animation.addByPrefix(letter, '+', 24);
-				animation.play(letter);
-			case "-":
-				animation.addByPrefix(letter, '-', 24);
-				animation.play(letter);
-			case '"':
-				animation.addByPrefix(letter, '"', 24);
-				animation.play(letter);
-				y -= 0;
-			case '@':
-				animation.addByPrefix(letter, '@', 24);
-				animation.play(letter);
-			case "^":
-				animation.addByPrefix(letter, '^', 24);
-				animation.play(letter);
-				y -= 0;
-			case ' ':
-				animation.addByPrefix(letter, 'space', 24);
-				animation.play(letter);
 		}
 
 		updateHitbox();

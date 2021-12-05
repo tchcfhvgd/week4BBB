@@ -118,6 +118,7 @@ class StoryMenuState extends MusicBeatState
 			grpWeekText.add(weekThing);
 
 			weekThing.screenCenter(X);
+			weekThing.x += 500;
 			weekThing.antialiasing = true;
 			// weekThing.updateHitbox();
 
@@ -138,7 +139,6 @@ class StoryMenuState extends MusicBeatState
 
 		grpWeekCharacters.add(new MenuCharacter(0, 100, 0.5, false));
 		grpWeekCharacters.add(new MenuCharacter(450, 25, 0.9, true));
-		grpWeekCharacters.add(new MenuCharacter(850, 100, 0.5, true));
 
 		difficultySelectors = new FlxGroup();
 		add(difficultySelectors);
