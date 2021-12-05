@@ -1168,17 +1168,21 @@ class PlayState extends MusicBeatState
 		if (FlxG.save.data.downscroll)
 			kadeEngineWatermark.y = FlxG.height * 0.9 + 45;
 
-		scoreTxt = new FlxText(FlxG.width / 2 - 235, healthBarBG.y + 50, 0, "", 20);
+
+		//totally didn't steal this code from fnf plus nuh uh
+		scoreTxt = new FlxText(healthBarBG.x - 105, (FlxG.height * 0.9) + 36, 800, "", 22);
+		if (FlxG.save.data.downscroll)
+			scoreTxt.y = FlxG.height * 0.1 + 25;
 		if (!FlxG.save.data.accuracyDisplay)
 			scoreTxt.x = healthBarBG.x + healthBarBG.width / 2;
-		scoreTxt.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK);
+		scoreTxt.setFormat(Paths.font("vcr.ttf"), 20, FlxColor.WHITE, FlxTextAlign.CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		scoreTxt.scrollFactor.set();
 		if (offsetTesting)
 			scoreTxt.x += 300;
 		if(FlxG.save.data.botplay) scoreTxt.x = FlxG.width / 2 - 20;													  
 		add(scoreTxt);
 
-		replayTxt = new FlxText(healthBarBG.x + healthBarBG.width / 2 - 75, healthBarBG.y + (FlxG.save.data.downscroll ? 100 : -100), 0, "REPLAY", 20);
+		replayTxt = new FlxText(healthBarBG.x + healthBarBG.width / 2 - 75, healthBarBG.y + (FlxG.save.data.downscroll ? 100 : -100), 0, "this is a feature i guess", 20);
 		replayTxt.setFormat(Paths.font("vcr.ttf"), 42, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK);
 		replayTxt.scrollFactor.set();
 		if (loadRep)
@@ -1186,7 +1190,7 @@ class PlayState extends MusicBeatState
 			add(replayTxt);
 		}
 		// Literally copy-paste of the above, fu
-		botPlayState = new FlxText(healthBarBG.x + healthBarBG.width / 2 - 75, healthBarBG.y + (FlxG.save.data.downscroll ? 100 : -100), 0, "BOTPLAY", 20);
+		botPlayState = new FlxText(healthBarBG.x + healthBarBG.width / 2 - 75, healthBarBG.y + (FlxG.save.data.downscroll ? 100 : -100), 0, "THIS PERSON CAN NOT PLAY VIDEO GAMES FOR SHIT", 20);
 		botPlayState.setFormat(Paths.font("vcr.ttf"), 42, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK);
 		botPlayState.scrollFactor.set();
 		
@@ -3111,16 +3115,14 @@ class PlayState extends MusicBeatState
 			switch(daRating)
 			{
 				case 'shit' | 'bad':
-					currentTimingShown.color = FlxColor.RED;
+					currentTimingShown.visible = false;
 				case 'good':
-					currentTimingShown.color = FlxColor.GREEN;
+					currentTimingShown.visible = false;
 				case 'sick':
-					currentTimingShown.color = FlxColor.CYAN;
+					currentTimingShown.visible = false;
 			}
-			currentTimingShown.borderStyle = OUTLINE;
-			currentTimingShown.borderSize = 1;
 			currentTimingShown.borderColor = FlxColor.BLACK;
-			currentTimingShown.text = msTiming + "ms";
+			currentTimingShown.text = "lol";
 			currentTimingShown.size = 20;
 
 			if (msTiming >= 0.03 && offsetTesting)

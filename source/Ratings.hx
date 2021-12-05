@@ -9,15 +9,15 @@ class Ratings
 			ranking = "BotPlay";
 
         if (PlayState.misses == 0 && PlayState.bads == 0 && PlayState.shits == 0 && PlayState.goods == 0) // Marvelous (SICK) Full Combo
-            ranking = "(MFC)";
+            ranking = "";
         else if (PlayState.misses == 0 && PlayState.bads == 0 && PlayState.shits == 0 && PlayState.goods >= 1) // Good Full Combo (Nothing but Goods & Sicks)
-            ranking = "(GFC)";
+            ranking = "";
         else if (PlayState.misses == 0) // Regular FC
-            ranking = "(FC)";
+            ranking = "";
         else if (PlayState.misses < 10) // Single Digit Combo Breaks
-            ranking = "(SDCB)";
+            ranking = "";
         else
-            ranking = "(Clear)";
+            ranking = "";
 
         // WIFE TIME :)))) (based on Wife3)
 
@@ -48,44 +48,44 @@ class Ratings
                 switch(i)
                 {
                     case 0:
-                        ranking += " EPIC";
+                        ranking += "";
                     case 1:
-                        ranking += " AAAA:";
+                        ranking += "";
                     case 2:
-                        ranking += " AAAA.";
+                        ranking += "";
                     case 3:
-                        ranking += " AAAA";
+                        ranking += "";
                     case 4:
-                        ranking += " AAA:";
+                        ranking += "";
                     case 5:
-                        ranking += " AAA.";
+                        ranking += "";
                     case 6:
-                        ranking += " AAA";
+                        ranking += "";
                     case 7:
-                        ranking += " AA:";
+                        ranking += "";
                     case 8:
-                        ranking += " AA.";
+                        ranking += "";
                     case 9:
-                        ranking += " AA";
+                        ranking += "";
                     case 10:
-                        ranking += " A:";
+                        ranking += "";
                     case 11:
-                        ranking += " A.";
+                        ranking += "";
                     case 12:
-                        ranking += " A";
+                        ranking += "";
                     case 13:
-                        ranking += " SHIT";
+                        ranking += "";
                     case 14:
-                        ranking += " SHIT";
+                        ranking += "";
                     case 15:
-                        ranking += " SHIT";
+                        ranking += "";
                 }
                 break;
             }
         }
 
         if (accuracy == 0)
-            ranking = "N/A";
+            ranking = "";
 		else if(FlxG.save.data.botplay)
 			ranking = "BotPlay";
 
@@ -132,10 +132,10 @@ class Ratings
     public static function CalculateRanking(score:Int,scoreDef:Int,nps:Int,maxNPS:Int,accuracy:Float):String
     {
         return 
-        (FlxG.save.data.npsDisplay ? "NPS: " + nps + " (Max " + maxNPS + ")" + (!FlxG.save.data.botplay ? " | " : "") : "") + (!FlxG.save.data.botplay ?	// NPS Toggle
+        (FlxG.save.data.npsDisplay ? "" + (!FlxG.save.data.botplay ? " | " : "") : "") + (!FlxG.save.data.botplay ?	// NPS Toggle
         "Score:" + (Conductor.safeFrames != 10 ? score + " (" + scoreDef + ")" : "" + score) + 									// Score
-        " | Combo Breaks:" + PlayState.misses + 																				// Misses/Combo Breaks
-        " | Accuracy:" + (FlxG.save.data.botplay ? "N/A" : HelperFunctions.truncateFloat(accuracy, 2) + " %") +  				// Accuracy
-        " | " + GenerateLetterRank(accuracy) : ""); 																			// Letter Rank
+        " | Misses:" + PlayState.misses + 																				// Misses/Combo Breaks
+        " | Accuracy:" + (FlxG.save.data.botplay ? "N/A" : HelperFunctions.truncateFloat(accuracy, 2) + "%") +  				// Accuracy
+        "" + GenerateLetterRank(accuracy) : ""); 																			// Letter Rank
     }
 }
