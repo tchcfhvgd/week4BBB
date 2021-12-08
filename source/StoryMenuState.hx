@@ -118,6 +118,7 @@ class StoryMenuState extends MusicBeatState
 
 			weekThing.screenCenter(X);
 			weekThing.x += 450;
+			weekThing.y -= 100;
 			weekThing.antialiasing = true;
 			// weekThing.updateHitbox();
 
@@ -136,8 +137,8 @@ class StoryMenuState extends MusicBeatState
 
 		trace("Line 96");
 
-		grpWeekCharacters.add(new MenuCharacter(50, 0, 0.7, false));
-		grpWeekCharacters.add(new MenuCharacter(-100, 400, 0, true));
+		grpWeekCharacters.add(new MenuCharacter(-90, 200, 0.7, false));
+		grpWeekCharacters.add(new MenuCharacter(1600, 200, 0, true));
 		grpWeekCharacters.add(new MenuCharacter(1600, 100, 0, true));
 
 		difficultySelectors = new FlxGroup();
@@ -179,6 +180,8 @@ class StoryMenuState extends MusicBeatState
 		txtTracklist.alignment = CENTER;
 		txtTracklist.font = rankText.font;
 		txtTracklist.color = 0xFFe55777;
+		txtTracklist.y -= 245;
+	
 		add(txtTracklist);
 		// add(rankText);
 		add(scoreText);
@@ -379,7 +382,7 @@ class StoryMenuState extends MusicBeatState
 		txtTracklist.text = txtTracklist.text.toUpperCase();
 
 		txtTracklist.screenCenter(X);
-		txtTracklist.x += 50;
+		txtTracklist.x += 120;
 
 		txtTracklist.text += "\n";
 
