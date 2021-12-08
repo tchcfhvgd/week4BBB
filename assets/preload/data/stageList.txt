@@ -1,14 +1,7 @@
-stage
-halloween
-philly
-limo
-mall
-mallEvil
-school
-schoolEvil
 crib
 crib2
 crib3
 street
 dream
 phlox
+hospital

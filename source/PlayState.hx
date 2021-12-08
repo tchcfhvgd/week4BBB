@@ -180,6 +180,8 @@ class PlayState extends MusicBeatState
 	var bottomBoppers:FlxSprite;
 	var santa:FlxSprite;
 
+	var chairummmm:FlxSprite;
+
 	var fc:Bool = true;
 
 	var bgGirls:BackgroundGirls;
@@ -853,6 +855,27 @@ class PlayState extends MusicBeatState
 					babaPopup.scrollFactor.set(0, 0);
 					babaPopup.visible = false;
 				}
+			case 'hospital':
+			{
+					curStage = 'hospital';
+
+					defaultCamZoom = 0.85;
+
+					var bg:FlxSprite = new FlxSprite(-600, -200).loadGraphic(Paths.image('hospitalBack'));
+					bg.antialiasing = true;
+					bg.scrollFactor.set(1, 1);
+					bg.active = false;
+					bg.setGraphicSize(Std.int(bg.width * 1.0));
+					bg.updateHitbox();
+					add(bg);
+
+					chairummmm = new FlxSprite(-600, -200).loadGraphic(Paths.image('chairLOL'));
+					chairummmm.antialiasing = true;
+					chairummmm.scrollFactor.set(0.9, 0.9);
+					chairummmm.active = false;
+					chairummmm.setGraphicSize(Std.int(chairummmm.width * 1.0));
+					chairummmm.updateHitbox();
+			}
 			default:
 			{
 					defaultCamZoom = 0.9;
@@ -1064,6 +1087,10 @@ class PlayState extends MusicBeatState
 
 		add(dad);
 		add(boyfriend);
+
+		if (curStage == 'hospital')
+			add(chairummmm);
+
 		if (loadRep)
 		{
 			FlxG.watch.addQuick('rep rpesses',repPresses);
