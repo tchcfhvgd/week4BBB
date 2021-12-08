@@ -861,7 +861,7 @@ class PlayState extends MusicBeatState
 
 					defaultCamZoom = 0.9;
 
-					var bg:FlxSprite = new FlxSprite(-100, 50).loadGraphic(Paths.image('hospitalBack'));
+					var bg:FlxSprite = new FlxSprite(-250, -100).loadGraphic(Paths.image('hospitalBack'));
 					bg.antialiasing = true;
 					bg.scrollFactor.set(1, 1);
 					bg.active = false;
@@ -869,7 +869,7 @@ class PlayState extends MusicBeatState
 					bg.updateHitbox();
 					add(bg);
 
-					chairummmm = new FlxSprite(-400, 50).loadGraphic(Paths.image('chairLOL'));
+					chairummmm = new FlxSprite(-500, -100).loadGraphic(Paths.image('chairLOL'));
 					chairummmm.antialiasing = true;
 					chairummmm.scrollFactor.set(0.9, 0.9);
 					chairummmm.active = false;
@@ -1034,8 +1034,8 @@ class PlayState extends MusicBeatState
 				boyfriend.x -= 3;
 			case 'hospital':
 				boyfriend.x += 240;
-				gf.y += 150;
-				gf.x += 180;
+				gf.y += 350;
+				gf.x += 300;
 			case 'limo':
 				boyfriend.y -= 220;
 				boyfriend.x += 700;
