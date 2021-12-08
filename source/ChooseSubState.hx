@@ -91,13 +91,11 @@ class ChooseSubState extends MusicBeatSubstate
 		{
 			if(curSelected == 1)
 			{
-				FreeplayState.bonusOrNot = false;
 				LoadingState.loadAndSwitchState(new FreeplayState());
 			}
 			if(curSelected == 2)
 			{
-				FreeplayState.bonusOrNot = true;
-				LoadingState.loadAndSwitchState(new FreeplayState());
+				LoadingState.loadAndSwitchState(new FreeplayExtraState());
 			}
 		}
 	}
