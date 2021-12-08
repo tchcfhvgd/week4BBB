@@ -859,21 +859,21 @@ class PlayState extends MusicBeatState
 			{
 					curStage = 'hospital';
 
-					defaultCamZoom = 0.85;
+					defaultCamZoom = 0.9;
 
-					var bg:FlxSprite = new FlxSprite(-600, -200).loadGraphic(Paths.image('hospitalBack'));
+					var bg:FlxSprite = new FlxSprite(-100, 50).loadGraphic(Paths.image('hospitalBack'));
 					bg.antialiasing = true;
 					bg.scrollFactor.set(1, 1);
 					bg.active = false;
-					bg.setGraphicSize(Std.int(bg.width * 1.0));
+					bg.setGraphicSize(Std.int(bg.width * 1.1));
 					bg.updateHitbox();
 					add(bg);
 
-					chairummmm = new FlxSprite(-600, -200).loadGraphic(Paths.image('chairLOL'));
+					chairummmm = new FlxSprite(-400, 50).loadGraphic(Paths.image('chairLOL'));
 					chairummmm.antialiasing = true;
 					chairummmm.scrollFactor.set(0.9, 0.9);
 					chairummmm.active = false;
-					chairummmm.setGraphicSize(Std.int(chairummmm.width * 1.0));
+					chairummmm.setGraphicSize(Std.int(chairummmm.width * 1.1));
 					chairummmm.updateHitbox();
 			}
 			default:
@@ -914,6 +914,8 @@ class PlayState extends MusicBeatState
 				gfVersion = 'gf-christmas';
 			case 'gf-pixel':
 				gfVersion = 'gf-pixel';
+			case 'gf-goblin':
+				gfVersion = 'gf-goblin';
 			default:
 				gfVersion = 'gf';
 		}
@@ -1021,29 +1023,19 @@ class PlayState extends MusicBeatState
 		// REPOSITIONING PER STAGE
 		switch (curStage)
 		{
-			case 'crib':
-				//WORK YOU COCK SUCKING MOTHERFUCKER
-				gf.y += -1200;
-			case 'crib2':
-				//WORK YOU COCK SUCKING MOTHERFUCKER
-				gf.y += -1200;
-			case 'crib3':
-				//WORK YOU COCK SUCKING MOTHERFUCKER
-				gf.y += -1200;
 			case 'street':
-				//WORK YOU COCK SUCKING MOTHERFUCKER
-				gf.y += -1200;
 				boyfriend.x += 240;
 				dad.x += 160;
 				dad.y += 17;
 			case 'dream':
-				gf.y += -1200;
 				dad.y -= 37;
 				dad.x -= 80;
 				boyfriend.y -= 37;
 				boyfriend.x -= 3;
-			case 'phlox':
-				gf.y += -1200;
+			case 'hospital':
+				boyfriend.x += 240;
+				gf.y += 150;
+				gf.x += 180;
 			case 'limo':
 				boyfriend.y -= 220;
 				boyfriend.x += 700;
@@ -1079,11 +1071,10 @@ class PlayState extends MusicBeatState
 				gf.x += 180;
 				gf.y += 300;
 		}
-		add(gf);
 
-		// Shitty layering but whatev it works LOL
-		if (curStage == 'limo')
-			add(limo);
+		// hi vomic
+		if (curStage == 'stage' || curStage == 'hospital')
+			add(gf);
 
 		add(dad);
 		add(boyfriend);
