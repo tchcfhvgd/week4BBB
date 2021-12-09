@@ -1012,6 +1012,12 @@ class PlayState extends MusicBeatState
 			case 'bobcreature':
 				dad.y += 278;
 				dad.x -= 70;
+			case 'happy-baby':
+				dad.y += 440;
+				dad.x += 120;
+			case 'kitty':
+				dad.y += 440;
+				dad.x += 120;
 		}
 
 
@@ -2280,7 +2286,7 @@ class PlayState extends MusicBeatState
 		/* if (FlxG.keys.justPressed.NINE)
 			FlxG.switchState(new Charting()); */
 
-		#if debug
+		//#if debug
 		if (FlxG.keys.justPressed.EIGHT)
 		{
 			FlxG.switchState(new AnimationDebug(SONG.player2));
@@ -2305,7 +2311,7 @@ class PlayState extends MusicBeatState
 			#end
 		}
 
-		#end
+		//#end
 
 		if (startingSong)
 		{

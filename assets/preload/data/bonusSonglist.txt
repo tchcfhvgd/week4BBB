@@ -1,2 +1,2 @@
 Gametoons:gametoons:4
-Kitty:baby:4
+Kitty:kitty:4

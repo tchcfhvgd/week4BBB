@@ -18,3 +18,5 @@ player-baby
 bob-ron
 ron
 bobcreature
+kitty
+happy-baby

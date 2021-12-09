@@ -617,6 +617,40 @@ class Character extends FlxSprite
 						addOffset("singDOWN", 66, -61);
 		
 						playAnim('idle');
+			case 'happy-baby':
+				// DAD ANIMATION LOADING CODE
+				tex = Paths.getSparrowAtlas('characters/happy_baby');
+				frames = tex;
+				animation.addByPrefix('idle', 'baby idle', 24);
+				animation.addByPrefix('singUP', 'baby up', 24);
+				animation.addByPrefix('singRIGHT', 'baby right', 24);
+				animation.addByPrefix('singDOWN', 'babydown', 24);
+				animation.addByPrefix('singLEFT', 'baby left', 24);
+	
+				addOffset('idle');
+				addOffset("singUP", 34, 35);
+				addOffset("singRIGHT", 41, 7);
+				addOffset("singLEFT", 52, -6);
+				addOffset("singDOWN", -5, -49);
+	
+				playAnim('idle');
+			case 'kitty':
+				// DAD ANIMATION LOADING CODE
+				tex = Paths.getSparrowAtlas('characters/kitty');
+				frames = tex;
+				animation.addByPrefix('idle', 'kittyidle', 24);
+				animation.addByPrefix('singUP', 'kittyup', 24);
+				animation.addByPrefix('singRIGHT', 'kittyright', 24);
+				animation.addByPrefix('singDOWN', 'kittydown', 24);
+				animation.addByPrefix('singLEFT', 'kittyleft', 24);
+	
+				addOffset('idle');
+				addOffset("singUP", -1, 31);
+				addOffset("singRIGHT", -16, 10);
+				addOffset("singLEFT", 29, -6);
+				addOffset("singDOWN", -10, -19);
+	
+				playAnim('idle');
 			case 'bf':
 				var tex = Paths.getSparrowAtlas('characters/BOYFRIEND', 'shared');
 				frames = tex;
