@@ -3949,29 +3949,6 @@ class PlayState extends MusicBeatState
 			luaModchart.executeState('stepHit',[curStep]);
 		}
 		#end
-		if (curBeat % gfSpeed == 0) {
-			curBeat % (gfSpeed * 2) == 0 ? {
-				iconP1.scale.set(1.2, 1);
-				iconP2.scale.set(0.8, 1);
-	
-				FlxTween.angle(iconP1, 0, 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadOut});
-				FlxTween.angle(iconP2, 0, 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadOut});
-			} : {
-				iconP1.scale.set(0.8, 1);
-				iconP2.scale.set(1.2, 1);
-	
-				FlxTween.angle(iconP2, 0, 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadOut});
-				FlxTween.angle(iconP1, 0, 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadOut});
-
-			}
-
-			FlxTween.tween(iconP1, {'scale.x': 1, 'scale.y': 1}, Conductor.crochet / 1250 * gfSpeed, {ease: FlxEase.quartOut});
-			FlxTween.tween(iconP2, {'scale.x': 1, 'scale.y': 1}, Conductor.crochet / 1250 * gfSpeed, {ease: FlxEase.quartOut});
-	
-	
-			iconP1.updateHitbox();
-			iconP2.updateHitbox();
-		}
 		
 		//baby blue character changing
 		if (curStep == 888 && curSong.toLowerCase() == 'baby-blue')
@@ -4641,6 +4618,47 @@ class PlayState extends MusicBeatState
 					dadAgain.dance();
 		}
 		// FlxG.log.add('change bpm' + SONG.notes[Std.int(curStep / 16)].changeBPM);
+
+		/*if (curBeat % gfSpeed == 0) {
+			curBeat % gfSpeed == 0 ? {
+				iconP1.width * 2;
+				iconP2.width * 0.8;
+	
+				FlxTween.angle(iconP1, 0, 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadOut});
+				FlxTween.angle(iconP2, 0, 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadOut});
+			} : {
+				iconP1.width * 0.8;
+				iconP2.width * 2;
+	
+				FlxTween.angle(iconP2, 0, 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadOut});
+				FlxTween.angle(iconP1, 0, 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadOut});
+
+			}
+
+			FlxTween.tween(iconP1, {'scale.x': 1, 'scale.y': 1}, Conductor.crochet / 1250 * gfSpeed, {ease: FlxEase.quartOut});
+			FlxTween.tween(iconP2, {'scale.x': 1, 'scale.y': 1}, Conductor.crochet / 1250 * gfSpeed, {ease: FlxEase.quartOut});
+
+			iconP1.updateHitbox();
+			iconP2.updateHitbox();
+		}*/
+
+		if (curBeat % 2 == 1)
+		{
+			iconP1.setGraphicSize(Std.int(iconP1.width * 1.25));
+			iconP2.setGraphicSize(Std.int(iconP2.width * 0.86));
+			FlxTween.angle(iconP1, 20, 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadOut});
+			FlxTween.angle(iconP2, 20, 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadOut});
+		}
+		if (curBeat % 2 == 0)
+		{
+			iconP1.setGraphicSize(Std.int(iconP1.width * 0.86));
+			iconP2.setGraphicSize(Std.int(iconP2.width * 1.25));
+			FlxTween.angle(iconP1, -20, 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadOut});
+			FlxTween.angle(iconP2, -20, 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadOut});
+		}
+
+		FlxTween.tween(iconP1, {'scale.x': 1, 'scale.y': 1}, Conductor.crochet / 1250 * gfSpeed, {ease: FlxEase.quartOut});
+		FlxTween.tween(iconP2, {'scale.x': 1, 'scale.y': 1}, Conductor.crochet / 1250 * gfSpeed, {ease: FlxEase.quartOut});
 
 		// HARDCODING FOR MILF ZOOMS!
 		if (curSong.toLowerCase() == 'milf' && curBeat >= 168 && curBeat < 200 && camZooming && FlxG.camera.zoom < 1.35)
