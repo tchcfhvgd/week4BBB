@@ -1195,16 +1195,12 @@ class PlayState extends MusicBeatState
 
 
 		//totally didn't steal this code from fnf plus nuh uh
-		scoreTxt = new FlxText(healthBarBG.x - 105, (FlxG.height * 0.9) + 36, 800, "", 22);
-		if (FlxG.save.data.downscroll)
-			scoreTxt.y = FlxG.height * 0.1 + 25;
+		scoreTxt = new FlxText(healthBarBG.x + healthBarBG.width / 2 - 150, healthBarBG.y + 40, 0, "", 20);
 		if (!FlxG.save.data.accuracyDisplay)
 			scoreTxt.x = healthBarBG.x + healthBarBG.width / 2;
-		scoreTxt.setFormat(Paths.font("funkin.otf"), 20, FlxColor.WHITE, FlxTextAlign.CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		scoreTxt.setFormat(Paths.font("funkin.otf"), 25, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		scoreTxt.scrollFactor.set();
-		if (offsetTesting)
-			scoreTxt.x += 300;
-		if(FlxG.save.data.botplay) scoreTxt.x = FlxG.width / 2 - 20;													  
+		scoreTxt.borderSize = 3;
 		add(scoreTxt);
 
 		replayTxt = new FlxText(healthBarBG.x + healthBarBG.width / 2 - 75, healthBarBG.y + (FlxG.save.data.downscroll ? 100 : -100), 0, "this is a feature i guess", 20);
@@ -2248,12 +2244,6 @@ class PlayState extends MusicBeatState
 		// FlxG.watch.addQuick('VOL', vocals.amplitudeLeft);
 		// FlxG.watch.addQuick('VOLRight', vocals.amplitudeRight);
 
-		iconP1.setGraphicSize(Std.int(FlxMath.lerp(150, iconP1.width, 0.50)));
-		iconP2.setGraphicSize(Std.int(FlxMath.lerp(150, iconP2.width, 0.50)));
-
-		iconP1.updateHitbox();
-		iconP2.updateHitbox();
-
 		var iconOffset:Int = 26;
 
 		iconP1.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01) - iconOffset);
@@ -2581,6 +2571,16 @@ class PlayState extends MusicBeatState
 					// FlxG.switchState(new PlayState());
 			}
 		}
+
+		if (curSong == 'Biggie-Chungus')
+			{
+				switch (curBeat)
+				{
+					case 1:
+						gfSpeed = 4;
+				}
+			}
+	
 
 		if (health <= 0)
 		{
@@ -3949,7 +3949,30 @@ class PlayState extends MusicBeatState
 			luaModchart.executeState('stepHit',[curStep]);
 		}
 		#end
+		if (curBeat % gfSpeed == 0) {
+			curBeat % (gfSpeed * 2) == 0 ? {
+				iconP1.scale.set(1.2, 1);
+				iconP2.scale.set(0.8, 1);
+	
+				FlxTween.angle(iconP1, 0, 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadOut});
+				FlxTween.angle(iconP2, 0, 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadOut});
+			} : {
+				iconP1.scale.set(0.8, 1);
+				iconP2.scale.set(1.2, 1);
+	
+				FlxTween.angle(iconP2, 0, 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadOut});
+				FlxTween.angle(iconP1, 0, 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadOut});
 
+			}
+
+			FlxTween.tween(iconP1, {'scale.x': 1, 'scale.y': 1}, Conductor.crochet / 1250 * gfSpeed, {ease: FlxEase.quartOut});
+			FlxTween.tween(iconP2, {'scale.x': 1, 'scale.y': 1}, Conductor.crochet / 1250 * gfSpeed, {ease: FlxEase.quartOut});
+	
+	
+			iconP1.updateHitbox();
+			iconP2.updateHitbox();
+		}
+		
 		//baby blue character changing
 		if (curStep == 888 && curSong.toLowerCase() == 'baby-blue')
 		{
@@ -4570,6 +4593,9 @@ class PlayState extends MusicBeatState
 		#end
 
 	}
+	
+
+
 
 	var lightningStrikeBeat:Int = 0;
 	var lightningOffset:Int = 8;
@@ -4639,13 +4665,6 @@ class PlayState extends MusicBeatState
 				camZooming = true;
 			}
 
-		iconP1.setGraphicSize(Std.int(iconP1.width + 30));
-		iconP2.setGraphicSize(Std.int(iconP2.width + 30));
-
-		iconP1.updateHitbox();
-		iconP2.updateHitbox();
-
-		
 		if (curBeat % gfSpeed == 0)
 		{
 			gf.dance();
