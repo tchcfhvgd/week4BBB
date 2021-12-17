@@ -26,6 +26,9 @@ class KadeEngineData
 		if (FlxG.save.data.fps == null)
 			FlxG.save.data.fps = false;
 
+		if (FlxG.save.data.cameraeffect == null)
+			FlxG.save.data.cameraeffect = true;
+
 		if (FlxG.save.data.changedHit == null)
 		{
 			FlxG.save.data.changedHitX = -1;
