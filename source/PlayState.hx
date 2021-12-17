@@ -1195,12 +1195,14 @@ class PlayState extends MusicBeatState
 
 
 		//totally didn't steal this code from fnf plus nuh uh
-		scoreTxt = new FlxText(healthBarBG.x + healthBarBG.width / 2 - 150, healthBarBG.y + 40, 0, "", 20);
+		scoreTxt = new FlxText(healthBarBG.x - 105, (FlxG.height * 0.9) + 36, 800, "", 22);
+		if (FlxG.save.data.downscroll)
+			scoreTxt.y = FlxG.height * 0.1 + 25;
 		if (!FlxG.save.data.accuracyDisplay)
 			scoreTxt.x = healthBarBG.x + healthBarBG.width / 2;
-		scoreTxt.setFormat(Paths.font("funkin.otf"), 25, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		scoreTxt.setFormat(Paths.font("funkin.otf"), 25, FlxColor.WHITE, FlxTextAlign.CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		scoreTxt.scrollFactor.set();
-		scoreTxt.borderSize = 3;
+		scoreTxt.borderSize = 2;
 		add(scoreTxt);
 
 		replayTxt = new FlxText(healthBarBG.x + healthBarBG.width / 2 - 75, healthBarBG.y + (FlxG.save.data.downscroll ? 100 : -100), 0, "this is a feature i guess", 20);
@@ -2742,6 +2744,11 @@ class PlayState extends MusicBeatState
 						{
 							//multiple dad singing code thing
 							case 2:
+								if (!PlayState.SONG.notes[Std.int(curStep / 16)].mustHitSection && FlxG.save.data.cameraeffect)
+								{
+									FlxG.camera.targetOffset.y = -20;
+									FlxG.camera.targetOffset.x = 0;
+								}
 								if (dadSinging)
 									dad.playAnim('singUP' + altAnim, true);
 								if (dadAgainSinging)
@@ -2752,6 +2759,11 @@ class PlayState extends MusicBeatState
 									}
 								
 							case 3:
+								if (!PlayState.SONG.notes[Std.int(curStep / 16)].mustHitSection && FlxG.save.data.cameraeffect)
+								{
+									FlxG.camera.targetOffset.y = 0;
+									FlxG.camera.targetOffset.x = 20;
+								}
 								if (dadSinging)
 									dad.playAnim('singRIGHT' + altAnim, true);
 								if (dadAgainSinging)
@@ -2761,6 +2773,11 @@ class PlayState extends MusicBeatState
 										health -= 0.015;
 									}
 							case 1:
+								if (!PlayState.SONG.notes[Std.int(curStep / 16)].mustHitSection && FlxG.save.data.cameraeffect)
+									{
+										FlxG.camera.targetOffset.y = 20;
+										FlxG.camera.targetOffset.x = 0;
+									}
 								if (dadSinging)
 									dad.playAnim('singDOWN' + altAnim, true);
 								if (dadAgainSinging)
@@ -2770,6 +2787,11 @@ class PlayState extends MusicBeatState
 										health -= 0.015;
 									}
 							case 0:
+								if (!PlayState.SONG.notes[Std.int(curStep / 16)].mustHitSection && FlxG.save.data.cameraeffect)
+									{
+										FlxG.camera.targetOffset.y = 0;
+										FlxG.camera.targetOffset.x = 20;
+									}
 								if (dadSinging)
 									dad.playAnim('singLEFT' + altAnim, true);
 								if (dadAgainSinging)
@@ -3482,6 +3504,8 @@ class PlayState extends MusicBeatState
 				if (boyfriend.holdTimer > Conductor.stepCrochet * 4 * 0.001 && (!holdArray.contains(true) || FlxG.save.data.botplay))
 				{
 					if (boyfriend.animation.curAnim.name.startsWith('sing') && !boyfriend.animation.curAnim.name.endsWith('miss'))
+						FlxG.camera.targetOffset.x = 0;
+						FlxG.camera.targetOffset.y = 0;
 						boyfriend.playAnim('idle');
 						if(boyfriendSigning && !boyfriendAgainSinging)
 							boyfriendAgain.playAnim('idle');
@@ -3707,6 +3731,11 @@ class PlayState extends MusicBeatState
 					switch (note.noteData)
 					{
 						case 2:
+							if (PlayState.SONG.notes[Std.int(curStep / 16)].mustHitSection && FlxG.save.data.cameraeffect)
+							{
+								FlxG.camera.targetOffset.y = -20;
+								FlxG.camera.targetOffset.x = 0;
+							}
 							if(boyfriendSigning)
 								boyfriend.playAnim('singUP', true);
 							if(boyfriendAgainSinging)
@@ -3714,6 +3743,11 @@ class PlayState extends MusicBeatState
 							if(runningGoblinSinging)
 								runningGoblin.playAnim('singUP', true);
 						case 3:
+							if (PlayState.SONG.notes[Std.int(curStep / 16)].mustHitSection && FlxG.save.data.cameraeffect)
+							{
+								FlxG.camera.targetOffset.y = 0;
+								FlxG.camera.targetOffset.x = 20;
+							}
 							if(boyfriendSigning)
 								boyfriend.playAnim('singRIGHT', true);
 							if(boyfriendAgainSinging)
@@ -3721,6 +3755,11 @@ class PlayState extends MusicBeatState
 							if(runningGoblinSinging)
 								runningGoblin.playAnim('singRIGHT', true);
 						case 1:
+							if (PlayState.SONG.notes[Std.int(curStep / 16)].mustHitSection && FlxG.save.data.cameraeffect)
+							{
+								FlxG.camera.targetOffset.y = 20;
+								FlxG.camera.targetOffset.x = 0;
+							}
 							if(boyfriendSigning)
 								boyfriend.playAnim('singDOWN', true);
 							if(boyfriendAgainSinging)
@@ -3728,6 +3767,11 @@ class PlayState extends MusicBeatState
 							if(runningGoblinSinging)
 								runningGoblin.playAnim('singDOWN', true);
 						case 0:
+							if (PlayState.SONG.notes[Std.int(curStep / 16)].mustHitSection && FlxG.save.data.cameraeffect)
+							{
+								FlxG.camera.targetOffset.y = 0;
+								FlxG.camera.targetOffset.x = -20;
+							}
 							if(boyfriendSigning)
 								boyfriend.playAnim('singLEFT', true);
 							if(boyfriendAgainSinging)
@@ -4016,250 +4060,253 @@ class PlayState extends MusicBeatState
 				changeDaddy('screamer');
 			}
 		//trackstar lol
-		if (curStep == 96 && curSong.toLowerCase() == 'trackstar')
-			{
-				trace('it worked');
-				FlxG.camera.zoom += 0.3;
-				camHUD.zoom += 0.1;
-			}
-		if (curStep == 102 && curSong.toLowerCase() == 'trackstar')
-			{
-				trace('it worked');
-				FlxG.camera.zoom += 0.3;
-				camHUD.zoom += 0.1;
-			}
-		if (curStep == 112 && curSong.toLowerCase() == 'trackstar')
-			{
-				trace('it worked');
-				FlxG.camera.zoom += 0.3;
-				camHUD.zoom += 0.1;
-			}
-		if (curStep == 160 && curSong.toLowerCase() == 'trackstar')
-			{
-				trace('it worked');
-				FlxG.camera.zoom += 0.3;
-				camHUD.zoom += 0.1;
-			}
-		if (curStep == 166 && curSong.toLowerCase() == 'trackstar')
-			{
-				FlxG.camera.zoom += 0.3;
-				camHUD.zoom += 0.1;
-			}
-		if (curStep == 176 && curSong.toLowerCase() == 'trackstar')
-			{
-				FlxG.camera.zoom += 0.3;
-				camHUD.zoom += 0.1;
-			}
-		if (curStep == 224 && curSong.toLowerCase() == 'trackstar')
-			{
-				FlxG.camera.zoom += 0.3;
-				camHUD.zoom += 0.1;
-			}
-		if (curStep == 230 && curSong.toLowerCase() == 'trackstar')
-			{
-				FlxG.camera.zoom += 0.3;
-				camHUD.zoom += 0.1;
-			}
-		if (curStep == 240 && curSong.toLowerCase() == 'trackstar')
-			{
-				FlxG.camera.zoom += 0.3;
-				camHUD.zoom += 0.1;
-			}
-		if (curStep == 288 && curSong.toLowerCase() == 'trackstar')
-			{
-				FlxG.camera.zoom += 0.3;
-				camHUD.zoom += 0.1;
-			}
-		if (curStep == 294 && curSong.toLowerCase() == 'trackstar')
-			{
-				FlxG.camera.zoom += 0.3;
-				camHUD.zoom += 0.1;
-			}
-		if (curStep == 304 && curSong.toLowerCase() == 'trackstar')
-			{
-				FlxG.camera.zoom += 0.3;
-				camHUD.zoom += 0.1;
-			}
-		if (curStep == 352 && curSong.toLowerCase() == 'trackstar')
-			{
-				FlxG.camera.zoom += 0.3;
-				camHUD.zoom += 0.1;
-			}
-		if (curStep == 358 && curSong.toLowerCase() == 'trackstar')
-			{
-				FlxG.camera.zoom += 0.3;
-				camHUD.zoom += 0.1;
-			}
-		if (curStep == 368 && curSong.toLowerCase() == 'trackstar')
-			{
-				FlxG.camera.zoom += 0.3;
-				camHUD.zoom += 0.1;
-			}
-		if (curStep == 415 && curSong.toLowerCase() == 'trackstar')
-			{
-				FlxG.camera.zoom += 0.3;
-				camHUD.zoom += 0.1;
-			}
-		if (curStep == 422 && curSong.toLowerCase() == 'trackstar')
-			{
-				FlxG.camera.zoom += 0.3;
-				camHUD.zoom += 0.1;
-			}
-		if (curStep == 432 && curSong.toLowerCase() == 'trackstar')
-			{
-				FlxG.camera.zoom += 0.3;
-				camHUD.zoom += 0.1;
-			}
-		if (curStep == 480 && curSong.toLowerCase() == 'trackstar')
-			{
-				FlxG.camera.zoom += 0.3;
-				camHUD.zoom += 0.1;
-			}
-		if (curStep == 486 && curSong.toLowerCase() == 'trackstar')
-			{
-				FlxG.camera.zoom += 0.3;
-				camHUD.zoom += 0.1;
-			}
-		if (curStep == 496 && curSong.toLowerCase() == 'trackstar')
-			{
-				FlxG.camera.zoom += 0.3;
-				camHUD.zoom += 0.1;
-			}
-		if (curStep == 544 && curSong.toLowerCase() == 'trackstar')
-			{
-				FlxG.camera.zoom += 0.3;
-				camHUD.zoom += 0.1;
-			}
-		if (curStep == 550 && curSong.toLowerCase() == 'trackstar')
-			{
-				FlxG.camera.zoom += 0.3;
-				camHUD.zoom += 0.1;
-			}
-		if (curStep == 560 && curSong.toLowerCase() == 'trackstar')
-			{
-				FlxG.camera.zoom += 0.3;
-				camHUD.zoom += 0.1;
-			}
-		if (curStep == 608 && curSong.toLowerCase() == 'trackstar')
-			{
-				FlxG.camera.zoom += 0.3;
-				camHUD.zoom += 0.1;
-			}
-		if (curStep == 614 && curSong.toLowerCase() == 'trackstar')
-			{
-				FlxG.camera.zoom += 0.3;
-				camHUD.zoom += 0.1;
-			}
-		if (curStep == 624 && curSong.toLowerCase() == 'trackstar')
-			{
-				FlxG.camera.zoom += 0.3;
-				camHUD.zoom += 0.1;
-			}
-		if (curStep == 672 && curSong.toLowerCase() == 'trackstar')
-			{
-				FlxG.camera.zoom += 0.3;
-				camHUD.zoom += 0.1;
-			}
-		if (curStep == 678 && curSong.toLowerCase() == 'trackstar')
-			{
-				FlxG.camera.zoom += 0.3;
-				camHUD.zoom += 0.1;
-			}
-		if (curStep == 688 && curSong.toLowerCase() == 'trackstar')
-			{
-				FlxG.camera.zoom += 0.3;
-				camHUD.zoom += 0.1;
-			}
-		if (curStep == 736 && curSong.toLowerCase() == 'trackstar')
-			{
-				FlxG.camera.zoom += 0.3;
-				camHUD.zoom += 0.1;
-			}
-		if (curStep == 742 && curSong.toLowerCase() == 'trackstar')
-			{
-				FlxG.camera.zoom += 0.3;
-				camHUD.zoom += 0.1;
-			}
-		if (curStep == 752 && curSong.toLowerCase() == 'trackstar')
-			{
-				FlxG.camera.zoom += 0.3;
-				camHUD.zoom += 0.1;
-			}
-		if (curStep == 800 && curSong.toLowerCase() == 'trackstar')
-			{
-				FlxG.camera.zoom += 0.3;
-				camHUD.zoom += 0.1;
-			}
-		if (curStep == 806 && curSong.toLowerCase() == 'trackstar')
-			{
-				FlxG.camera.zoom += 0.3;
-				camHUD.zoom += 0.1;
-			}
-		if (curStep == 816 && curSong.toLowerCase() == 'trackstar')
-			{
-				FlxG.camera.zoom += 0.3;
-				camHUD.zoom += 0.1;
-			}
-		if (curStep == 1248 && curSong.toLowerCase() == 'trackstar')
-			{
-				FlxG.camera.zoom += 0.3;
-				camHUD.zoom += 0.1;
-			}
-		if (curStep == 1254 && curSong.toLowerCase() == 'trackstar')
-			{
-				FlxG.camera.zoom += 0.3;
-				camHUD.zoom += 0.1;
-			}
-		if (curStep == 1264 && curSong.toLowerCase() == 'trackstar')
-			{
-				FlxG.camera.zoom += 0.3;
-				camHUD.zoom += 0.1;
-			}
-		if (curStep == 1312 && curSong.toLowerCase() == 'trackstar')
-			{
-				FlxG.camera.zoom += 0.3;
-				camHUD.zoom += 0.1;
-			}
-		if (curStep == 1318 && curSong.toLowerCase() == 'trackstar')
-			{
-				FlxG.camera.zoom += 0.3;
-				camHUD.zoom += 0.1;
-			}
-		if (curStep == 1328 && curSong.toLowerCase() == 'trackstar')
-			{
-				FlxG.camera.zoom += 0.3;
-				camHUD.zoom += 0.1;
-			}
-		if (curStep == 1376 && curSong.toLowerCase() == 'trackstar')
-			{
-				FlxG.camera.zoom += 0.3;
-				camHUD.zoom += 0.1;
-			}
-		if (curStep == 1382 && curSong.toLowerCase() == 'trackstar')
-			{
-				FlxG.camera.zoom += 0.3;
-				camHUD.zoom += 0.1;
-			}
-		if (curStep == 1391 && curSong.toLowerCase() == 'trackstar')
-			{
-				FlxG.camera.zoom += 0.3;
-				camHUD.zoom += 0.1;
-			}
-		if (curStep == 1439 && curSong.toLowerCase() == 'trackstar')
-			{
-				FlxG.camera.zoom += 0.3;
-				camHUD.zoom += 0.1;
-			}
-		if (curStep == 1446 && curSong.toLowerCase() == 'trackstar')
-			{
-				FlxG.camera.zoom += 0.3;
-				camHUD.zoom += 0.1;
-			}
-		if (curStep == 1455 && curSong.toLowerCase() == 'trackstar')
-			{
-				FlxG.camera.zoom += 0.3;
-				camHUD.zoom += 0.1;
-			}
+		if (FlxG.save.data.cameraeffect)
+		{
+			if (curStep == 96 && curSong.toLowerCase() == 'trackstar')
+				{
+					trace('it worked');
+					FlxG.camera.zoom += 0.3;
+					camHUD.zoom += 0.1;
+				}
+			if (curStep == 102 && curSong.toLowerCase() == 'trackstar')
+				{
+					trace('it worked');
+					FlxG.camera.zoom += 0.3;
+					camHUD.zoom += 0.1;
+				}
+			if (curStep == 112 && curSong.toLowerCase() == 'trackstar')
+				{
+					trace('it worked');
+					FlxG.camera.zoom += 0.3;
+					camHUD.zoom += 0.1;
+				}
+			if (curStep == 160 && curSong.toLowerCase() == 'trackstar')
+				{
+					trace('it worked');
+					FlxG.camera.zoom += 0.3;
+					camHUD.zoom += 0.1;
+				}
+			if (curStep == 166 && curSong.toLowerCase() == 'trackstar')
+				{
+					FlxG.camera.zoom += 0.3;
+					camHUD.zoom += 0.1;
+				}
+			if (curStep == 176 && curSong.toLowerCase() == 'trackstar')
+				{
+					FlxG.camera.zoom += 0.3;
+					camHUD.zoom += 0.1;
+				}
+			if (curStep == 224 && curSong.toLowerCase() == 'trackstar')
+				{
+					FlxG.camera.zoom += 0.3;
+					camHUD.zoom += 0.1;
+				}
+			if (curStep == 230 && curSong.toLowerCase() == 'trackstar')
+				{
+					FlxG.camera.zoom += 0.3;
+					camHUD.zoom += 0.1;
+				}
+			if (curStep == 240 && curSong.toLowerCase() == 'trackstar')
+				{
+					FlxG.camera.zoom += 0.3;
+					camHUD.zoom += 0.1;
+				}
+			if (curStep == 288 && curSong.toLowerCase() == 'trackstar')
+				{
+					FlxG.camera.zoom += 0.3;
+					camHUD.zoom += 0.1;
+				}
+			if (curStep == 294 && curSong.toLowerCase() == 'trackstar')
+				{
+					FlxG.camera.zoom += 0.3;
+					camHUD.zoom += 0.1;
+				}
+			if (curStep == 304 && curSong.toLowerCase() == 'trackstar')
+				{
+					FlxG.camera.zoom += 0.3;
+					camHUD.zoom += 0.1;
+				}
+			if (curStep == 352 && curSong.toLowerCase() == 'trackstar')
+				{
+					FlxG.camera.zoom += 0.3;
+					camHUD.zoom += 0.1;
+				}
+			if (curStep == 358 && curSong.toLowerCase() == 'trackstar')
+				{
+					FlxG.camera.zoom += 0.3;
+					camHUD.zoom += 0.1;
+				}
+			if (curStep == 368 && curSong.toLowerCase() == 'trackstar')
+				{
+					FlxG.camera.zoom += 0.3;
+					camHUD.zoom += 0.1;
+				}
+			if (curStep == 415 && curSong.toLowerCase() == 'trackstar')
+				{
+					FlxG.camera.zoom += 0.3;
+					camHUD.zoom += 0.1;
+				}
+			if (curStep == 422 && curSong.toLowerCase() == 'trackstar')
+				{
+					FlxG.camera.zoom += 0.3;
+					camHUD.zoom += 0.1;
+				}
+			if (curStep == 432 && curSong.toLowerCase() == 'trackstar')
+				{
+					FlxG.camera.zoom += 0.3;
+					camHUD.zoom += 0.1;
+				}
+			if (curStep == 480 && curSong.toLowerCase() == 'trackstar')
+				{
+					FlxG.camera.zoom += 0.3;
+					camHUD.zoom += 0.1;
+				}
+			if (curStep == 486 && curSong.toLowerCase() == 'trackstar')
+				{
+					FlxG.camera.zoom += 0.3;
+					camHUD.zoom += 0.1;
+				}
+			if (curStep == 496 && curSong.toLowerCase() == 'trackstar')
+				{
+					FlxG.camera.zoom += 0.3;
+					camHUD.zoom += 0.1;
+				}
+			if (curStep == 544 && curSong.toLowerCase() == 'trackstar')
+				{
+					FlxG.camera.zoom += 0.3;
+					camHUD.zoom += 0.1;
+				}
+			if (curStep == 550 && curSong.toLowerCase() == 'trackstar')
+				{
+					FlxG.camera.zoom += 0.3;
+					camHUD.zoom += 0.1;
+				}
+			if (curStep == 560 && curSong.toLowerCase() == 'trackstar')
+				{
+					FlxG.camera.zoom += 0.3;
+					camHUD.zoom += 0.1;
+				}
+			if (curStep == 608 && curSong.toLowerCase() == 'trackstar')
+				{
+					FlxG.camera.zoom += 0.3;
+					camHUD.zoom += 0.1;
+				}
+			if (curStep == 614 && curSong.toLowerCase() == 'trackstar')
+				{
+					FlxG.camera.zoom += 0.3;
+					camHUD.zoom += 0.1;
+				}
+			if (curStep == 624 && curSong.toLowerCase() == 'trackstar')
+				{
+					FlxG.camera.zoom += 0.3;
+					camHUD.zoom += 0.1;
+				}
+			if (curStep == 672 && curSong.toLowerCase() == 'trackstar')
+				{
+					FlxG.camera.zoom += 0.3;
+					camHUD.zoom += 0.1;
+				}
+			if (curStep == 678 && curSong.toLowerCase() == 'trackstar')
+				{
+					FlxG.camera.zoom += 0.3;
+					camHUD.zoom += 0.1;
+				}
+			if (curStep == 688 && curSong.toLowerCase() == 'trackstar')
+				{
+					FlxG.camera.zoom += 0.3;
+					camHUD.zoom += 0.1;
+				}
+			if (curStep == 736 && curSong.toLowerCase() == 'trackstar')
+				{
+					FlxG.camera.zoom += 0.3;
+					camHUD.zoom += 0.1;
+				}
+			if (curStep == 742 && curSong.toLowerCase() == 'trackstar')
+				{
+					FlxG.camera.zoom += 0.3;
+					camHUD.zoom += 0.1;
+				}
+			if (curStep == 752 && curSong.toLowerCase() == 'trackstar')
+				{
+					FlxG.camera.zoom += 0.3;
+					camHUD.zoom += 0.1;
+				}
+			if (curStep == 800 && curSong.toLowerCase() == 'trackstar')
+				{
+					FlxG.camera.zoom += 0.3;
+					camHUD.zoom += 0.1;
+				}
+			if (curStep == 806 && curSong.toLowerCase() == 'trackstar')
+				{
+					FlxG.camera.zoom += 0.3;
+					camHUD.zoom += 0.1;
+				}
+			if (curStep == 816 && curSong.toLowerCase() == 'trackstar')
+				{
+					FlxG.camera.zoom += 0.3;
+					camHUD.zoom += 0.1;
+				}
+			if (curStep == 1248 && curSong.toLowerCase() == 'trackstar')
+				{
+					FlxG.camera.zoom += 0.3;
+					camHUD.zoom += 0.1;
+				}
+			if (curStep == 1254 && curSong.toLowerCase() == 'trackstar')
+				{
+					FlxG.camera.zoom += 0.3;
+					camHUD.zoom += 0.1;
+				}
+			if (curStep == 1264 && curSong.toLowerCase() == 'trackstar')
+				{
+					FlxG.camera.zoom += 0.3;
+					camHUD.zoom += 0.1;
+				}
+			if (curStep == 1312 && curSong.toLowerCase() == 'trackstar')
+				{
+					FlxG.camera.zoom += 0.3;
+					camHUD.zoom += 0.1;
+				}
+			if (curStep == 1318 && curSong.toLowerCase() == 'trackstar')
+				{
+					FlxG.camera.zoom += 0.3;
+					camHUD.zoom += 0.1;
+				}
+			if (curStep == 1328 && curSong.toLowerCase() == 'trackstar')
+				{
+					FlxG.camera.zoom += 0.3;
+					camHUD.zoom += 0.1;
+				}
+			if (curStep == 1376 && curSong.toLowerCase() == 'trackstar')
+				{
+					FlxG.camera.zoom += 0.3;
+					camHUD.zoom += 0.1;
+				}
+			if (curStep == 1382 && curSong.toLowerCase() == 'trackstar')
+				{
+					FlxG.camera.zoom += 0.3;
+					camHUD.zoom += 0.1;
+				}
+			if (curStep == 1391 && curSong.toLowerCase() == 'trackstar')
+				{
+					FlxG.camera.zoom += 0.3;
+					camHUD.zoom += 0.1;
+				}
+			if (curStep == 1439 && curSong.toLowerCase() == 'trackstar')
+				{
+					FlxG.camera.zoom += 0.3;
+					camHUD.zoom += 0.1;
+				}
+			if (curStep == 1446 && curSong.toLowerCase() == 'trackstar')
+				{
+					FlxG.camera.zoom += 0.3;
+					camHUD.zoom += 0.1;
+				}
+			if (curStep == 1455 && curSong.toLowerCase() == 'trackstar')
+				{
+					FlxG.camera.zoom += 0.3;
+					camHUD.zoom += 0.1;
+				}
+		}
 		if (curStep == 1599 && curSong.toLowerCase() == 'trackstar')
 				{
 					dad.visible = false;
@@ -4274,101 +4321,107 @@ class PlayState extends MusicBeatState
 					FlxG.sound.play(Paths.sound('baba'));
 				}
 		//un adieu, i actucally added this on acident but it turned out good
-		if (curStep == 184 && curSong.toLowerCase() == 'un-adieu')
-			{
-				FlxG.camera.zoom += 0.3;
-				camHUD.zoom += 0.1;
-			}
+		if (FlxG.save.data.cameraeffect)
+		{
+			if (curStep == 184 && curSong.toLowerCase() == 'un-adieu')
+				{
+					FlxG.camera.zoom += 0.3;
+					camHUD.zoom += 0.1;
+				}
+		}
 		if (curStep == 704 && curSong.toLowerCase() == 'un-adieu')
 			{
 				FlxG.camera.fade(FlxColor.BLACK, 13, false);
 			}
 		//poop revenge
-		if (curStep == 40 && curSong.toLowerCase() == 'babys-revenge')
-			{
-				FlxG.camera.zoom += 0.05;
-				camHUD.zoom += 0.01;
-			}
-		if (curStep == 41 && curSong.toLowerCase() == 'babys-revenge')
-			{
-				FlxG.camera.zoom += 0.05;
-				camHUD.zoom += 0.01;
-			}	
-		if (curStep == 42 && curSong.toLowerCase() == 'babys-revenge')
-			{
-				FlxG.camera.zoom += 0.05;
-				camHUD.zoom += 0.01;
-			}	
-		if (curStep == 43 && curSong.toLowerCase() == 'babys-revenge')
-			{
-				FlxG.camera.zoom += 0.05;
-				camHUD.zoom += 0.01;
-			}	
-		if (curStep == 44 && curSong.toLowerCase() == 'babys-revenge')
-			{
-				FlxG.camera.zoom += 0.05;
-				camHUD.zoom += 0.01;
-			}		
-		if (curStep == 45 && curSong.toLowerCase() == 'babys-revenge')
-			{
-				FlxG.camera.zoom += 0.1;
-				camHUD.zoom += 0.1;
-			}		
-		if (curStep == 46 && curSong.toLowerCase() == 'babys-revenge')
-			{
-				FlxG.camera.zoom += 0.1;
-				camHUD.zoom += 0.1;
-			}		
-		if (curStep == 47 && curSong.toLowerCase() == 'babys-revenge')
-			{
-				FlxG.camera.zoom += 0.1;
-				camHUD.zoom += 0.1;
-			}		
-		if (curStep == 56 && curSong.toLowerCase() == 'babys-revenge')
-			{
-				FlxG.camera.zoom += 0.05;
-				camHUD.zoom += 0.01;
-			}	
-		if (curStep == 57 && curSong.toLowerCase() == 'babys-revenge')
-			{
-				FlxG.camera.zoom += 0.05;
-				camHUD.zoom += 0.01;
-			}	
-		if (curStep == 58 && curSong.toLowerCase() == 'babys-revenge')
-			{
-				FlxG.camera.zoom += 0.05;
-				camHUD.zoom += 0.01;
-			}	
-		if (curStep == 59 && curSong.toLowerCase() == 'babys-revenge')
-			{
-				FlxG.camera.zoom += 0.05;
-				camHUD.zoom += 0.01;
-			}	
-		if (curStep == 60 && curSong.toLowerCase() == 'babys-revenge')
-			{
-				FlxG.camera.zoom += 0.1;
-				camHUD.zoom += 0.1;
-			}
-		if (curStep == 61 && curSong.toLowerCase() == 'babys-revenge')
-			{
-				FlxG.camera.zoom += 0.1;
-				camHUD.zoom += 0.1;
-			}
-		if (curStep == 62 && curSong.toLowerCase() == 'babys-revenge')
-			{
-				FlxG.camera.zoom += 0.1;
-				camHUD.zoom += 0.1;
-			}
-		if (curStep == 63 && curSong.toLowerCase() == 'babys-revenge')
-			{
-				FlxG.camera.zoom += 0.1;
-				camHUD.zoom += 0.1;
-			}
-		if (curStep == 64 && curSong.toLowerCase() == 'babys-revenge')
-			{
-				FlxG.camera.zoom += 0.1;
-				camHUD.zoom += 0.1;
-			}
+		if (FlxG.save.data.cameraeffect)
+		{
+			if (curStep == 40 && curSong.toLowerCase() == 'babys-revenge')
+				{
+					FlxG.camera.zoom += 0.05;
+					camHUD.zoom += 0.01;
+				}
+			if (curStep == 41 && curSong.toLowerCase() == 'babys-revenge')
+				{
+					FlxG.camera.zoom += 0.05;
+					camHUD.zoom += 0.01;
+				}	
+			if (curStep == 42 && curSong.toLowerCase() == 'babys-revenge')
+				{
+					FlxG.camera.zoom += 0.05;
+					camHUD.zoom += 0.01;
+				}	
+			if (curStep == 43 && curSong.toLowerCase() == 'babys-revenge')
+				{
+					FlxG.camera.zoom += 0.05;
+					camHUD.zoom += 0.01;
+				}	
+			if (curStep == 44 && curSong.toLowerCase() == 'babys-revenge')
+				{
+					FlxG.camera.zoom += 0.05;
+					camHUD.zoom += 0.01;
+				}		
+			if (curStep == 45 && curSong.toLowerCase() == 'babys-revenge')
+				{
+					FlxG.camera.zoom += 0.1;
+					camHUD.zoom += 0.1;
+				}		
+			if (curStep == 46 && curSong.toLowerCase() == 'babys-revenge')
+				{
+					FlxG.camera.zoom += 0.1;
+					camHUD.zoom += 0.1;
+				}		
+			if (curStep == 47 && curSong.toLowerCase() == 'babys-revenge')
+				{
+					FlxG.camera.zoom += 0.1;
+					camHUD.zoom += 0.1;
+				}		
+			if (curStep == 56 && curSong.toLowerCase() == 'babys-revenge')
+				{
+					FlxG.camera.zoom += 0.05;
+					camHUD.zoom += 0.01;
+				}	
+			if (curStep == 57 && curSong.toLowerCase() == 'babys-revenge')
+				{
+					FlxG.camera.zoom += 0.05;
+					camHUD.zoom += 0.01;
+				}	
+			if (curStep == 58 && curSong.toLowerCase() == 'babys-revenge')
+				{
+					FlxG.camera.zoom += 0.05;
+					camHUD.zoom += 0.01;
+				}	
+			if (curStep == 59 && curSong.toLowerCase() == 'babys-revenge')
+				{
+					FlxG.camera.zoom += 0.05;
+					camHUD.zoom += 0.01;
+				}	
+			if (curStep == 60 && curSong.toLowerCase() == 'babys-revenge')
+				{
+					FlxG.camera.zoom += 0.1;
+					camHUD.zoom += 0.1;
+				}
+			if (curStep == 61 && curSong.toLowerCase() == 'babys-revenge')
+				{
+					FlxG.camera.zoom += 0.1;
+					camHUD.zoom += 0.1;
+				}
+			if (curStep == 62 && curSong.toLowerCase() == 'babys-revenge')
+				{
+					FlxG.camera.zoom += 0.1;
+					camHUD.zoom += 0.1;
+				}
+			if (curStep == 63 && curSong.toLowerCase() == 'babys-revenge')
+				{
+					FlxG.camera.zoom += 0.1;
+					camHUD.zoom += 0.1;
+				}
+			if (curStep == 64 && curSong.toLowerCase() == 'babys-revenge')
+				{
+					FlxG.camera.zoom += 0.1;
+					camHUD.zoom += 0.1;
+				}
+		}
 		//kitty test (testing other dad)
 		if (curStage == 'crib' && curSong.toLowerCase() == 'kitty')
 				{
@@ -4521,15 +4574,20 @@ class PlayState extends MusicBeatState
 						boyfriendSigning = false;
 						boyfriendAgainSinging = true;
 					case 928:
-						defaultCamZoom = 1.45;
-						camera.flash(FlxColor.BLACK, 6.0);
+						if (FlxG.save.data.cameraeffect)
+							{
+								defaultCamZoom = 1.45;
+								camera.flash(FlxColor.BLACK, 6.0);
+							}
 					case 948:
 						boyfriendSigning = true;
 						boyfriendAgainSinging = true;
 					case 1048:
-						camera.shake(0.03,0.7);
-						defaultCamZoom = 1.05;
-						
+						if (FlxG.save.data.cameraeffect)
+						{
+							camera.shake(0.03,0.7);
+							defaultCamZoom = 1.05;
+						}
 					case 1178:
 						runningGoblin.x -= 200;
 						runningGoblin.y += 170;
@@ -4614,6 +4672,8 @@ class PlayState extends MusicBeatState
 			// Dad doesnt interupt his own notes
 			if (SONG.notes[Math.floor(curStep / 16)].mustHitSection && dad.curCharacter != 'gf')
 				dad.dance();
+				FlxG.camera.targetOffset.y = 0;
+				FlxG.camera.targetOffset.x = 0;
 				if (dadAgainExist)
 					dadAgain.dance();
 		}

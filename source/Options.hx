@@ -221,6 +221,27 @@ class DistractionsAndEffectsOption extends Option
 	}
 }
 
+class CameraEffects extends Option
+{
+	public function new(desc:String)
+	{
+		super();
+		description = desc;
+	}
+	public override function press():Bool
+	{
+		FlxG.save.data.cameraeffect = !FlxG.save.data.cameraeffect;
+		display = updateDisplay();
+		return true;
+	}
+
+	private override function updateDisplay():String
+	{
+		return "Camera Effects " + (!FlxG.save.data.cameraeffect ? "off" : "on");
+	}
+}
+
+
 class ResetButtonOption extends Option
 {
 	public function new(desc:String)
