@@ -10,10 +10,12 @@ import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.text.FlxText;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
+import flixel.addons.display.FlxBackdrop;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 import io.newgrounds.NG;
 import lime.app.Application;
+import WiggleEffect.WiggleEffectType;
 
 #if windows
 import Discord.DiscordClient;
@@ -28,9 +30,9 @@ class MainMenuState extends MusicBeatState
 	var menuItems:FlxTypedGroup<FlxSprite>;
 
 	#if !switch
-	var optionShit:Array<String> = ['story mode', 'freeplay', 'donate', 'options'];
+	var settingshit:Array<String> = ['story', 'free', 'credits', 'settings'];
 	#else
-	var optionShit:Array<String> = ['story mode', 'freeplay'];
+	var settingshit:Array<String> = ['story', 'free'];
 	#end
 
 	var poop:Int = 0;
@@ -44,6 +46,9 @@ class MainMenuState extends MusicBeatState
 	public static var gameVer:String = "0.2.7.1";
 
 	var magenta:FlxSprite;
+	var wiggleShit:WiggleEffect = new WiggleEffect();
+	var back:FlxBackdrop;
+	var back2:FlxBackdrop;
 	var camFollow:FlxObject;
 	public static var finishedFunnyMove:Bool = false;
 
@@ -61,7 +66,13 @@ class MainMenuState extends MusicBeatState
 
 		persistentUpdate = persistentDraw = true;
 
-		var bg:FlxSprite = new FlxSprite(-100).loadGraphic(Paths.image('menuBG'));
+		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menuBGYellow'));
+		bg.y += -80;
+		wiggleShit.effectType = WiggleEffectType.FLAG;
+		wiggleShit.waveAmplitude = 0.1;
+		wiggleShit.waveFrequency = 2;
+		wiggleShit.waveSpeed = 1;
+		bg.shader = wiggleShit.shader;
 		bg.scrollFactor.x = 0;
 		bg.scrollFactor.y = 0.10;
 		bg.setGraphicSize(Std.int(bg.width * 1.1));
@@ -70,10 +81,16 @@ class MainMenuState extends MusicBeatState
 		bg.antialiasing = true;
 		add(bg);
 
+		back = new FlxBackdrop(Paths.image('cubesmoving_yellow'),0,0,true,false,0,0);
+		back.antialiasing = true;
+		back.screenCenter(Y);
+		back.velocity.x = 50;
+		add(back);
+
 		camFollow = new FlxObject(0, 0, 1, 1);
 		add(camFollow);
 
-		magenta = new FlxSprite(-80).loadGraphic(Paths.image('menuBGMagenta'));
+		magenta = new FlxSprite(-80).loadGraphic(Paths.image('menuBGRed'));
 		magenta.scrollFactor.x = 0;
 		magenta.scrollFactor.y = 0.10;
 		magenta.setGraphicSize(Std.int(magenta.width * 1.1));
@@ -84,17 +101,24 @@ class MainMenuState extends MusicBeatState
 		add(magenta);
 		// magenta.scrollFactor.set();
 
+		back2 = new FlxBackdrop(Paths.image('cubesmoving_magenta'),0,0,true,false,0,0);
+		back2.antialiasing = true;
+		back2.screenCenter(Y);
+		back2.velocity.x = 50;
+		back2.visible = false;
+		add(back2);
+
 		menuItems = new FlxTypedGroup<FlxSprite>();
 		add(menuItems);
 
 		var tex = Paths.getSparrowAtlas('FNF_main_menu_assets');
 
-		for (i in 0...optionShit.length)
+		for (i in 0...settingshit.length)
 		{
 			var menuItem:FlxSprite = new FlxSprite(0, FlxG.height * 1.6);
 			menuItem.frames = tex;
-			menuItem.animation.addByPrefix('idle', optionShit[i] + " basic", 24);
-			menuItem.animation.addByPrefix('selected', optionShit[i] + " white", 24);
+			menuItem.animation.addByPrefix('idle', settingshit[i] + "idle", 24);
+			menuItem.animation.addByPrefix('selected', settingshit[i] + "select", 24);
 			menuItem.animation.play('idle');
 			menuItem.ID = i;
 			menuItem.screenCenter(X);
@@ -184,7 +208,7 @@ class MainMenuState extends MusicBeatState
 
 			if (controls.ACCEPT)
 			{
-				if (optionShit[curSelected] == 'donate')
+				if (settingshit[curSelected] == 'credits')
 				{
 					fancyOpenURL("https://www.kickstarter.com/projects/funkin/friday-night-funkin-the-full-ass-game");
 				}
@@ -194,7 +218,10 @@ class MainMenuState extends MusicBeatState
 					FlxG.sound.play(Paths.sound('confirmMenu'));
 					
 					if (FlxG.save.data.flashing)
+					{
 						FlxFlicker.flicker(magenta, 1.1, 0.15, false);
+						FlxFlicker.flicker(back2, 1.1, 0.15, false);
+					}
 
 					menuItems.forEach(function(spr:FlxSprite)
 					{
@@ -240,19 +267,19 @@ class MainMenuState extends MusicBeatState
 	
 	function goToState()
 	{
-		var daChoice:String = optionShit[curSelected];
+		var daChoice:String = settingshit[curSelected];
 
 		switch (daChoice)
 		{
-			case 'story mode':
+			case 'story':
 				FlxG.switchState(new StoryMenuState());
 				trace("Story Menu Selected");
-			case 'freeplay':
+			case 'free':
 				super.openSubState(new ChooseSubState());
 
-				trace("Freeplay Menu Selected");
+				trace("free Menu Selected");
 
-			case 'options':
+			case 'settings':
 				FlxG.switchState(new OptionsMenu());
 		}
 	}
