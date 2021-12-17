@@ -2749,13 +2749,13 @@ class PlayState extends MusicBeatState
 									FlxG.camera.targetOffset.y = -20;
 									FlxG.camera.targetOffset.x = 0;
 								}
-								if (dadSinging)
+								if (dadSinging && !daNote.isSustainNote)
 									dad.playAnim('singUP' + altAnim, true);
-								if (dadAgainSinging)
+								if (dadAgainSinging && !daNote.isSustainNote)
 									dadAgain.playAnim('singUP' + altAnim, true);
 								if (curSong.toLowerCase() == "insignificance")
 									{
-										health -= 0.015;
+										health -= 0.008;
 									}
 								
 							case 3:
@@ -2764,13 +2764,13 @@ class PlayState extends MusicBeatState
 									FlxG.camera.targetOffset.y = 0;
 									FlxG.camera.targetOffset.x = 20;
 								}
-								if (dadSinging)
+								if (dadSinging && !daNote.isSustainNote)
 									dad.playAnim('singRIGHT' + altAnim, true);
-								if (dadAgainSinging)
+								if (dadAgainSinging && !daNote.isSustainNote)
 									dadAgain.playAnim('singRIGHT' + altAnim, true);
 								if (curSong.toLowerCase() == "insignificance")
 									{
-										health -= 0.015;
+										health -= 0.008;
 									}
 							case 1:
 								if (!PlayState.SONG.notes[Std.int(curStep / 16)].mustHitSection && FlxG.save.data.cameraeffect)
@@ -2778,13 +2778,13 @@ class PlayState extends MusicBeatState
 										FlxG.camera.targetOffset.y = 20;
 										FlxG.camera.targetOffset.x = 0;
 									}
-								if (dadSinging)
+								if (dadSinging && !daNote.isSustainNote)
 									dad.playAnim('singDOWN' + altAnim, true);
-								if (dadAgainSinging)
+								if (dadAgainSinging && !daNote.isSustainNote)
 									dadAgain.playAnim('singDOWN' + altAnim, true);
 								if (curSong.toLowerCase() == "insignificance")
 									{
-										health -= 0.015;
+										health -= 0.008;
 									}
 							case 0:
 								if (!PlayState.SONG.notes[Std.int(curStep / 16)].mustHitSection && FlxG.save.data.cameraeffect)
@@ -2792,13 +2792,13 @@ class PlayState extends MusicBeatState
 										FlxG.camera.targetOffset.y = 0;
 										FlxG.camera.targetOffset.x = 20;
 									}
-								if (dadSinging)
+								if (dadSinging && !daNote.isSustainNote)
 									dad.playAnim('singLEFT' + altAnim, true);
-								if (dadAgainSinging)
+								if (dadAgainSinging && !daNote.isSustainNote)
 									dadAgain.playAnim('singLEFT' + altAnim, true);
 								if (curSong.toLowerCase() == "insignificance")
 									{
-										health -= 0.015;
+										health -= 0.008;
 									}
 						}
 						
@@ -3736,11 +3736,11 @@ class PlayState extends MusicBeatState
 								FlxG.camera.targetOffset.y = -20;
 								FlxG.camera.targetOffset.x = 0;
 							}
-							if(boyfriendSigning)
+							if(boyfriendSigning && !note.isSustainNote)
 								boyfriend.playAnim('singUP', true);
-							if(boyfriendAgainSinging)
+							if(boyfriendAgainSinging && !note.isSustainNote)
 								boyfriendAgain.playAnim('singUP', true);
-							if(runningGoblinSinging)
+							if(runningGoblinSinging && !note.isSustainNote)
 								runningGoblin.playAnim('singUP', true);
 						case 3:
 							if (PlayState.SONG.notes[Std.int(curStep / 16)].mustHitSection && FlxG.save.data.cameraeffect)
@@ -3748,11 +3748,11 @@ class PlayState extends MusicBeatState
 								FlxG.camera.targetOffset.y = 0;
 								FlxG.camera.targetOffset.x = 20;
 							}
-							if(boyfriendSigning)
+							if(boyfriendSigning && !note.isSustainNote)
 								boyfriend.playAnim('singRIGHT', true);
-							if(boyfriendAgainSinging)
+							if(boyfriendAgainSinging && !note.isSustainNote)
 								boyfriendAgain.playAnim('singRIGHT', true);
-							if(runningGoblinSinging)
+							if(runningGoblinSinging && !note.isSustainNote)
 								runningGoblin.playAnim('singRIGHT', true);
 						case 1:
 							if (PlayState.SONG.notes[Std.int(curStep / 16)].mustHitSection && FlxG.save.data.cameraeffect)
@@ -3760,11 +3760,11 @@ class PlayState extends MusicBeatState
 								FlxG.camera.targetOffset.y = 20;
 								FlxG.camera.targetOffset.x = 0;
 							}
-							if(boyfriendSigning)
+							if(boyfriendSigning && !note.isSustainNote)
 								boyfriend.playAnim('singDOWN', true);
-							if(boyfriendAgainSinging)
+							if(boyfriendAgainSinging && !note.isSustainNote)
 								boyfriendAgain.playAnim('singDOWN', true);
-							if(runningGoblinSinging)
+							if(runningGoblinSinging && !note.isSustainNote)
 								runningGoblin.playAnim('singDOWN', true);
 						case 0:
 							if (PlayState.SONG.notes[Std.int(curStep / 16)].mustHitSection && FlxG.save.data.cameraeffect)
@@ -3772,11 +3772,11 @@ class PlayState extends MusicBeatState
 								FlxG.camera.targetOffset.y = 0;
 								FlxG.camera.targetOffset.x = -20;
 							}
-							if(boyfriendSigning)
+							if(boyfriendSigning && !note.isSustainNote)
 								boyfriend.playAnim('singLEFT', true);
-							if(boyfriendAgainSinging)
+							if(boyfriendAgainSinging && !note.isSustainNote)
 								boyfriendAgain.playAnim('singLEFT', true);
-							if(runningGoblinSinging)
+							if(runningGoblinSinging && !note.isSustainNote)
 								runningGoblin.playAnim('singLEFT', true);
 					}
 		
