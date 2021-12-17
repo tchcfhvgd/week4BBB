@@ -4668,14 +4668,6 @@ class PlayState extends MusicBeatState
 			}
 			// else
 			// Conductor.changeBPM(SONG.bpm);
-
-			// Dad doesnt interupt his own notes
-			if (SONG.notes[Math.floor(curStep / 16)].mustHitSection && dad.curCharacter != 'gf')
-				dad.dance();
-				FlxG.camera.targetOffset.y = 0;
-				FlxG.camera.targetOffset.x = 0;
-				if (dadAgainExist)
-					dadAgain.dance();
 		}
 		// FlxG.log.add('change bpm' + SONG.notes[Std.int(curStep / 16)].changeBPM);
 
@@ -4755,6 +4747,15 @@ class PlayState extends MusicBeatState
 				boyfriendAgain.playAnim('idle');
 			if(runningGoblinExist)
 				runningGoblin.playAnim('idle');
+		}
+
+		if (!dad.animation.curAnim.name.startsWith("sing"))
+		{
+			dad.dance();
+			FlxG.camera.targetOffset.y = 0;
+			FlxG.camera.targetOffset.x = 0;
+			if (dadAgainExist)
+				dadAgain.dance();
 		}
 		
 
