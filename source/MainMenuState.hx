@@ -84,7 +84,7 @@ class MainMenuState extends MusicBeatState
 		back = new FlxBackdrop(Paths.image('cubesmoving_yellow'),0,0,true,false,0,0);
 		back.antialiasing = true;
 		back.screenCenter(Y);
-		back.velocity.x = 50;
+		back.velocity.x = -80;
 		add(back);
 
 		camFollow = new FlxObject(0, 0, 1, 1);
@@ -94,6 +94,7 @@ class MainMenuState extends MusicBeatState
 		magenta.scrollFactor.x = 0;
 		magenta.scrollFactor.y = 0.10;
 		magenta.setGraphicSize(Std.int(magenta.width * 1.1));
+		magenta.shader = wiggleShit.shader;
 		magenta.updateHitbox();
 		magenta.screenCenter();
 		magenta.visible = false;
@@ -104,7 +105,7 @@ class MainMenuState extends MusicBeatState
 		back2 = new FlxBackdrop(Paths.image('cubesmoving_magenta'),0,0,true,false,0,0);
 		back2.antialiasing = true;
 		back2.screenCenter(Y);
-		back2.velocity.x = 50;
+		back2.velocity.x = -80;
 		back2.visible = false;
 		add(back2);
 
@@ -115,24 +116,26 @@ class MainMenuState extends MusicBeatState
 
 		for (i in 0...settingshit.length)
 		{
-			var menuItem:FlxSprite = new FlxSprite(0, FlxG.height * 1.6);
+			var menuItem:FlxSprite = new FlxSprite(0, 0);
 			menuItem.frames = tex;
 			menuItem.animation.addByPrefix('idle', settingshit[i] + "idle", 24);
 			menuItem.animation.addByPrefix('selected', settingshit[i] + "select", 24);
 			menuItem.animation.play('idle');
+			menuItem.setGraphicSize(Std.int(menuItem.width * 0.65));
+			menuItem.updateHitbox();
 			menuItem.ID = i;
 			menuItem.screenCenter(X);
 			menuItems.add(menuItem);
 			menuItem.scrollFactor.set();
 			menuItem.antialiasing = true;
 			if (firstStart)
-				FlxTween.tween(menuItem,{y: 60 + (i * 160)},1 + (i * 0.25) ,{ease: FlxEase.expoInOut, onComplete: function(flxTween:FlxTween) 
+				FlxTween.tween(menuItem,{y: 30 + (i * 210)},1 + (i * 0.25) ,{ease: FlxEase.expoInOut, onComplete: function(flxTween:FlxTween) 
 					{ 
 						finishedFunnyMove = true; 
 						changeItem();
 					}});
 			else
-				menuItem.y = 60 + (i * 160);
+				menuItem.y = 30 + (i * 200);
 		}
 
 		firstStart = false;
@@ -161,6 +164,8 @@ class MainMenuState extends MusicBeatState
 
 	override function update(elapsed:Float)
 	{
+		wiggleShit.update(elapsed);
+
 		if (FlxG.sound.music.volume < 0.8)
 		{
 			FlxG.sound.music.volume += 0.5 * FlxG.elapsed;
