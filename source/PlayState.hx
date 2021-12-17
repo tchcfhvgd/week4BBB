@@ -3060,7 +3060,7 @@ class PlayState extends MusicBeatState
 	
 			var placement:String = Std.string(combo);
 	
-			var coolText:FlxText = new FlxText(0, 0, 0, placement, 32);
+			var coolText:FlxText = new FlxText(0, 0, 0, placement, 25);
 			coolText.screenCenter();
 			coolText.x = FlxG.width * 0.55;
 			coolText.y -= 350;
@@ -4704,17 +4704,17 @@ class PlayState extends MusicBeatState
 
 		if (curBeat % 2 == 1)
 		{
-			iconP1.setGraphicSize(Std.int(iconP1.width * 1.25));
-			iconP2.setGraphicSize(Std.int(iconP2.width * 0.86));
-			FlxTween.angle(iconP1, 20, 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadOut});
-			FlxTween.angle(iconP2, 20, 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadOut});
+			iconP1.setGraphicSize(Std.int(iconP1.width * 1.2));
+			iconP2.setGraphicSize(Std.int(iconP2.width * 1.2));
+			FlxTween.angle(iconP1, 0, 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadInOut});
+			FlxTween.angle(iconP2, 0, 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadInOut});
 		}
 		if (curBeat % 2 == 0)
 		{
-			iconP1.setGraphicSize(Std.int(iconP1.width * 0.86));
-			iconP2.setGraphicSize(Std.int(iconP2.width * 1.25));
-			FlxTween.angle(iconP1, -20, 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadOut});
-			FlxTween.angle(iconP2, -20, 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadOut});
+			iconP1.setGraphicSize(Std.int(iconP1.width * 1.2));
+			iconP2.setGraphicSize(Std.int(iconP2.width * 1.2));
+			FlxTween.angle(iconP1, 0, 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadInOut});
+			FlxTween.angle(iconP2, 0, 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadInOut});
 		}
 
 		FlxTween.tween(iconP1, {'scale.x': 1, 'scale.y': 1}, Conductor.crochet / 1250 * gfSpeed, {ease: FlxEase.quartOut});
