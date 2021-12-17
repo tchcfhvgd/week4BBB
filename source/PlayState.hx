@@ -2762,7 +2762,7 @@ class PlayState extends MusicBeatState
 								if (!PlayState.SONG.notes[Std.int(curStep / 16)].mustHitSection && FlxG.save.data.cameraeffect)
 								{
 									FlxG.camera.targetOffset.y = 0;
-									FlxG.camera.targetOffset.x = -20;
+									FlxG.camera.targetOffset.x = 20;
 								}
 								if (dadSinging && !daNote.isSustainNote)
 									dad.playAnim('singRIGHT' + altAnim, true);
@@ -2790,7 +2790,7 @@ class PlayState extends MusicBeatState
 								if (!PlayState.SONG.notes[Std.int(curStep / 16)].mustHitSection && FlxG.save.data.cameraeffect)
 									{
 										FlxG.camera.targetOffset.y = 0;
-										FlxG.camera.targetOffset.x = 20;
+										FlxG.camera.targetOffset.x = -20;
 									}
 								if (dadSinging && !daNote.isSustainNote)
 									dad.playAnim('singLEFT' + altAnim, true);
