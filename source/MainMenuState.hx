@@ -213,52 +213,45 @@ class MainMenuState extends MusicBeatState
 
 			if (controls.ACCEPT)
 			{
-				if (settingshit[curSelected] == 'credits')
+				selectedSomethin = true;
+				FlxG.sound.play(Paths.sound('confirmMenu'));
+				
+				if (FlxG.save.data.flashing)
 				{
-					fancyOpenURL("https://www.kickstarter.com/projects/funkin/friday-night-funkin-the-full-ass-game");
+					FlxFlicker.flicker(magenta, 1.1, 0.15, false);
+					FlxFlicker.flicker(back2, 1.1, 0.15, false);
 				}
-				else
-				{
-					selectedSomethin = true;
-					FlxG.sound.play(Paths.sound('confirmMenu'));
-					
-					if (FlxG.save.data.flashing)
-					{
-						FlxFlicker.flicker(magenta, 1.1, 0.15, false);
-						FlxFlicker.flicker(back2, 1.1, 0.15, false);
-					}
 
-					menuItems.forEach(function(spr:FlxSprite)
+				menuItems.forEach(function(spr:FlxSprite)
+				{
+					if (curSelected != spr.ID)
 					{
-						if (curSelected != spr.ID)
+						FlxTween.tween(spr, {alpha: 0}, 1.3, {
+							ease: FlxEase.quadOut,
+							onComplete: function(twn:FlxTween)
+							{
+								spr.kill();
+							}
+						});
+					}
+					else
+					{
+						if (FlxG.save.data.flashing)
 						{
-							FlxTween.tween(spr, {alpha: 0}, 1.3, {
-								ease: FlxEase.quadOut,
-								onComplete: function(twn:FlxTween)
-								{
-									spr.kill();
-								}
+							FlxFlicker.flicker(spr, 1, 0.06, false, false, function(flick:FlxFlicker)
+							{
+								goToState();
 							});
 						}
 						else
 						{
-							if (FlxG.save.data.flashing)
+							new FlxTimer().start(1, function(tmr:FlxTimer)
 							{
-								FlxFlicker.flicker(spr, 1, 0.06, false, false, function(flick:FlxFlicker)
-								{
-									goToState();
-								});
-							}
-							else
-							{
-								new FlxTimer().start(1, function(tmr:FlxTimer)
-								{
-									goToState();
-								});
-							}
+								goToState();
+							});
 						}
-					});
-				}
+					}
+				});
 			}
 		}
 
@@ -283,6 +276,9 @@ class MainMenuState extends MusicBeatState
 				super.openSubState(new ChooseSubState());
 
 				trace("free Menu Selected");
+			case 'credits':
+				FlxG.switchState(new CreditState());
+				trace("Credits Selected");
 
 			case 'settings':
 				FlxG.switchState(new OptionsMenu());

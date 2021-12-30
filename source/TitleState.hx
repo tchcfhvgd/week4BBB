@@ -330,6 +330,7 @@ class TitleState extends MusicBeatState
 							}
 							else
 							{
+								//FlxG.switchState(new AntiState());
 								FlxG.switchState(new MainMenuState());
 							}
 						#end
