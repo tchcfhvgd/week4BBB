@@ -651,6 +651,23 @@ class Character extends FlxSprite
 				addOffset("singDOWN", -10, -19);
 	
 				playAnim('idle');
+			case 'myth':
+				// DAD ANIMATION LOADING CODE
+				tex = Paths.getSparrowAtlas('characters/myth_sprites');
+				frames = tex;
+				animation.addByPrefix('idle', 'baby idle', 24);
+				animation.addByPrefix('singUP', 'baby up', 24);
+				animation.addByPrefix('singRIGHT', 'baby right', 24);
+				animation.addByPrefix('singDOWN', 'baby down', 24);
+				animation.addByPrefix('singLEFT', 'baby left', 24);
+		
+				addOffset('idle');
+				addOffset("singUP", 34, 35);
+				addOffset("singRIGHT", 41, 7);
+				addOffset("singLEFT", 52, -6);
+				addOffset("singDOWN", -5, -20);
+		
+				playAnim('idle');
 			case 'bf':
 				var tex = Paths.getSparrowAtlas('characters/BOYFRIEND', 'shared');
 				frames = tex;
@@ -675,10 +692,10 @@ class Character extends FlxSprite
 				animation.addByPrefix('scared', 'BF idle shaking', 24);
 
 				addOffset('idle', -5);
-				addOffset("singUP", -29, 27);
-				addOffset("singRIGHT", -38, -7);
-				addOffset("singLEFT", 12, -6);
-				addOffset("singDOWN", -10, -50);
+				addOffset("singUP", -57, 38);
+				addOffset("singRIGHT", -50, -7);
+				addOffset("singLEFT", 4, -6);
+				addOffset("singDOWN", -8, -42);
 				addOffset("singUPmiss", -29, 27);
 				addOffset("singRIGHTmiss", -30, 21);
 				addOffset("singLEFTmiss", 12, 24);
