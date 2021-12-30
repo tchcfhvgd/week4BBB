@@ -876,6 +876,17 @@ class PlayState extends MusicBeatState
 					chairummmm.setGraphicSize(Std.int(chairummmm.width * 1.1));
 					chairummmm.updateHitbox();
 			}
+			case 'bathroom':
+				{
+					curStage = 'bathroom';
+					defaultCamZoom = 1;
+
+					var bg:FlxSprite = new FlxSprite(-250, -200).loadGraphic(Paths.image('brfloor'));
+					bg.antialiasing = true;
+					bg.scrollFactor.set();
+					bg.active = false;
+					add(bg);
+				}
 			default:
 			{
 					defaultCamZoom = 0.9;
@@ -1018,6 +1029,9 @@ class PlayState extends MusicBeatState
 			case 'kitty':
 				dad.y += 440;
 				dad.x += 120;
+			case 'myth':
+				dad.y += 0;
+				dad.x += -30;
 		}
 
 
@@ -1043,6 +1057,11 @@ class PlayState extends MusicBeatState
 				gf.y += 350;
 				gf.x += 300;
 				dad.x += 100;
+			case 'bathroom':
+				boyfriend.x += 1000;
+				dad.x += 0;
+				dad.x -= 50;
+				dad.y -= 100;
 			case 'limo':
 				boyfriend.y -= 220;
 				boyfriend.x += 700;
@@ -1402,6 +1421,13 @@ class PlayState extends MusicBeatState
 					grain.active = false;
 					add(grain);
 					startCountdown();
+					case 'myth':
+						var grain:FlxSprite = new FlxSprite(0, 0).loadGraphic(Paths.image('grain'));
+						grain.antialiasing = true;
+						grain.scrollFactor.set();
+						grain.active = false;
+						add(grain);
+						startCountdown();
 				default:
 					startCountdown();
 			}
@@ -2574,15 +2600,7 @@ class PlayState extends MusicBeatState
 			}
 		}
 
-		if (curSong == 'Biggie-Chungus')
-			{
-				switch (curBeat)
-				{
-					case 1:
-						gfSpeed = 4;
-				}
-			}
-	
+
 
 		if (health <= 0)
 		{
