@@ -1059,9 +1059,9 @@ class PlayState extends MusicBeatState
 				dad.x += 100;
 			case 'bathroom':
 				boyfriend.x += 1000;
-				dad.x += 0;
-				dad.x -= 50;
-				dad.y -= 100;
+				dad.x += 100;
+				dad.x -= 0;
+				dad.y -= 400;
 			case 'limo':
 				boyfriend.y -= 220;
 				boyfriend.x += 700;
@@ -1422,7 +1422,7 @@ class PlayState extends MusicBeatState
 					add(grain);
 					startCountdown();
 					case 'myth':
-						var grain:FlxSprite = new FlxSprite(0, 0).loadGraphic(Paths.image('grain'));
+						var grain:FlxSprite = new FlxSprite(0, 0).loadGraphic(Paths.image('grain2'));
 						grain.antialiasing = true;
 						grain.scrollFactor.set();
 						grain.active = false;
@@ -1745,7 +1745,7 @@ class PlayState extends MusicBeatState
 			var songName = new FlxText(songPosBG.x + (songPosBG.width / 2) - 20,songPosBG.y,0,SONG.song, 16);
 			if (FlxG.save.data.downscroll)
 				songName.y -= 3;
-			songName.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK);
+			songName.setFormat(Paths.font("funkin.otf"), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK);
 			songName.scrollFactor.set();
 			add(songName);
 
@@ -4747,7 +4747,6 @@ class PlayState extends MusicBeatState
 			FlxG.camera.zoom += 0.015;
 			camHUD.zoom += 0.03;
 		}
-
 		if (curSong.toLowerCase() == 'babys-revenge' && curBeat == 48)
 			{
 				camZooming = true;
