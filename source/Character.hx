@@ -426,12 +426,15 @@ class Character extends FlxSprite
 					animation.addByPrefix('singRIGHT', 'right', 24);
 					animation.addByPrefix('singDOWN', 'down', 24);
 					animation.addByPrefix('singLEFT', 'left', 24);
+					animation.addByPrefix('hey', 'baba', 24);
 		
 					addOffset('idle');
 					addOffset("singUP", -80, 90);
 					addOffset("singRIGHT", -115, 49);
 					addOffset("singLEFT", 327, 66);
 					addOffset("singDOWN", -64, 50);
+					addOffset("hey", -64, 50);
+					
 		
 					playAnim('idle');			
 			case 'player-goblin':
