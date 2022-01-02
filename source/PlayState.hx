@@ -4739,7 +4739,7 @@ class PlayState extends MusicBeatState
 				runningGoblin.playAnim('idle');
 		}
 
-		if (!dad.animation.curAnim.name.startsWith("sing") && !dad.animation.curAnim.name.startsWith("hey"))
+		if (!dad.animation.curAnim.name.startsWith("sing"))
 		{
 			dad.dance();
 			FlxG.camera.targetOffset.y = 0;
@@ -4753,12 +4753,12 @@ class PlayState extends MusicBeatState
 			boyfriend.playAnim('hey', true);
 		}
 
-		if (curBeat == 47 && curSong == 'Trackstar')
+		if (curBeat == 47 && curSong == 'trackstar')
 		{
 			dad.playAnim('hey', true);
 		}
 
-		if (curBeat == 79 && curSong == 'Trackstar')
+		if (curBeat == 79 && curSong == 'trackstar')
 		{
 			dad.playAnim('hey', true);
 		}
