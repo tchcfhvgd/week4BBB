@@ -927,6 +927,8 @@ class PlayState extends MusicBeatState
 				gfVersion = 'gf-pixel';
 			case 'gf-goblin':
 				gfVersion = 'gf-goblin';
+			case 'baby-bopper':
+				gfVersion = 'baby-bopper';
 			default:
 				gfVersion = 'gf';
 		}
