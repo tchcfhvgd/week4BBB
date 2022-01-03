@@ -20,10 +20,16 @@ class CreditState extends MusicBeatState
 	override public function create():Void 
 	{
 		var bg:FlxSprite = new FlxSprite();
-	
 		bg.loadGraphic(Paths.image("creditScreen", "shared"));
 		bg.antialiasing = true;
 		add(bg);
+
+		var blackShit:FlxSprite = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
+		blackShit.alpha = 1;
+		blackShit.scrollFactor.set();
+		add(blackShit);
+
+		FlxTween.tween(blackShit, {alpha: 0}, 0.5, {ease: FlxEase.quartInOut});
 	}
 	override public function update(elapsed:Float):Void 
 	{
