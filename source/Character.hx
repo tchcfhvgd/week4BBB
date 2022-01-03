@@ -118,6 +118,18 @@ class Character extends FlxSprite
 
 				playAnim('danceRight');
 
+			case 'baby-bopper':
+				tex = Paths.getSparrowAtlas('characters/baby_bopper');
+				frames = tex;
+				animation.addByIndices('singUP', 'GF Dancing Beat', [0], "", 24, false);
+				animation.addByIndices('danceLeft', 'GF Dancing Beat', [30, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], "", 24, false);
+				animation.addByIndices('danceRight', 'GF Dancing Beat', [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29], "", 24, false);
+
+				addOffset('danceLeft', 0);
+				addOffset('danceRight', 0);
+
+				playAnim('danceRight');
+
 			case 'gf-pixel':
 				tex = Paths.getSparrowAtlas('characters/gfPixel');
 				frames = tex;
@@ -278,7 +290,6 @@ class Character extends FlxSprite
 
 				flipX = true;
 			case 'baby':
-					// DAD ANIMATION LOADING CODE
 					tex = Paths.getSparrowAtlas('characters/baby');
 					frames = tex;
 					animation.addByPrefix('idle', 'baby', 24);
@@ -295,7 +306,6 @@ class Character extends FlxSprite
 	
 					playAnim('idle');
 			case 'miku':
-					// DAD ANIMATION LOADING CODE
 					tex = Paths.getSparrowAtlas('characters/ev_miku_assets');
 					frames = tex;
 					animation.addByPrefix('idle', 'Miku idle dance', 24);
@@ -312,7 +322,6 @@ class Character extends FlxSprite
 	
 					playAnim('idle');
 			case 'tinky':
-					// DAD ANIMATION LOADING CODE
 					tex = Paths.getSparrowAtlas('characters/Tinky_Winky');
 					frames = tex;
 					animation.addByPrefix('idle', 'TinkyIdle', 24);
@@ -329,7 +338,6 @@ class Character extends FlxSprite
 	
 					playAnim('idle');
 			case 'pewdiepie':
-					// DAD ANIMATION LOADING CODE
 					tex = Paths.getSparrowAtlas('characters/pewdiepie');
 					frames = tex;
 					animation.addByPrefix('idle', 'pewdiepie idle', 24);
@@ -346,7 +354,6 @@ class Character extends FlxSprite
 	
 					playAnim('idle');
 			case 'freddy':
-					// DAD ANIMATION LOADING CODE
 					tex = Paths.getSparrowAtlas('characters/freddy');
 					frames = tex;
 					animation.addByPrefix('idle', 'FREDDY IDLE', 24);
@@ -364,7 +371,6 @@ class Character extends FlxSprite
 					playAnim('idle');
 					
 			case 'scout':
-					// DAD ANIMATION LOADING CODE
 					tex = Paths.getSparrowAtlas('characters/scout');
 					frames = tex;
 					animation.addByPrefix('idle', 'scout idle', 24);
@@ -382,7 +388,6 @@ class Character extends FlxSprite
 					playAnim('idle');
 					
 			case 'homer':
-				// DAD ANIMATION LOADING CODE
 					tex = Paths.getSparrowAtlas('characters/homer');
 					frames = tex;
 					animation.addByPrefix('idle', 'homer idle', 24);
@@ -400,7 +405,6 @@ class Character extends FlxSprite
 					playAnim('idle');
 					
 			case 'monstershit':
-					// DAD ANIMATION LOADING CODE
 					tex = Paths.getSparrowAtlas('characters/monsterShit');
 					frames = tex;
 					animation.addByPrefix('idle', 'monster idle', 24);
@@ -418,7 +422,6 @@ class Character extends FlxSprite
 					playAnim('idle');
 					
 			case 'running-goblin':
-					// DAD ANIMATION LOADING CODE
 					tex = Paths.getSparrowAtlas('characters/running_goblin', 'shared');
 					frames = tex;
 					animation.addByPrefix('idle', 'idle', 24);
@@ -426,18 +429,18 @@ class Character extends FlxSprite
 					animation.addByPrefix('singRIGHT', 'right', 24);
 					animation.addByPrefix('singDOWN', 'down', 24);
 					animation.addByPrefix('singLEFT', 'left', 24);
-					animation.addByPrefix('hey', 'baba', 24, false);
+					animation.addByPrefix('hey', 'baba', 24);
 		
 					addOffset('idle');
 					addOffset("singUP", -80, 90);
 					addOffset("singRIGHT", -115, 49);
 					addOffset("singLEFT", 327, 66);
 					addOffset("singDOWN", -64, 50);
-					addOffset('hey', -64, 50);
-
+					addOffset("hey", -64, 50);
+					
+		
 					playAnim('idle');			
 			case 'player-goblin':
-					// DAD ANIMATION LOADING CODE
 					tex = Paths.getSparrowAtlas('characters/running_goblin', 'shared');
 					frames = tex;
 					animation.addByPrefix('idle', 'idle', 24);
@@ -831,7 +834,7 @@ class Character extends FlxSprite
 		{
 			switch (curCharacter)
 			{
-				case 'gf' | 'gf-car' | 'gf-christmas' | 'gf-pixel' | 'gf-goblin':
+				case 'gf' | 'gf-car' | 'gf-christmas' | 'gf-pixel' | 'gf-goblin' | 'baby-bopper':
 					if (!animation.curAnim.name.startsWith('hair'))
 					{
 						danced = !danced;

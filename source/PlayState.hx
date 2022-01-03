@@ -4765,6 +4765,37 @@ class PlayState extends MusicBeatState
 			dad.playAnim('hey', true);
 		}
 
+		//rebound shit
+		if (curBeat == 23 && curSong == 'Rebound')
+		{
+			boyfriend.playAnim('hey', true);
+		}
+
+		if (curBeat == 39 && curSong == 'Rebound')
+		{
+			dad.playAnim('hey', true);
+		}
+
+		if (curBeat == 247 && curSong == 'Rebound')
+		{
+			boyfriend.playAnim('hey', true);
+		}
+
+		if (curBeat == 263 && curSong == 'Rebound')
+		{
+			dad.playAnim('hey', true);
+		}
+
+		if (curBeat == 295 && curSong == 'Rebound')
+			{
+				boyfriend.playAnim('hey', true);
+			}
+
+		if (curBeat == 327 && curSong == 'Rebound')
+			{
+				dad.playAnim('hey', true);
+			}
+
 		switch (curStage)
 		{
 			case 'school':
