@@ -188,9 +188,9 @@ class DialogueBox extends FlxSpriteGroup
 		}
 
 		swagDialogue = new FlxTypeText(240, 500, Std.int(FlxG.width * 0.6), "", 32);
-		swagDialogue.setFormat(Paths.font("vcr.ttf"), 40, FlxColor.BLACK, LEFT);
+		swagDialogue.setFormat(Paths.font("funkin.otf"), 40, FlxColor.BLACK, LEFT);
 		dropText = new FlxText(242, 502, Std.int(FlxG.width * 0.6), "", 32);
-		dropText.setFormat(Paths.font("vcr.ttf"), 40, FlxColor.BLACK, LEFT);
+		dropText.setFormat(Paths.font("funkin.otf"), 40, FlxColor.BLACK, LEFT);
 
 		if (PlayState.SONG.song.toLowerCase() == 'senpai' || PlayState.SONG.song.toLowerCase() == 'roses' || PlayState.SONG.song.toLowerCase() == 'thorns') {
 			dropText = new FlxText(242, 502, Std.int(FlxG.width * 0.6), "", 32);
