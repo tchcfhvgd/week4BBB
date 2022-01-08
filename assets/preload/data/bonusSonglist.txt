@@ -1,3 +1,5 @@
 Gametoons:gametoons:4
 Kitty:kitty:4
 Myth:myth:4
+Nap-Time-Old:baby:2
+Kidz-Bop-Old:baby:2
