@@ -375,7 +375,7 @@ class PlayState extends MusicBeatState
 				dialogue = CoolUtil.coolTextFile(Paths.txt('baby-bob/dialogue2'));
 			case 'just-like-you':
 				dialogue = CoolUtil.coolTextFile(Paths.txt('just-like-you/dialogue'));
-				//retweet if your a child rapist :)
+				//retweet if your a child rapist :) BRUH WHAT
 			case 'insignificance':
 				if(videoDialogue == 1)
 				{
@@ -1202,7 +1202,7 @@ class PlayState extends MusicBeatState
 		healthBar = new FlxBar(healthBarBG.x + 4, healthBarBG.y + 4, RIGHT_TO_LEFT, Std.int(healthBarBG.width - 8), Std.int(healthBarBG.height - 8), this,
 			'health', 0, 2);
 		healthBar.scrollFactor.set();
-		healthBar.createFilledBar(0xFFFF0000, 0xFF66FF33);
+		healthBar.createFilledBar(FlxColor.fromString(Character.dadHealthColor), FlxColor.fromString(Character.bfHealthColor));
 		// healthBar
 		add(healthBar);
 
@@ -4442,6 +4442,37 @@ class PlayState extends MusicBeatState
 					FlxG.camera.zoom += 0.1;
 					camHUD.zoom += 0.1;
 				}
+
+			if (curStep == 768 && curSong.toLowerCase() == 'babys-revenge')
+				{
+					FlxG.camera.zoom += 0.3;
+					camHUD.zoom += 0.1;
+				}
+
+			if (curStep == 784 && curSong.toLowerCase() == 'babys-revenge')
+				{
+					FlxG.camera.zoom += 0.3;
+					camHUD.zoom += 0.1;
+				}
+
+			if (curStep == 788 && curSong.toLowerCase() == 'babys-revenge')
+				{
+					FlxG.camera.zoom += 0.3;
+					camHUD.zoom += 0.1;
+				}
+
+			if (curStep == 792 && curSong.toLowerCase() == 'babys-revenge')
+				{
+					FlxG.camera.zoom += 0.3;
+					camHUD.zoom += 0.1;
+					}
+
+			if (curStep == 800 && curSong.toLowerCase() == 'babys-revenge')
+				{
+					FlxG.camera.zoom += 0.3;
+					camHUD.zoom += 0.1;
+					}
+
 		}
 		//kitty test (testing other dad)
 		if (curStage == 'crib' && curSong.toLowerCase() == 'kitty')
@@ -4791,6 +4822,13 @@ class PlayState extends MusicBeatState
 			{
 				boyfriend.playAnim('hey', true);
 			}
+
+			if (curBeat > 294 && curBeat < 296 && curSong == 'Rebound')
+				{
+					FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom + 0.4}, 0.2, {
+						ease: FlxEase.quadInOut
+					});
+				}
 
 		if (curBeat == 327 && curSong == 'Rebound')
 			{

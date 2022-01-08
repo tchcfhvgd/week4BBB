@@ -1,6 +1,6 @@
 package;
 
-import flixel.FlxG;
+import flixel.FlxG; 
 import flixel.FlxSprite;
 import flixel.animation.FlxBaseAnimation;
 import flixel.graphics.frames.FlxAtlasFrames;
@@ -9,6 +9,10 @@ using StringTools;
 
 class Character extends FlxSprite
 {
+	public static var dadHealthColor:String = '0xFFA5004D';
+
+	public static var bfHealthColor:String = '0xFF31B0D1';
+
 	public var animOffsets:Map<String, Array<Dynamic>>;
 	public var debugMode:Bool = false;
 
@@ -162,6 +166,11 @@ class Character extends FlxSprite
 				addOffset("singLEFT", -10, 10);
 				addOffset("singDOWN", 0, -30);
 
+				if(isPlayer)
+					bfHealthColor = '0xFFA5004D';
+				if(!isPlayer)
+					dadHealthColor = '0xFFA5004D';
+
 				playAnim('idle');
 			case 'spooky':
 				tex = Paths.getSparrowAtlas('characters/spooky_kids_assets');
@@ -181,6 +190,11 @@ class Character extends FlxSprite
 				addOffset("singLEFT", 130, -10);
 				addOffset("singDOWN", -50, -130);
 
+				if(isPlayer)
+					bfHealthColor = '0xFFA5004D';
+				if(!isPlayer)
+					dadHealthColor = '0xFFA5004D';
+
 				playAnim('danceRight');
 			case 'mom':
 				tex = Paths.getSparrowAtlas('characters/Mom_Assets');
@@ -199,6 +213,11 @@ class Character extends FlxSprite
 				addOffset("singRIGHT", 10, -60);
 				addOffset("singLEFT", 250, -23);
 				addOffset("singDOWN", 20, -160);
+
+				if(isPlayer)
+					bfHealthColor = '0xFFA5004D';
+				if(!isPlayer)
+					dadHealthColor = '0xFFA5004D';
 
 				playAnim('idle');
 
@@ -220,6 +239,11 @@ class Character extends FlxSprite
 				addOffset("singLEFT", 250, -23);
 				addOffset("singDOWN", 20, -160);
 
+				if(isPlayer)
+					bfHealthColor = '0xFFA5004D';
+				if(!isPlayer)
+					dadHealthColor = '0xFFA5004D';
+
 				playAnim('idle');
 			case 'monster':
 				tex = Paths.getSparrowAtlas('characters/Monster_Assets');
@@ -235,6 +259,12 @@ class Character extends FlxSprite
 				addOffset("singRIGHT", -51);
 				addOffset("singLEFT", -30);
 				addOffset("singDOWN", -30, -40);
+
+				if(isPlayer)
+					bfHealthColor = '0xFFA5004D';
+				if(!isPlayer)
+					dadHealthColor = '0xFFA5004D';
+
 				playAnim('idle');
 			case 'monster-christmas':
 				tex = Paths.getSparrowAtlas('characters/monsterChristmas');
@@ -250,6 +280,12 @@ class Character extends FlxSprite
 				addOffset("singRIGHT", -51);
 				addOffset("singLEFT", -30);
 				addOffset("singDOWN", -40, -94);
+
+				if(isPlayer)
+					bfHealthColor = '0xFFA5004D';
+				if(!isPlayer)
+					dadHealthColor = '0xFFA5004D';
+
 				playAnim('idle');
 			case 'pico':
 				tex = Paths.getSparrowAtlas('characters/Pico_FNF_assetss');
@@ -286,6 +322,11 @@ class Character extends FlxSprite
 				addOffset("singLEFTmiss", 62, 64);
 				addOffset("singDOWNmiss", 210, -28);
 
+				if(isPlayer)
+					bfHealthColor = '0xFFA5004D';
+				if(!isPlayer)
+					dadHealthColor = '0xFFA5004D';
+
 				playAnim('idle');
 
 				flipX = true;
@@ -303,6 +344,11 @@ class Character extends FlxSprite
 					addOffset("singRIGHT", 30, 6);
 					addOffset("singLEFT", 45, -6);
 					addOffset("singDOWN", -9, -49);
+
+						if(isPlayer)
+					bfHealthColor = '0xFF31B0D1';
+				if(!isPlayer)
+					dadHealthColor = '0xFF31B0D1';
 	
 					playAnim('idle');
 			case 'miku':
@@ -319,6 +365,11 @@ class Character extends FlxSprite
 					addOffset("singRIGHT", -56, -2);
 					addOffset("singLEFT", 76, -2);
 					addOffset("singDOWN", 6, 0);
+
+					if(isPlayer)
+						bfHealthColor = '0xFFA5004D';
+					if(!isPlayer)
+						dadHealthColor = '0xFFA5004D';
 	
 					playAnim('idle');
 			case 'tinky':
@@ -335,6 +386,11 @@ class Character extends FlxSprite
 					addOffset("singRIGHT", -3, -94);
 					addOffset("singLEFT", 135, -72);
 					addOffset("singDOWN", -9, -67);
+
+					if(isPlayer)
+						bfHealthColor = '0xFFA5004D';
+					if(!isPlayer)
+						dadHealthColor = '0xFFA5004D';
 	
 					playAnim('idle');
 			case 'pewdiepie':
@@ -351,6 +407,11 @@ class Character extends FlxSprite
 					addOffset("singRIGHT", 30, 6);
 					addOffset("singLEFT", 45, -6);
 					addOffset("singDOWN", -9, -49);
+
+					if(isPlayer)
+						bfHealthColor = '0xFFA5004D';
+					if(!isPlayer)
+						dadHealthColor = '0xFFA5004D';
 	
 					playAnim('idle');
 			case 'freddy':
@@ -367,6 +428,11 @@ class Character extends FlxSprite
 					addOffset("singRIGHT", 30, 6);
 					addOffset("singLEFT", 45, -6);
 					addOffset("singDOWN", -9, -49);
+
+					if(isPlayer)
+						bfHealthColor = '0xFFA5004D';
+					if(!isPlayer)
+						dadHealthColor = '0xFFA5004D';
 	
 					playAnim('idle');
 					
@@ -384,6 +450,11 @@ class Character extends FlxSprite
 					addOffset("singRIGHT", -170, 6);
 					addOffset("singLEFT", 35, 54);
 					addOffset("singDOWN", -210, -79);
+
+					if(isPlayer)
+						bfHealthColor = '0xFFA5004D';
+					if(!isPlayer)
+						dadHealthColor = '0xFFA5004D';
 	
 					playAnim('idle');
 					
@@ -401,6 +472,11 @@ class Character extends FlxSprite
 					addOffset("singRIGHT", 300, 16);
 					addOffset("singLEFT", 415, 104);
 					addOffset("singDOWN", 453, -19);
+
+					if(isPlayer)
+						bfHealthColor = '0xFFA5004D';
+					if(!isPlayer)
+						dadHealthColor = '0xFFA5004D';
 	
 					playAnim('idle');
 					
@@ -418,6 +494,11 @@ class Character extends FlxSprite
 					addOffset("singRIGHT", -51);
 					addOffset("singLEFT", -30);
 					addOffset("singDOWN", -40, -94);
+
+					if(isPlayer)
+						bfHealthColor = '0xFFA5004D';
+					if(!isPlayer)
+						dadHealthColor = '0xFFA5004D';
 					
 					playAnim('idle');
 					
@@ -437,6 +518,11 @@ class Character extends FlxSprite
 					addOffset("singLEFT", 327, 66);
 					addOffset("singDOWN", -64, 50);
 					addOffset("hey", -64, 50);
+
+					if(isPlayer)
+						bfHealthColor = '0xFFA5004D';
+					if(!isPlayer)
+						dadHealthColor = '0xFFA5004D';
 					
 		
 					playAnim('idle');			
@@ -454,6 +540,11 @@ class Character extends FlxSprite
 					addOffset("singRIGHT", -115, 49);
 					addOffset("singLEFT", 327, 66);
 					addOffset("singDOWN", -64, 50);
+
+					if(isPlayer)
+						bfHealthColor = '0xFFA5004D';
+					if(!isPlayer)
+						dadHealthColor = '0xFFA5004D';
 		
 					playAnim('idle');
 			case 'evil-baby':
@@ -472,6 +563,11 @@ class Character extends FlxSprite
 				addOffset("singRIGHT", -28, -16);
 				addOffset("singLEFT", 137, 3);
 				addOffset("singDOWN", 8, -77);
+
+				if(isPlayer)
+					bfHealthColor = '0xFFA5004D';
+				if(!isPlayer)
+					dadHealthColor = '0xFFA5004D';
 			
 			
 				playAnim('idle');
@@ -503,10 +599,16 @@ class Character extends FlxSprite
 				addOffset("singLEFTmiss", 146, -16);
 				addOffset("singDOWNmiss", 52, -84);
 				
+				
 
 				addOffset('firstDeath', 37, 11);
 				addOffset('deathLoop', 24, 4);
 				addOffset('deathConfirm', 27, -252);
+
+				if(isPlayer)
+					bfHealthColor = '0xFFA5004D';
+				if(!isPlayer)
+					dadHealthColor = '0xFFA5004D';
 
 				playAnim('idle');
 
@@ -527,6 +629,11 @@ class Character extends FlxSprite
 				addOffset("singRIGHT", 30, 6);
 				addOffset("singLEFT", 45, -6);
 				addOffset("singDOWN", -9, -49);
+
+				if(isPlayer)
+					bfHealthColor = '0xFFA5004D';
+				if(!isPlayer)
+					dadHealthColor = '0xFFA5004D';
 	
 				playAnim('idle');
 			case 'gametoons':
@@ -544,6 +651,11 @@ class Character extends FlxSprite
 				addOffset("singRIGHT", 30, 6);
 				addOffset("singLEFT", 45, -6);
 				addOffset("singDOWN", -9, -49);
+
+				if(isPlayer)
+					bfHealthColor = '0xFFA5004D';
+				if(!isPlayer)
+					dadHealthColor = '0xFFA5004D';
 		
 				playAnim('idle');
 			case 'alien':
@@ -561,6 +673,11 @@ class Character extends FlxSprite
 				addOffset("singRIGHT", 0, 27);
 				addOffset("singLEFT", -10, 10);
 				addOffset("singDOWN", 0, -30);
+
+				if(isPlayer)
+					bfHealthColor = '0xFFA5004D';
+				if(!isPlayer)
+					dadHealthColor = '0xFFA5004D';
 	
 				playAnim('idle');
 			case 'ron':
@@ -579,6 +696,11 @@ class Character extends FlxSprite
 				addOffset("singDOWN", 40, -120);
 				addOffset("Ugh", 71, -40);
 
+				if(isPlayer)
+					bfHealthColor = '0xFFA5004D';
+				if(!isPlayer)
+					dadHealthColor = '0xFFA5004D';
+
 				playAnim('idle');
 			case 'bob':
 				tex = Paths.getSparrowAtlas('characters/bob_asset', 'shared');
@@ -588,6 +710,11 @@ class Character extends FlxSprite
 				animation.addByPrefix('singDOWN', 'bob_DOWN', 24, false);
 				animation.addByPrefix('singLEFT', 'bob_LEFT', 24, false);
 				animation.addByPrefix('singRIGHT', 'bob_RIGHT', 24, false);
+
+				if(isPlayer)
+					bfHealthColor = '0xFFA5004D';
+				if(!isPlayer)
+					dadHealthColor = '0xFFA5004D';
 
 				addOffset('idle');
 
@@ -601,6 +728,11 @@ class Character extends FlxSprite
 				animation.addByPrefix('singDOWN', 'bob_DOWN', 24, false);
 				animation.addByPrefix('singLEFT', 'bob_LEFT', 24, false);
 				animation.addByPrefix('singRIGHT', 'bob_RIGHT', 24, false);
+
+				if(isPlayer)
+					bfHealthColor = '0xFFA5004D';
+				if(!isPlayer)
+					dadHealthColor = '0xFFA5004D';
 	
 				addOffset('idle');
 	
@@ -614,12 +746,18 @@ class Character extends FlxSprite
 						animation.addByPrefix('singRIGHT', 'right', 24);
 						animation.addByPrefix('singDOWN', 'down', 24);
 						animation.addByPrefix('singLEFT', 'left', 24);
+
 		
 						addOffset('idle');
 						addOffset("singUP", 30, 90);
 						addOffset("singRIGHT", 4, -14);
 						addOffset("singLEFT", 60, -20);
 						addOffset("singDOWN", 66, -61);
+
+						if(isPlayer)
+							bfHealthColor = '0xFFA5004D';
+						if(!isPlayer)
+							dadHealthColor = '0xFFA5004D';
 		
 						playAnim('idle');
 			case 'happy-baby':
@@ -631,12 +769,18 @@ class Character extends FlxSprite
 				animation.addByPrefix('singRIGHT', 'baby right', 24);
 				animation.addByPrefix('singDOWN', 'babydown', 24);
 				animation.addByPrefix('singLEFT', 'baby left', 24);
+				
 	
 				addOffset('idle');
 				addOffset("singUP", 34, 35);
 				addOffset("singRIGHT", 41, 7);
 				addOffset("singLEFT", 52, -6);
 				addOffset("singDOWN", -5, -49);
+
+				if(isPlayer)
+					bfHealthColor = '0xFFA5004D';
+				if(!isPlayer)
+					dadHealthColor = '0xFFA5004D';
 	
 				playAnim('idle');
 			case 'kitty':
@@ -665,6 +809,11 @@ class Character extends FlxSprite
 				animation.addByPrefix('singRIGHT', 'baby right', 24);
 				animation.addByPrefix('singDOWN', 'baby down', 24);
 				animation.addByPrefix('singLEFT', 'baby left', 24);
+
+				if(isPlayer)
+					bfHealthColor = '0xFFA5004D';
+				if(!isPlayer)
+					dadHealthColor = '0xFFA5004D';
 		
 				addOffset('idle');
 				addOffset("singUP", 34, 35);
@@ -710,6 +859,11 @@ class Character extends FlxSprite
 				addOffset('deathLoop', 37, 5);
 				addOffset('deathConfirm', 37, 69);
 				addOffset('scared', -4);
+				
+				if(isPlayer)
+					bfHealthColor = '0xFF31B0D1';
+				if(!isPlayer)
+					dadHealthColor = '0xFF31B0D1';
 
 				playAnim('idle');
 
