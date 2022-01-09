@@ -1594,10 +1594,10 @@ class PlayState extends MusicBeatState
 		inCutscene = false;
 
 		start.animation.play(curSong);
-		FlxTween.tween(start, {alpha: 1, x: 0}, 0.5, {ease: FlxEase.quartInOut,startDelay: 0.2});
+		FlxTween.tween(start, {alpha: 1, x: 800}, 0.5, {ease: FlxEase.quartInOut,startDelay: 0.2});
 		new FlxTimer().start(3, function(tmr:FlxTimer)
 		{
-			FlxTween.tween(start,{alpha:0,x:start.x + 100},0.5,{ease:FlxEase.quartInOut,
+			FlxTween.tween(start,{alpha:0,x:start.x + 900},0.5,{ease:FlxEase.quartInOut,
 				onComplete:function(twn:FlxTween){
 					remove(start);
 				}
