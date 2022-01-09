@@ -1114,6 +1114,23 @@ class PlayState extends MusicBeatState
 		
 		start = new FlxSprite(500, 0);
 		start.frames = Paths.getSparrowAtlas('Songs/songstart');
+		start.animation.addByPrefix('Tutorial', 'Tutorial', 1, true);
+		start.animation.addByPrefix('nap-time', 'nap-time', 1, true);
+		start.animation.addByPrefix('kidz-bop', 'kidz-bop', 1, true);
+		start.animation.addByPrefix('baby-blue', 'baby-blue', 1, true);
+		start.animation.addByPrefix('temper-tantrum', 'temper-tantrum', 1, true);
+		start.animation.addByPrefix('babys-revenge', 'babys-revenge', 1, true);
+		start.animation.addByPrefix('un-adieu', 'un-adieu', 1, true);
+		start.animation.addByPrefix('trackstar', 'trackstar', 1, true);
+		start.animation.addByPrefix('gametoons', 'gametoons', 1, true);
+		start.animation.addByPrefix('baby-bob', 'baby-bob', 1, true);
+		start.animation.addByPrefix('just-like-you', 'just-like-you', 1, true);
+		start.animation.addByPrefix('insignificance', 'insignificance', 1, true);
+		start.animation.addByPrefix('kitty', 'kitty', 1, true);
+		start.animation.addByPrefix('flower', 'flower', 1, true);
+		start.animation.addByPrefix('babys-lullaby', 'babys-lullaby', 1, true);
+		start.animation.addByPrefix('rebound', 'rebound', 1, true);
+		start.animation.addByPrefix('myth', 'myth', 1, true);
 		start.animation.play(curSong);
 		start.antialiasing = true;
 		start.screenCenter(Y);
@@ -4859,6 +4876,8 @@ class PlayState extends MusicBeatState
 			{
 				dad.playAnim('hey', true);
 			}
+
+
 
 		switch (curStage)
 		{
