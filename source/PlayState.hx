@@ -184,6 +184,8 @@ class PlayState extends MusicBeatState
 
 	var fc:Bool = true;
 
+	var start:FlxSprite;
+
 	var bgGirls:BackgroundGirls;
 	var wiggleShit:WiggleEffect = new WiggleEffect();
 
@@ -1109,33 +1111,15 @@ class PlayState extends MusicBeatState
 
 		if (curStage == 'hospital')
 			add(chairummmm);
-
-
-						
-					start = new FlxSprite(500, 0);
-					start.frames = Paths.getSparrowAtlas('Songs/songstart');
-					start.animation.addByPrefix('Tutorial', 'Tutorial', 1, true);
-					start.animation.addByPrefix('Nap-Time', 'Nap-Time', 1, true);
-					start.animation.addByPrefix('Kidz-Bop', 'Kidz-Bop', 1, true);
-					start.animation.addByPrefix('Baby-Blue', 'Baby-Blue', 1, true);
-					start.animation.addByPrefix('Temper-Tantrum', 'Temper-Tantrum', 1, true);
-					start.animation.addByPrefix('Babys-Revenge', 'Babys-Revenge', 1, true);
-					start.animation.addByPrefix('Un-Adieu', 'Un-Adieu', 1, true);
-					start.animation.addByPrefix('Trackstar', 'Trackstar', 1, true);
-					start.animation.addByPrefix('Gametoons', 'Gametoons', 1, true);
-					start.animation.addByPrefix('Baby-Bob', 'Baby-Bob', 1, true);
-					start.animation.addByPrefix('Just-Like-You', 'Just-Like-You', 1, true);
-					start.animation.addByPrefix('Insignificance', 'Insignificance', 1, true);
-					start.animation.addByPrefix('Kitty', 'Kitty', 1, true);
-					start.animation.addByPrefix('Flower', 'Flower', 1, true);
-					start.animation.addByPrefix('Babys-Lullaby', 'Babys-Lullaby', 1, true);
-					start.animation.addByPrefix('Rebound', 'Rebound', 1, true);
-					start.animation.addByPrefix('Myth', 'Myth', 1, true);
-					start.antialiasing = true;
-					start.screenCenter(Y);
-					start.updateHitbox();
-					add(start);
-					start.alpha = 0;
+		
+		start = new FlxSprite(500, 0);
+		start.frames = Paths.getSparrowAtlas('Songs/songstart');
+		start.animation.play(curSong);
+		start.antialiasing = true;
+		start.screenCenter(Y);
+		start.updateHitbox();
+		add(start);
+		start.alpha = 0;
 			
 
 
@@ -1294,6 +1278,7 @@ class PlayState extends MusicBeatState
 		iconP1.cameras = [camHUD];
 		iconP2.cameras = [camHUD];
 		scoreTxt.cameras = [camHUD];
+		start.cameras = [camHUD];
 		doof.cameras = [camHUD];
 		if (FlxG.save.data.songPosition)
 		{
@@ -1600,35 +1585,6 @@ class PlayState extends MusicBeatState
 
 	var luaWiggles:Array<WiggleEffect> = [];
 
-	function startCountdown():Void
-		{
-			//credits to trollengine and bit of trolling cuz hes based
-			//#if windows
-			//sys.thread.Thread.create(() -> {
-			//	var output = new sys.io.Process("tasklist", []).stdout.readAll().toString();
-			//	if(output.contains("FNFBot20.exe")){
-			//		throw("Dont use the FNFBot!");
-			//	}
-			//});
-			//#end
-	
-			inCutscene = false;
-			start.alpha = 1;
-			if (curSong == 'Chug' || curSong == 'Infinite') {
-				start.animation.play('Secret');
-			}
-			else
-			start.animation.play(curSong);
-			FlxTween.tween(start, {alpha: 1, x: 0}, 0.5, {ease: FlxEase.quartInOut,startDelay: 0.2});
-			new FlxTimer().start(3, function(tmr:FlxTimer)
-				{
-					FlxTween.tween(start,{alpha:0,x:start.x + 100},0.5,{ease:FlxEase.quartInOut,
-					onComplete:function(twn:FlxTween){
-						remove(start);
-						}
-					});
-				});
-
 	#if windows
 	public static var luaModchart:ModchartState = null;
 	#end
@@ -1636,6 +1592,17 @@ class PlayState extends MusicBeatState
 	function startCountdown():Void
 	{
 		inCutscene = false;
+
+		start.animation.play(curSong);
+		FlxTween.tween(start, {alpha: 1, x: 0}, 0.5, {ease: FlxEase.quartInOut,startDelay: 0.2});
+		new FlxTimer().start(3, function(tmr:FlxTimer)
+		{
+			FlxTween.tween(start,{alpha:0,x:start.x + 100},0.5,{ease:FlxEase.quartInOut,
+				onComplete:function(twn:FlxTween){
+					remove(start);
+				}
+			});
+		});
 
 		generateStaticArrows(0);
 		generateStaticArrows(1);
@@ -1841,7 +1808,7 @@ class PlayState extends MusicBeatState
 
 	var debugNum:Int = 0;
 
-}private function generateSong(dataPath:String):Void
+	private function generateSong(dataPath:String):Void
 	{
 		// FlxG.log.add(ChartParser.parse());
 
