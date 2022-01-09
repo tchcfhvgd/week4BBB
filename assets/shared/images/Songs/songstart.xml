@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="songstart.png">
+	<!-- Created with Adobe Animate version 19.0.0.326 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Baby-Blue0000" x="9" y="9" width="549" height="103"/>
+	<SubTexture name="Baby-Bob0000" x="9" y="125" width="549" height="103"/>
+	<SubTexture name="Babys-Lullaby0000" x="9" y="241" width="660" height="103"/>
+	<SubTexture name="Babys-Revenge0000" x="9" y="357" width="704" height="103"/>
+	<SubTexture name="Flower0000" x="9" y="473" width="549" height="103"/>
+	<SubTexture name="Gametoons0000" x="9" y="589" width="606" height="103"/>
+	<SubTexture name="Insignificance0000" x="9" y="705" width="615" height="103"/>
+	<SubTexture name="Just-Like-You0000" x="9" y="821" width="602" height="103"/>
+	<SubTexture name="Kidz-Bop0000" x="9" y="937" width="549" height="103"/>
+	<SubTexture name="Kitty0000" x="9" y="1053" width="549" height="103"/>
+	<SubTexture name="Myth0000" x="9" y="1169" width="549" height="103"/>
+	<SubTexture name="Nap-Time0000" x="9" y="1285" width="549" height="103"/>
+	<SubTexture name="Rebound0000" x="9" y="1401" width="549" height="103"/>
+	<SubTexture name="Temper-Tantrum0000" x="9" y="1517" width="687" height="103"/>
+	<SubTexture name="Trackstar0000" x="9" y="1633" width="569" height="103"/>
+	<SubTexture name="Tutorial0000" x="9" y="1749" width="550" height="103"/>
+	<SubTexture name="Un-Adieu0000" x="9" y="1865" width="549" height="103"/>
+</TextureAtlas>
