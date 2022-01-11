@@ -2,21 +2,21 @@
 <TextureAtlas imagePath="songstart.png">
 	<!-- Created with Adobe Animate version 19.0.0.326 -->
 	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name="baby-blue0000" x="9" y="9" width="549" height="103"/>
-	<SubTexture name="baby-bob0000" x="9" y="125" width="549" height="103"/>
-	<SubTexture name="babys-lullaby0000" x="9" y="241" width="660" height="103"/>
-	<SubTexture name="babys-revenge0000" x="9" y="357" width="704" height="103"/>
-	<SubTexture name="flower0000" x="9" y="473" width="549" height="103"/>
-	<SubTexture name="gametoons0000" x="9" y="589" width="606" height="103"/>
-	<SubTexture name="insignificance0000" x="9" y="705" width="615" height="103"/>
-	<SubTexture name="just-like-you0000" x="9" y="821" width="602" height="103"/>
-	<SubTexture name="kidz-bop0000" x="9" y="937" width="549" height="103"/>
-	<SubTexture name="kitty0000" x="9" y="1053" width="549" height="103"/>
-	<SubTexture name="myth0000" x="9" y="1169" width="549" height="103"/>
-	<SubTexture name="nap-time0000" x="9" y="1285" width="549" height="103"/>
-	<SubTexture name="rebound0000" x="9" y="1401" width="549" height="103"/>
-	<SubTexture name="temper-tantrum0000" x="9" y="1517" width="687" height="103"/>
-	<SubTexture name="trackstar0000" x="9" y="1633" width="569" height="103"/>
-	<SubTexture name="Tutorial0000" x="9" y="1749" width="550" height="103"/>
-	<SubTexture name="un-adieu0000" x="9" y="1865" width="549" height="103"/>
+	<SubTexture name="Tutorial0000" x="9" y="9" width="550" height="103"/>
+	<SubTexture name="baby-blue0000" x="572" y="9" width="549" height="103"/>
+	<SubTexture name="baby-bob0000" x="1134" y="9" width="549" height="103"/>
+	<SubTexture name="babys-lullaby0000" x="9" y="125" width="983" height="103"/>
+	<SubTexture name="babys-revenge0000" x="9" y="241" width="1049" height="103"/>
+	<SubTexture name="flower0000" x="1071" y="241" width="549" height="103"/>
+	<SubTexture name="gametoons0000" x="9" y="357" width="916" height="103"/>
+	<SubTexture name="insignificance0000" x="938" y="357" width="960" height="103"/>
+	<SubTexture name="just-like-you0000" x="9" y="473" width="928" height="103"/>
+	<SubTexture name="kidz-bop0000" x="950" y="473" width="549" height="103"/>
+	<SubTexture name="kitty0000" x="9" y="589" width="549" height="103"/>
+	<SubTexture name="myth0000" x="571" y="589" width="549" height="103"/>
+	<SubTexture name="nap-time0000" x="1133" y="589" width="549" height="103"/>
+	<SubTexture name="rebound0000" x="9" y="705" width="549" height="103"/>
+	<SubTexture name="temper-tantrum0000" x="571" y="705" width="1042" height="103"/>
+	<SubTexture name="trackstar0000" x="9" y="821" width="569" height="103"/>
+	<SubTexture name="un-adieu0000" x="591" y="821" width="549" height="103"/>
 </TextureAtlas>

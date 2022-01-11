@@ -346,9 +346,9 @@ class Character extends FlxSprite
 					addOffset("singDOWN", -9, -49);
 
 						if(isPlayer)
-					bfHealthColor = '0xFF31B0D1';
+					bfHealthColor = '0xFFB3FFFF';
 				if(!isPlayer)
-					dadHealthColor = '0xFF31B0D1';
+					dadHealthColor = '0xFFB3FFFF';
 	
 					playAnim('idle');
 			case 'miku':
@@ -367,9 +367,9 @@ class Character extends FlxSprite
 					addOffset("singDOWN", 6, 0);
 
 					if(isPlayer)
-						bfHealthColor = '0xFFA5004D';
+						bfHealthColor = '0xFF32CDCC';
 					if(!isPlayer)
-						dadHealthColor = '0xFFA5004D';
+						dadHealthColor = '0xFF32CDCC';
 	
 					playAnim('idle');
 			case 'tinky':
@@ -388,9 +388,9 @@ class Character extends FlxSprite
 					addOffset("singDOWN", -9, -67);
 
 					if(isPlayer)
-						bfHealthColor = '0xFFA5004D';
+						bfHealthColor = '0xFF6001B5';
 					if(!isPlayer)
-						dadHealthColor = '0xFFA5004D';
+						dadHealthColor = '0xFF6001B5';
 	
 					playAnim('idle');
 			case 'pewdiepie':
@@ -409,9 +409,9 @@ class Character extends FlxSprite
 					addOffset("singDOWN", -9, -49);
 
 					if(isPlayer)
-						bfHealthColor = '0xFFA5004D';
+						bfHealthColor = '0xFF925D57';
 					if(!isPlayer)
-						dadHealthColor = '0xFFA5004D';
+						dadHealthColor = '0xFF925D57';
 	
 					playAnim('idle');
 			case 'freddy':
@@ -430,9 +430,9 @@ class Character extends FlxSprite
 					addOffset("singDOWN", -9, -49);
 
 					if(isPlayer)
-						bfHealthColor = '0xFFA5004D';
+						bfHealthColor = '0xFF6C3B15';
 					if(!isPlayer)
-						dadHealthColor = '0xFFA5004D';
+						dadHealthColor = '0xFF6C3B15';
 	
 					playAnim('idle');
 					
@@ -452,9 +452,9 @@ class Character extends FlxSprite
 					addOffset("singDOWN", -210, -79);
 
 					if(isPlayer)
-						bfHealthColor = '0xFFA5004D';
+						bfHealthColor = '0xFFB85E3B';
 					if(!isPlayer)
-						dadHealthColor = '0xFFA5004D';
+						dadHealthColor = '0xFFB85E3B';
 	
 					playAnim('idle');
 					
@@ -474,9 +474,9 @@ class Character extends FlxSprite
 					addOffset("singDOWN", 453, -19);
 
 					if(isPlayer)
-						bfHealthColor = '0xFFA5004D';
+						bfHealthColor = '0xFFFFD624';
 					if(!isPlayer)
-						dadHealthColor = '0xFFA5004D';
+						dadHealthColor = '0xFFFFD624';
 	
 					playAnim('idle');
 					
@@ -520,9 +520,9 @@ class Character extends FlxSprite
 					addOffset("hey", -64, 50);
 
 					if(isPlayer)
-						bfHealthColor = '0xFFA5004D';
+						bfHealthColor = '0xFF1AB44A';
 					if(!isPlayer)
-						dadHealthColor = '0xFFA5004D';
+						dadHealthColor = '0xFF1AB44A';
 					
 		
 					playAnim('idle');			
@@ -542,9 +542,9 @@ class Character extends FlxSprite
 					addOffset("singDOWN", -64, 50);
 
 					if(isPlayer)
-						bfHealthColor = '0xFFA5004D';
+						bfHealthColor = '0xFF1AB44A';
 					if(!isPlayer)
-						dadHealthColor = '0xFFA5004D';
+						dadHealthColor = '0xFF1AB44A';
 		
 					playAnim('idle');
 			case 'evil-baby':
@@ -565,9 +565,9 @@ class Character extends FlxSprite
 				addOffset("singDOWN", 8, -77);
 
 				if(isPlayer)
-					bfHealthColor = '0xFFA5004D';
+					bfHealthColor = '0xFFB3FFFF';
 				if(!isPlayer)
-					dadHealthColor = '0xFFA5004D';
+					dadHealthColor = '0xFFB3FFFF';
 			
 			
 				playAnim('idle');
@@ -606,9 +606,9 @@ class Character extends FlxSprite
 				addOffset('deathConfirm', 27, -252);
 
 				if(isPlayer)
-					bfHealthColor = '0xFFA5004D';
+					bfHealthColor = '0xFFB3FFFF';
 				if(!isPlayer)
-					dadHealthColor = '0xFFA5004D';
+					dadHealthColor = '0xFFB3FFFF';
 
 				playAnim('idle');
 
@@ -631,9 +631,9 @@ class Character extends FlxSprite
 				addOffset("singDOWN", -9, -49);
 
 				if(isPlayer)
-					bfHealthColor = '0xFFA5004D';
+					bfHealthColor = '0xFFFFFEDD';
 				if(!isPlayer)
-					dadHealthColor = '0xFFA5004D';
+					dadHealthColor = '0xFFFFFEDD';
 	
 				playAnim('idle');
 			case 'gametoons':
@@ -653,9 +653,9 @@ class Character extends FlxSprite
 				addOffset("singDOWN", -9, -49);
 
 				if(isPlayer)
-					bfHealthColor = '0xFFA5004D';
+					bfHealthColor = '0xFF66FFFE';
 				if(!isPlayer)
-					dadHealthColor = '0xFFA5004D';
+					dadHealthColor = '0xFF66FFFE';
 		
 				playAnim('idle');
 			case 'alien':
@@ -697,9 +697,9 @@ class Character extends FlxSprite
 				addOffset("Ugh", 71, -40);
 
 				if(isPlayer)
-					bfHealthColor = '0xFFA5004D';
+					bfHealthColor = '0xFFFFD800';
 				if(!isPlayer)
-					dadHealthColor = '0xFFA5004D';
+					dadHealthColor = '0xFFFFD800';
 
 				playAnim('idle');
 			case 'bob':
@@ -712,9 +712,9 @@ class Character extends FlxSprite
 				animation.addByPrefix('singRIGHT', 'bob_RIGHT', 24, false);
 
 				if(isPlayer)
-					bfHealthColor = '0xFFA5004D';
+					bfHealthColor = '0xFFCCCCCC';
 				if(!isPlayer)
-					dadHealthColor = '0xFFA5004D';
+					dadHealthColor = '0xFFCCCCCC';
 
 				addOffset('idle');
 
@@ -730,9 +730,9 @@ class Character extends FlxSprite
 				animation.addByPrefix('singRIGHT', 'bob_RIGHT', 24, false);
 
 				if(isPlayer)
-					bfHealthColor = '0xFFA5004D';
+					bfHealthColor = '0xFFCCCCCC';
 				if(!isPlayer)
-					dadHealthColor = '0xFFA5004D';
+					dadHealthColor = '0xFFCCCCCC';
 	
 				addOffset('idle');
 	
@@ -755,9 +755,9 @@ class Character extends FlxSprite
 						addOffset("singDOWN", 66, -61);
 
 						if(isPlayer)
-							bfHealthColor = '0xFFA5004D';
+							bfHealthColor = '0xFFCCCCCC';
 						if(!isPlayer)
-							dadHealthColor = '0xFFA5004D';
+							dadHealthColor = '0xFFCCCCCC';
 		
 						playAnim('idle');
 			case 'happy-baby':
@@ -778,9 +778,9 @@ class Character extends FlxSprite
 				addOffset("singDOWN", -5, -49);
 
 				if(isPlayer)
-					bfHealthColor = '0xFFA5004D';
+					bfHealthColor = '0xFFB3FFFF';
 				if(!isPlayer)
-					dadHealthColor = '0xFFA5004D';
+					dadHealthColor = '0xFFB3FFFF';
 	
 				playAnim('idle');
 			case 'kitty':
@@ -798,6 +798,11 @@ class Character extends FlxSprite
 				addOffset("singRIGHT", -16, 10);
 				addOffset("singLEFT", 29, -6);
 				addOffset("singDOWN", -10, -19);
+
+				if(isPlayer)
+					bfHealthColor = '0xFFAF5958';
+				if(!isPlayer)
+					dadHealthColor = '0xFFAF5958';
 	
 				playAnim('idle');
 			case 'myth':
@@ -820,6 +825,11 @@ class Character extends FlxSprite
 				addOffset("singRIGHT", 41, 7);
 				addOffset("singLEFT", 52, -6);
 				addOffset("singDOWN", -5, -20);
+
+				if(isPlayer)
+					bfHealthColor = '0xFFB3FFFF';
+				if(!isPlayer)
+					dadHealthColor = '0xFFB3FFFF';
 		
 				playAnim('idle');
 			case 'bf':

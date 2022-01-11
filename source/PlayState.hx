@@ -179,6 +179,7 @@ class PlayState extends MusicBeatState
 	var upperBoppers:FlxSprite;
 	var bottomBoppers:FlxSprite;
 	var santa:FlxSprite;
+	var crib:FlxSprite;
 
 	var chairummmm:FlxSprite;
 
@@ -917,6 +918,16 @@ class PlayState extends MusicBeatState
 					add(stageCurtains);
 			}
 		}
+
+		if (curSong.toLowerCase() == 'babys-lullaby')
+{
+
+	crib = new FlxSprite(-100, -540).loadGraphic(Paths.image('floor'));
+	crib.antialiasing = true;
+	crib.scrollFactor.set(1, 1);
+	crib.visible = false;
+	add(crib);
+}
 		var gfVersion:String = 'gf';
 
 		switch (SONG.gfVersion)
@@ -1111,6 +1122,7 @@ class PlayState extends MusicBeatState
 
 		if (curStage == 'hospital')
 			add(chairummmm);
+		
 		
 		start = new FlxSprite(500, 0);
 		start.frames = Paths.getSparrowAtlas('Songs/songstart');
@@ -4710,6 +4722,33 @@ class PlayState extends MusicBeatState
 						
 				}
 			}
+
+			if (curSong.toLowerCase() == 'babys-lullaby')
+				{
+					switch (curStep)
+					{
+						case 384:
+							if (FlxG.save.data.cameraeffect)
+								{
+									defaultCamZoom = 1.45;
+									camera.flash(FlxColor.WHITE, 5.0);
+									crib.visible = true;
+
+								}
+						case 640:
+							if (FlxG.save.data.cameraeffect)
+							{
+								defaultCamZoom = 0.9;
+								camera.flash(FlxColor.WHITE, 5.0);
+								crib.visible = false;
+
+								
+							
+					}
+				}
+			}
+
+
 		// yes this updates every step.
 		// yes this is bad
 		// but i'm doing it to update misses and accuracy
