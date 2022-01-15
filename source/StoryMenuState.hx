@@ -44,7 +44,8 @@ class StoryMenuState extends MusicBeatState
 		"I Saw five people drag a woman off a bridge and i did nothing about it",
 		"Babysit your diaper shitting little brother",
 		"Brotherhood Rivalry",
-		"BOB BOB BOB BOB"
+		"BOB BOB BOB BOB",
+		"A sweet hospital visit"
 	];
 
 	var txtWeekTitle:FlxText;
@@ -95,7 +96,7 @@ class StoryMenuState extends MusicBeatState
 		rankText.screenCenter(X);
 
 		var ui_tex = Paths.getSparrowAtlas('campaign_menu_UI_assets');
-		var yellowBG:FlxSprite = new FlxSprite(-200, 0).makeGraphic(800, FlxG.height, 0x228C4FF);
+		var yellowBG:FlxSprite = new FlxSprite(-200, 0).makeGraphic(800, FlxG.height, 0xFFB3FFFF);
 
 		grpWeekText = new FlxTypedGroup<MenuItem>();
 		add(grpWeekText);

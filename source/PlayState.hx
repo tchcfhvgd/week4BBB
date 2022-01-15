@@ -1045,8 +1045,9 @@ class PlayState extends MusicBeatState
 				dad.y += 440;
 				dad.x += 120;
 			case 'myth':
-				dad.y += 0;
-				dad.x += -30;
+				dad.y -= 400;
+				dad.x += 200;
+				camPos.set(dad.getGraphicMidpoint().x - 100, dad.getGraphicMidpoint().y);
 		}
 
 
@@ -1074,9 +1075,9 @@ class PlayState extends MusicBeatState
 				dad.x += 100;
 			case 'bathroom':
 				boyfriend.x += 1000;
-				dad.x += 100;
+				dad.x += 0;
 				dad.x -= 0;
-				dad.y -= 400;
+				dad.y -= 0;
 			case 'limo':
 				boyfriend.y -= 220;
 				boyfriend.x += 700;
@@ -4732,7 +4733,7 @@ class PlayState extends MusicBeatState
 								{
 									defaultCamZoom = 1.45;
 									camera.flash(FlxColor.WHITE, 5.0);
-									crib.visible = true;
+									//crib.visible = true;
 
 								}
 						case 640:
@@ -4740,7 +4741,7 @@ class PlayState extends MusicBeatState
 							{
 								defaultCamZoom = 0.9;
 								camera.flash(FlxColor.WHITE, 5.0);
-								crib.visible = false;
+								//crib.visible = false;
 
 								
 							
