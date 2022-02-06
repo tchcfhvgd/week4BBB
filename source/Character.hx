@@ -856,19 +856,19 @@ class Character extends FlxSprite
 				animation.addByPrefix('scared', 'BF idle shaking', 24);
 
 				addOffset('idle', -5);
-				addOffset("singUP", -57, 38);
-				addOffset("singRIGHT", -50, -7);
-				addOffset("singLEFT", 4, -6);
-				addOffset("singDOWN", -8, -42);
+				addOffset("singUP", -53, 36);
+				addOffset("singRIGHT", -50, -5);
+				addOffset("singLEFT", -10, -3);
+				addOffset("singDOWN", -8, -44);
 				addOffset("singUPmiss", -29, 27);
 				addOffset("singRIGHTmiss", -30, 21);
 				addOffset("singLEFTmiss", 12, 24);
 				addOffset("singDOWNmiss", -11, -19);
-				addOffset("hey", 7, 4);
+				addOffset("hey", -4, 0);
 				addOffset('firstDeath', 37, 11);
 				addOffset('deathLoop', 37, 5);
 				addOffset('deathConfirm', 37, 69);
-				addOffset('scared', -4);
+				addOffset('scared', -7);
 				
 				if(isPlayer)
 					bfHealthColor = '0xFF31B0D1';
