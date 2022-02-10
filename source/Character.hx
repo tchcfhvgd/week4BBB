@@ -525,7 +525,31 @@ class Character extends FlxSprite
 						dadHealthColor = '0xFF1AB44A';
 					
 		
-					playAnim('idle');			
+					playAnim('idle');		
+			
+				case 'window-watcher':
+					tex = Paths.getSparrowAtlas('characters/windowwatcher', 'shared');
+					frames = tex;
+					animation.addByPrefix('idle', 'windowwatcheridle', 24);
+					animation.addByPrefix('singUP', 'up', 24);
+					animation.addByPrefix('singRIGHT', 'right', 24);
+					animation.addByPrefix('singDOWN', 'down', 24);
+					animation.addByPrefix('singLEFT', 'left', 24);
+			
+					addOffset('idle');
+					addOffset("singUP", -6, 171);
+					addOffset("singRIGHT", -60, -40);
+					addOffset("singLEFT", 311, -17);
+					addOffset("singDOWN", -2, -200);
+	
+					if(isPlayer)
+						bfHealthColor = '0xFFCDDEE1';
+					if(!isPlayer)
+						dadHealthColor = '0xFFCDDEE1';
+						
+			
+					playAnim('idle');	
+
 			case 'player-goblin':
 					tex = Paths.getSparrowAtlas('characters/running_goblin', 'shared');
 					frames = tex;

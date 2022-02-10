@@ -47,6 +47,7 @@ class HealthIcon extends FlxSprite
 		animation.add('happy-baby', [24, 25], 0, false, isPlayer);
 		animation.add('kitty', [56, 57], 0, false, isPlayer);
 		animation.add('myth', [24, 25], 0, false, isPlayer);
+		animation.add('window-watcher', [58, 59], 0, false, isPlayer);
 		animation.play(char);
 
 		switch(char)
