@@ -1048,6 +1048,10 @@ class PlayState extends MusicBeatState
 				dad.y -= 400;
 				dad.x += 200;
 				camPos.set(dad.getGraphicMidpoint().x - 100, dad.getGraphicMidpoint().y);
+			case 'window-watcher':
+				//erm
+				FlxTween.tween(dad, {x: 400}, 2, {type: FlxTweenType.PINGPONG, ease: FlxEase.sineInOut});
+				FlxTween.tween(dad, {y: 300}, 8, {type: FlxTweenType.PINGPONG, ease: FlxEase.sineInOut});
 		}
 
 
@@ -1124,7 +1128,7 @@ class PlayState extends MusicBeatState
 		if (curStage == 'hospital')
 			add(chairummmm);
 		
-		
+		//SONG NAMES
 		start = new FlxSprite(500, 0);
 		start.frames = Paths.getSparrowAtlas('Songs/songstart');
 		start.animation.addByPrefix('Tutorial', 'Tutorial', 1, true);
