@@ -3963,6 +3963,20 @@ class PlayState extends MusicBeatState
 	var trainCars:Int = 8;
 	var trainFinishing:Bool = false;
 	var trainCooldown:Int = 0;
+	/*
+	function redFlashing():Void
+	{
+		//ready to see amazing coding skills
+		var waitTime:Int = 1;
+		var flashTime:Int = 0.6;
+		camera.flash(FlxColor.RED, .6);
+		new FlxTimer().start(1, function(tmr:FlxTimer)
+		{
+				camera.flash(FlxColor.RED, .6);
+
+		});
+	}
+	*/
 
 	function trainStart():Void
 	{
@@ -4752,6 +4766,18 @@ class PlayState extends MusicBeatState
 					}
 				}
 			}
+			/*
+			if (curSong.toLowerCase() == 'tutorial-2')
+				{
+					switch (curStep)
+					{
+						//BIGSHIT
+						case 131:
+						redFlashing();
+					}
+				}
+			}
+			*/
 
 
 		// yes this updates every step.
