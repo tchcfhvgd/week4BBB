@@ -537,10 +537,10 @@ class Character extends FlxSprite
 					animation.addByPrefix('singLEFT', 'left', 24);
 			
 					addOffset('idle');
-					addOffset("singUP", -6, 171);
-					addOffset("singRIGHT", -60, -40);
-					addOffset("singLEFT", 311, -17);
-					addOffset("singDOWN", -2, -200);
+					addOffset("singUP", 4, 131);
+					addOffset("singRIGHT", 30, -40);
+					addOffset("singLEFT", 201, -17);
+					addOffset("singDOWN", -2, -100);
 	
 					if(isPlayer)
 						bfHealthColor = '0xFFCDDEE1';
