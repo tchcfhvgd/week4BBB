@@ -548,6 +548,29 @@ class Character extends FlxSprite
 						dadHealthColor = '0xFFCDDEE1';
 						
 			
+					playAnim('idle');
+					
+				case 'glassgoblin':
+					tex = Paths.getSparrowAtlas('characters/glassgoblin', 'shared');
+					frames = tex;
+					animation.addByPrefix('idle', 'goblinglassidle', 24);
+					animation.addByPrefix('singUP', 'goblinglassup', 24);
+					animation.addByPrefix('singRIGHT', 'goblinglassright', 24);
+					animation.addByPrefix('singDOWN', 'goblinglassdown', 24);
+					animation.addByPrefix('singLEFT', 'goblinglassleft', 24);
+				
+					addOffset('idle');
+					addOffset("singUP", -3, 70);
+					addOffset("singRIGHT", -61, 0);
+					addOffset("singLEFT", 80, -5);
+					addOffset("singDOWN", -2, -72);
+		
+					if(isPlayer)
+						bfHealthColor = '0xFFCDDEE1';
+					if(!isPlayer)
+						dadHealthColor = '0xFFCDDEE1';
+						
+				
 					playAnim('idle');	
 
 			case 'player-goblin':
