@@ -527,7 +527,7 @@ class Character extends FlxSprite
 		
 					playAnim('idle');		
 			
-				case 'window-watcher':
+			case 'window-watcher':
 					tex = Paths.getSparrowAtlas('characters/windowwatcher', 'shared');
 					frames = tex;
 					animation.addByPrefix('idle', 'windowwatcheridle', 24);
@@ -550,7 +550,7 @@ class Character extends FlxSprite
 			
 					playAnim('idle');
 					
-				case 'glassgoblin':
+			case 'glassgoblin':
 					tex = Paths.getSparrowAtlas('characters/glassgoblin', 'shared');
 					frames = tex;
 					animation.addByPrefix('idle', 'goblinglassidle', 24);
@@ -572,6 +572,29 @@ class Character extends FlxSprite
 						
 				
 					playAnim('idle');	
+
+			case 'glassbaby':
+				tex = Paths.getSparrowAtlas('characters/glassbaby', 'shared');
+					frames = tex;
+					animation.addByPrefix('idle', 'babyglassidle', 24);
+					animation.addByPrefix('singUP', 'babyglassup', 24);
+					animation.addByPrefix('singRIGHT', 'babyglassright', 24);
+					animation.addByPrefix('singDOWN', 'babyglassdown', 24);
+					animation.addByPrefix('singLEFT', 'babyglassleft', 24);
+				
+					addOffset('idle', 3, 0);
+					addOffset("singUP", -3, 80);
+					addOffset("singRIGHT", -53, 2);
+					addOffset("singLEFT", 105, -4);
+					addOffset("singDOWN", 12, -100);
+		
+					if(isPlayer)
+						bfHealthColor = '0xFFCDDEE1';
+					if(!isPlayer)
+						dadHealthColor = '0xFFCDDEE1';
+						
+				
+					playAnim('idle');
 
 			case 'player-goblin':
 					tex = Paths.getSparrowAtlas('characters/running_goblin', 'shared');
