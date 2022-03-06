@@ -4153,6 +4153,15 @@ class PlayState extends MusicBeatState
 			{
 				changeDaddy('screamer');
 			}
+		// FOUR EYES
+		if (curStep == 1217 && curSong.toLowerCase() == 'four-eyes')
+			{
+				changeDaddy('glassgoblin');
+			}
+		if (curStep == 2561 && curSong.toLowerCase() == 'four-eyes')
+			{
+				changeDaddy('glassbaby');
+			}
 		//trackstar lol
 		if (FlxG.save.data.cameraeffect)
 		{
