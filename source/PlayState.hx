@@ -29,6 +29,7 @@ import flixel.FlxSubState;
 import flixel.addons.display.FlxGridOverlay;
 import flixel.addons.effects.FlxTrail;
 import flixel.addons.effects.FlxTrailArea;
+import flixel.addons.effects.FlxSkewedSprite;
 import flixel.addons.effects.chainable.FlxEffectSprite;
 import flixel.addons.effects.chainable.FlxWaveEffect;
 import flixel.addons.transition.FlxTransitionableState;
@@ -180,6 +181,7 @@ class PlayState extends MusicBeatState
 	var bottomBoppers:FlxSprite;
 	var santa:FlxSprite;
 	var crib:FlxSprite;
+	var floorSkew:FlxSkewedSprite;
 
 	var chairummmm:FlxSprite;
 
@@ -890,6 +892,13 @@ class PlayState extends MusicBeatState
 					bg.active = false;
 					add(bg);
 				}
+			case 'testshitlol':
+				{
+					floorSkew = new FlxSkewedSprite(0, -50).loadGraphic("assets/shared/images/dreambg.png", true, 300, 28);
+					floorSkew.scrollFactor.set();
+					add(floorSkew);
+					floorSkew.skew.x = FlxG.camera.x;
+				}
 			default:
 			{
 					defaultCamZoom = 0.9;
@@ -920,14 +929,14 @@ class PlayState extends MusicBeatState
 		}
 
 		if (curSong.toLowerCase() == 'babys-lullaby')
-{
+		{
 
-	crib = new FlxSprite(-100, -540).loadGraphic(Paths.image('floor'));
-	crib.antialiasing = true;
-	crib.scrollFactor.set(1, 1);
-	crib.visible = false;
-	add(crib);
-}
+			crib = new FlxSprite(-100, -540).loadGraphic(Paths.image('floor'));
+			crib.antialiasing = true;
+			crib.scrollFactor.set(1, 1);
+			crib.visible = false;
+			add(crib);
+		}
 		var gfVersion:String = 'gf';
 
 		switch (SONG.gfVersion)
@@ -2294,6 +2303,7 @@ class PlayState extends MusicBeatState
 				// phillyCityLights.members[curLight].alpha -= (Conductor.crochet / 1000) * FlxG.elapsed;
 		}	
 		wiggleShit.update(elapsed);
+		floorSkew.skew.x = FlxG.camera.x;
 		super.update(elapsed);
 
 		scoreTxt.text = Ratings.CalculateRanking(songScore,songScoreDef,nps,maxNPS,accuracy);
