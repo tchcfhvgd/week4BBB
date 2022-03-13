@@ -894,7 +894,7 @@ class PlayState extends MusicBeatState
 				}
 			case 'testshitlol':
 				{
-					floorSkew = new FlxSkewedSprite(0, -50).loadGraphic("assets/shared/images/dreambg.png", true, 300, 28);
+					floorSkew = new FlxSkewedSprite(0, -50, "assets/shared/images/dreambg.png");
 					floorSkew.scrollFactor.set();
 					add(floorSkew);
 					floorSkew.skew.x = FlxG.camera.x;
