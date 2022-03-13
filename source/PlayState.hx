@@ -4643,7 +4643,7 @@ class PlayState extends MusicBeatState
 							boyfriendAgainSinging = true;
 					}
 				}
-				trace(FlxG.camera.x);
+				//trace(FlxG.camera.x);
 				//baby bob hardcoded in eyeballs
 		if (curStage == 'dream' && curSong.toLowerCase() == 'baby-bob')
 				{
