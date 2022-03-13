@@ -2303,7 +2303,12 @@ class PlayState extends MusicBeatState
 				// phillyCityLights.members[curLight].alpha -= (Conductor.crochet / 1000) * FlxG.elapsed;
 		}	
 		wiggleShit.update(elapsed);
-		floorSkew.skew.x = FlxG.camera.x;
+		
+		if(curStage == 'testshitlol')
+		{
+			floorSkew.skew.x = FlxG.camera.x;
+		}
+		
 		super.update(elapsed);
 
 		scoreTxt.text = Ratings.CalculateRanking(songScore,songScoreDef,nps,maxNPS,accuracy);
@@ -3050,7 +3055,7 @@ class PlayState extends MusicBeatState
 
 				if (storyPlaylist.length <= 0)
 				{
-                    if (curSong.toLowerCase() == "trackstar")
+					if (curSong.toLowerCase() == "trackstar")
 					{
 						FlxG.switchState(new EndState());
 					}
