@@ -894,10 +894,10 @@ class PlayState extends MusicBeatState
 				}
 			case 'testshitlol':
 				{
-					floorSkew = new FlxSkewedSprite(0, -50, "assets/shared/images/dreambg.png");
-					floorSkew.scrollFactor.set();
+					floorSkew = new FlxSkewedSprite(100, -50,Paths.image('dreambg'));
+					floorSkew.scrollFactor.set(1,1);
 					add(floorSkew);
-					floorSkew.skew.x = FlxG.camera.x;
+					//floorSkew.skew.x = camPos.x;
 				}
 			default:
 			{
@@ -1068,6 +1068,7 @@ class PlayState extends MusicBeatState
 		boyfriend = new Boyfriend(770, 450, SONG.player1);
 		boyfriendAgain = new Boyfriend(770, 450, SONG.player1);
 		runningGoblin = new Boyfriend(770, 450, SONG.player1);
+		//marios brotehr = new boyfriend(420,69,poop);
 
 		// REPOSITIONING PER STAGE
 		switch (curStage)
@@ -1111,13 +1112,10 @@ class PlayState extends MusicBeatState
 				gf.x += 180;
 				gf.y += 300;
 			case 'schoolEvil':
-				if(FlxG.save.data.distractions){
-				// trailArea.scrollFactor.set();
-				var evilTrail = new FlxTrail(dad, null, 4, 24, 0.3, 0.069);
-				// evilTrail.changeValuesEnabled(false, false, false, false);
-				// evilTrail.changeGraphic()
-				add(evilTrail);
-				// evilTrail.scrollFactor.set(1.1, 1.1);
+				if(FlxG.save.data.distractions)
+				{
+					var evilTrail = new FlxTrail(dad, null, 4, 24, 0.3, 0.069);
+					add(evilTrail);
 				}
 
 
@@ -1127,7 +1125,8 @@ class PlayState extends MusicBeatState
 				gf.y += 300;
 		}
 
-		// hi vomic
+		// hi vomic 
+		//what why no stop
 		if (curStage == 'stage' || curStage == 'hospital')
 			add(gf);
 
@@ -2306,6 +2305,7 @@ class PlayState extends MusicBeatState
 		
 		if(curStage == 'testshitlol')
 		{
+			//btw i dont know how to get the camera's x value rn it just shows up as zero lol
 			floorSkew.skew.x = FlxG.camera.x;
 		}
 		
@@ -4102,7 +4102,7 @@ class PlayState extends MusicBeatState
 			luaModchart.executeState('stepHit',[curStep]);
 		}
 		#end
-		
+		//THIS IS THE WORST CODE EVER WHY DID I DO THIS
 		//baby blue character changing
 		if (curStep == 888 && curSong.toLowerCase() == 'baby-blue')
 		{
@@ -4643,7 +4643,7 @@ class PlayState extends MusicBeatState
 							boyfriendAgainSinging = true;
 					}
 				}
-	
+				trace(FlxG.camera.x);
 				//baby bob hardcoded in eyeballs
 		if (curStage == 'dream' && curSong.toLowerCase() == 'baby-bob')
 				{
