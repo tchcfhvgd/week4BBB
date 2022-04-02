@@ -4177,6 +4177,10 @@ class PlayState extends MusicBeatState
 			{
 				changeDaddy('glassbaby');
 			}
+		if (curStep == 4415 && curSong.toLowerCase() == 'four-eyes')
+			{
+				changeDaddy('window-watcher');
+			}
 		//trackstar lol
 		if (FlxG.save.data.cameraeffect)
 		{
