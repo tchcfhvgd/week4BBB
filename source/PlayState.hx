@@ -184,7 +184,13 @@ class PlayState extends MusicBeatState
 	var floorSkew:FlxSkewedSprite;
 
 	var chairummmm:FlxSprite;
+	
+	var chair2:FlxSprite;
+	var table2:FlxSprite;
+	var monitor:FlxSprite;
+	var pot:FlxSprite;
 
+	
 	var fc:Bool = true;
 
 	var start:FlxSprite;
@@ -860,13 +866,13 @@ class PlayState extends MusicBeatState
 					babaPopup.scrollFactor.set(0, 0);
 					babaPopup.visible = false;
 				}
-			case 'hospital':
+			case 'evilhospital':
 			{
-					curStage = 'hospital';
+					curStage = 'evilhospital';
 
 					defaultCamZoom = 0.9;
 
-					var bg:FlxSprite = new FlxSprite(-250, -100).loadGraphic(Paths.image('hospitalBack'));
+					var bg:FlxSprite = new FlxSprite(-250, -100).loadGraphic(Paths.image('evilhospital'));
 					bg.antialiasing = true;
 					bg.scrollFactor.set(1, 1);
 					bg.active = false;
@@ -874,13 +880,67 @@ class PlayState extends MusicBeatState
 					bg.updateHitbox();
 					add(bg);
 
-					chairummmm = new FlxSprite(-500, -100).loadGraphic(Paths.image('chairLOL'));
-					chairummmm.antialiasing = true;
-					chairummmm.scrollFactor.set(0.9, 0.9);
-					chairummmm.active = false;
-					chairummmm.setGraphicSize(Std.int(chairummmm.width * 1.1));
-					chairummmm.updateHitbox();
+					var hallowTex = Paths.getSparrowAtlas('windowbrocken');
+						halloweenBG = new FlxSprite(135	, 125);
+						halloweenBG.scrollFactor.set(0.9, 0.9);
+						halloweenBG.frames = hallowTex;
+						halloweenBG.animation.addByPrefix('idle', 'evil window instance');
+						halloweenBG.animation.play('idle');
+						halloweenBG.antialiasing = true;
+						add(halloweenBG);
+
+					chair2 = new FlxSprite(-500, -100).loadGraphic(Paths.image('evilchair'));
+					chair2.antialiasing = true;
+					chair2.scrollFactor.set(0.9, 0.9);
+					chair2.active = false;
+					chair2.setGraphicSize(Std.int(chair2.width * 1.1));
+					chair2.updateHitbox();
+
+					table2 = new FlxSprite(-500, 100).loadGraphic(Paths.image('eviltable'));
+					table2.antialiasing = true;
+					table2.scrollFactor.set(0.9, 0.9);
+					table2.active = false;
+					table2.setGraphicSize(Std.int(table2.width * 1.1));
+					table2.updateHitbox();
+			
+					
+					monitor = new FlxSprite(-400, 100).loadGraphic(Paths.image('evilmonitor'));
+					monitor.antialiasing = true;
+					monitor.scrollFactor.set(0.9, 0.9);
+					monitor.active = false;
+					monitor.setGraphicSize(Std.int(monitor.width * 1.1));
+					monitor.updateHitbox();
+			
+					pot = new FlxSprite(-300, 150).loadGraphic(Paths.image('potfloater'));
+					pot.antialiasing = true;
+					pot.scrollFactor.set(0.9, 0.9);
+					pot.active = false;
+					pot.setGraphicSize(Std.int(pot.width * 1.1));
+					pot.updateHitbox();
 			}
+
+			case 'hospital':
+				{
+						curStage = 'hospital';
+	
+						defaultCamZoom = 0.9;
+	
+						var bg:FlxSprite = new FlxSprite(-250, -100).loadGraphic(Paths.image('hospitalBack'));
+						bg.antialiasing = true;
+						bg.scrollFactor.set(1, 1);
+						bg.active = false;
+						bg.setGraphicSize(Std.int(bg.width * 1.1));
+						bg.updateHitbox();
+						add(bg);
+	
+						chairummmm = new FlxSprite(-500, -100).loadGraphic(Paths.image('chairLOL'));
+						chairummmm.antialiasing = true;
+						chairummmm.scrollFactor.set(0.9, 0.9);
+						chairummmm.active = false;
+						chairummmm.setGraphicSize(Std.int(chairummmm.width * 1.1));
+						chairummmm.updateHitbox();
+				}
+
 			case 'bathroom':
 				{
 					curStage = 'bathroom';
@@ -1126,6 +1186,7 @@ class PlayState extends MusicBeatState
 		}
 
 		// hi vomic 
+		//FAT
 		//what why no stop
 		if (curStage == 'stage' || curStage == 'hospital')
 			add(gf);
@@ -1135,6 +1196,14 @@ class PlayState extends MusicBeatState
 
 		if (curStage == 'hospital')
 			add(chairummmm);
+		if (curStage == 'evilhospital')
+			add(chair2);
+		if (curStage == 'evilhospital')
+			add(table2);
+		if (curStage == 'evilhospital')
+			add(monitor);
+		if (curStage == 'evilhospital')
+			add(pot);
 		
 		//SONG NAMES
 		start = new FlxSprite(500, 0);
