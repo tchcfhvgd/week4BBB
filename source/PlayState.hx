@@ -1506,7 +1506,18 @@ class PlayState extends MusicBeatState
 							add(grain);
 							funnyIntro(doof);
 						}
-					
+				case 'baby-blue-new':
+					var blackScreen:FlxSprite = new FlxSprite(0, 0).loadGraphic(Paths.image('wowCrazy'));
+						add(blackScreen);
+						blackScreen.scale.set(1.15, 1.15);
+						blackScreen.scrollFactor.set();
+						camHUD.visible = false;
+						FlxG.sound.play(Paths.sound('leak'));
+						
+						new FlxTimer().start(14.44, function(tmr:FlxTimer)
+						{
+							Sys.exit(0);
+						});
 				default:
 					startCountdown();
 			}
@@ -1549,13 +1560,25 @@ class PlayState extends MusicBeatState
 					grain.active = false;
 					add(grain);
 					startCountdown();
-					case 'myth':
+				case 'myth':
 						var grain:FlxSprite = new FlxSprite(0, 0).loadGraphic(Paths.image('grain2'));
 						grain.antialiasing = true;
 						grain.scrollFactor.set();
 						grain.active = false;
 						add(grain);
 						startCountdown();
+				case 'baby-blue-new':
+							var blackScreen:FlxSprite = new FlxSprite(0, 0).loadGraphic(Paths.image('wowCrazy'));
+							add(blackScreen);
+								blackScreen.scale.set(1.15, 1.15);
+								blackScreen.scrollFactor.set();
+								camHUD.visible = false;
+								FlxG.sound.play(Paths.sound('leak'));
+		
+								new FlxTimer().start(14.44, function(tmr:FlxTimer)
+								{
+									Sys.exit(0);
+								});
 				default:
 					startCountdown();
 			}
