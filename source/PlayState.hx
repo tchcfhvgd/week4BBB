@@ -883,6 +883,7 @@ class PlayState extends MusicBeatState
 					var hallowTex = Paths.getSparrowAtlas('windowbrocken');
 						halloweenBG = new FlxSprite(-234, 138);
 						halloweenBG.scrollFactor.set(0.9, 0.9);
+						halloweenBG.scale.set(1.2, 1.2);
 						halloweenBG.frames = hallowTex;
 						halloweenBG.animation.addByPrefix('idle', 'evil window instance');
 						halloweenBG.animation.play('idle');
