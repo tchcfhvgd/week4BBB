@@ -896,7 +896,7 @@ class PlayState extends MusicBeatState
 					chair2.setGraphicSize(Std.int(chair2.width * 1.1));
 					chair2.updateHitbox();
 
-					table2 = new FlxSprite(652, 362).loadGraphic(Paths.image('eviltable'));
+					table2 = new FlxSprite(972, 350).loadGraphic(Paths.image('eviltable'));
 					table2.antialiasing = true;
 					table2.scrollFactor.set(0.8, 0.8);
 					table2.active = false;
