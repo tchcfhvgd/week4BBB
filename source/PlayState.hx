@@ -874,14 +874,14 @@ class PlayState extends MusicBeatState
 
 					var bg:FlxSprite = new FlxSprite(-250, -100).loadGraphic(Paths.image('evilhospital'));
 					bg.antialiasing = true;
-					bg.scrollFactor.set(1, 1);
+					bg.scrollFactor.set(0.9, 0.9);
 					bg.active = false;
 					bg.setGraphicSize(Std.int(bg.width * 1.1));
 					bg.updateHitbox();
 					add(bg);
 
 					var hallowTex = Paths.getSparrowAtlas('windowbrocken');
-						halloweenBG = new FlxSprite(135	, 125);
+						halloweenBG = new FlxSprite(-234, 138);
 						halloweenBG.scrollFactor.set(0.9, 0.9);
 						halloweenBG.frames = hallowTex;
 						halloweenBG.animation.addByPrefix('idle', 'evil window instance');
@@ -889,33 +889,33 @@ class PlayState extends MusicBeatState
 						halloweenBG.antialiasing = true;
 						add(halloweenBG);
 
-					chair2 = new FlxSprite(-500, -100).loadGraphic(Paths.image('evilchair'));
+					chair2 = new FlxSprite(1219, 115).loadGraphic(Paths.image('evilchair'));
 					chair2.antialiasing = true;
-					chair2.scrollFactor.set(0.9, 0.9);
+					chair2.scrollFactor.set(0.8, 0.8);
 					chair2.active = false;
 					chair2.setGraphicSize(Std.int(chair2.width * 1.1));
 					chair2.updateHitbox();
 
-					table2 = new FlxSprite(-500, 100).loadGraphic(Paths.image('eviltable'));
+					table2 = new FlxSprite(652, 362).loadGraphic(Paths.image('eviltable'));
 					table2.antialiasing = true;
-					table2.scrollFactor.set(0.9, 0.9);
+					table2.scrollFactor.set(0.8, 0.8);
 					table2.active = false;
 					table2.setGraphicSize(Std.int(table2.width * 1.1));
 					table2.updateHitbox();
 			
 					
-					monitor = new FlxSprite(-400, 100).loadGraphic(Paths.image('evilmonitor'));
+					monitor = new FlxSprite(507, 37).loadGraphic(Paths.image('evilmonitor'));
 					monitor.antialiasing = true;
-					monitor.scrollFactor.set(0.9, 0.9);
+					monitor.scrollFactor.set(0.8, 0.8);
 					monitor.active = false;
-					monitor.setGraphicSize(Std.int(monitor.width * 1.1));
+					monitor.setGraphicSize(Std.int(monitor.width * 1.25));
 					monitor.updateHitbox();
 			
-					pot = new FlxSprite(-300, 150).loadGraphic(Paths.image('potfloater'));
+					pot = new FlxSprite(1122, 175).loadGraphic(Paths.image('potfloater'));
 					pot.antialiasing = true;
-					pot.scrollFactor.set(0.9, 0.9);
+					pot.scrollFactor.set(0.85, 0.85);
 					pot.active = false;
-					pot.setGraphicSize(Std.int(pot.width * 1.1));
+					pot.setGraphicSize(Std.int(pot.width * 1.2));
 					pot.updateHitbox();
 			}
 
