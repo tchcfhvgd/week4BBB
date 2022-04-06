@@ -1192,9 +1192,6 @@ class PlayState extends MusicBeatState
 		if (curStage == 'stage' || curStage == 'hospital')
 			add(gf);
 
-		add(dad);
-		add(boyfriend);
-
 		if (curStage == 'hospital')
 			add(chairummmm);
 		if (curStage == 'evilhospital')
@@ -1205,6 +1202,11 @@ class PlayState extends MusicBeatState
 			add(monitor);
 		if (curStage == 'evilhospital')
 			add(pot);
+		//boi
+		add(dad);
+		add(boyfriend);
+
+	
 		
 		//SONG NAMES
 		start = new FlxSprite(500, 0);
