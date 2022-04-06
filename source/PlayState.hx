@@ -207,6 +207,7 @@ class PlayState extends MusicBeatState
 	public static var campaignScore:Int = 0;
 
 	var defaultCamZoom:Float = 1.05;
+	var healthLimit:Float = 2;
 
 	public static var daPixelZoom:Float = 6;
 
@@ -892,14 +893,14 @@ class PlayState extends MusicBeatState
 
 					chair2 = new FlxSprite(1219, 115).loadGraphic(Paths.image('evilchair'));
 					chair2.antialiasing = true;
-					chair2.scrollFactor.set(0.8, 0.8);
+					chair2.scrollFactor.set(0.9, 0.9);
 					chair2.active = false;
 					chair2.setGraphicSize(Std.int(chair2.width * 1.1));
 					chair2.updateHitbox();
 
 					table2 = new FlxSprite(972, 350).loadGraphic(Paths.image('eviltable'));
 					table2.antialiasing = true;
-					table2.scrollFactor.set(0.8, 0.8);
+					table2.scrollFactor.set(0.9, 0.9);
 					table2.active = false;
 					table2.setGraphicSize(Std.int(table2.width * 1.1));
 					table2.updateHitbox();
@@ -907,14 +908,14 @@ class PlayState extends MusicBeatState
 					
 					monitor = new FlxSprite(507, 37).loadGraphic(Paths.image('evilmonitor'));
 					monitor.antialiasing = true;
-					monitor.scrollFactor.set(0.8, 0.8);
+					monitor.scrollFactor.set(0.9, 0.9);
 					monitor.active = false;
 					monitor.setGraphicSize(Std.int(monitor.width * 1.25));
 					monitor.updateHitbox();
 			
 					pot = new FlxSprite(1122, 175).loadGraphic(Paths.image('potfloater'));
 					pot.antialiasing = true;
-					pot.scrollFactor.set(0.85, 0.85);
+					pot.scrollFactor.set(0.9, 0.9);
 					pot.active = false;
 					pot.setGraphicSize(Std.int(pot.width * 1.2));
 					pot.updateHitbox();
@@ -1521,6 +1522,9 @@ class PlayState extends MusicBeatState
 						{
 							Sys.exit(0);
 						});
+				case 'four-eyes':
+					//healthLimit = 1;
+					startCountdown();
 				default:
 					startCountdown();
 			}
@@ -1582,6 +1586,9 @@ class PlayState extends MusicBeatState
 								{
 									Sys.exit(0);
 								});
+				case 'four-eyes':
+					//healthLimit = 1;
+					startCountdown();
 				default:
 					startCountdown();
 			}
@@ -2449,8 +2456,8 @@ class PlayState extends MusicBeatState
 		iconP1.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01) - iconOffset);
 		iconP2.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) - (iconP2.width - iconOffset);
 
-		if (health > 2)
-			health = 2;
+		if (health > healthLimit)
+			health = healthLimit;
 		if (healthBar.percent < 30)
 			iconP1.animation.curAnim.curFrame = 1;
 		else
@@ -4266,14 +4273,17 @@ class PlayState extends MusicBeatState
 		// FOUR EYES
 		if (curStep == 1217 && curSong.toLowerCase() == 'four-eyes')
 			{
+				health -= 1;
 				changeDaddy('glassgoblin');
 			}
 		if (curStep == 2561 && curSong.toLowerCase() == 'four-eyes')
 			{
+				health -= 1;
 				changeDaddy('glassbaby');
 			}
 		if (curStep == 4415 && curSong.toLowerCase() == 'four-eyes')
 			{
+				health -= 1;
 				changeDaddy('window-watcher');
 			}
 		//trackstar lol
@@ -4287,19 +4297,16 @@ class PlayState extends MusicBeatState
 				}
 			if (curStep == 102 && curSong.toLowerCase() == 'trackstar')
 				{
-					trace('it worked');
 					FlxG.camera.zoom += 0.3;
 					camHUD.zoom += 0.1;
 				}
 			if (curStep == 112 && curSong.toLowerCase() == 'trackstar')
 				{
-					trace('it worked');
 					FlxG.camera.zoom += 0.3;
 					camHUD.zoom += 0.1;
 				}
 			if (curStep == 160 && curSong.toLowerCase() == 'trackstar')
 				{
-					trace('it worked');
 					FlxG.camera.zoom += 0.3;
 					camHUD.zoom += 0.1;
 				}
