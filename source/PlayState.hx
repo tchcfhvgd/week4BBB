@@ -4886,13 +4886,11 @@ class PlayState extends MusicBeatState
 								}
 						case 640:
 							if (FlxG.save.data.cameraeffect)
-							{
-								defaultCamZoom = 0.9;
-								camera.flash(FlxColor.WHITE, 5.0);
-								//crib.visible = false;
-
-								
-							
+								{
+									defaultCamZoom = 0.9;
+									camera.flash(FlxColor.WHITE, 5.0);
+									//crib.visible = false;
+								}							
 					}
 				}
 			}
