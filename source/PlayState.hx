@@ -190,7 +190,8 @@ class PlayState extends MusicBeatState
 	var monitor:FlxSprite;
 	var pot:FlxSprite;
 
-	
+	var timerLol:Float = 0;
+
 	var fc:Bool = true;
 
 	var start:FlxSprite;
@@ -1889,6 +1890,8 @@ class PlayState extends MusicBeatState
 		}
 
 		FlxG.sound.music.onComplete = endSong;
+		if (SONG.song.toLowerCase() == 'four-eyes')//BOYLE
+			FlxG.sound.music.volume = 0.9;
 		vocals.play();
 
 		// Song duration in a float, useful for the time left feature
@@ -2404,11 +2407,19 @@ class PlayState extends MusicBeatState
 				// phillyCityLights.members[curLight].alpha -= (Conductor.crochet / 1000) * FlxG.elapsed;
 		}	
 		wiggleShit.update(elapsed);
+
+		timerLol += .01;
 		
 		if(curStage == 'testshitlol')
 		{
 			//btw i dont know how to get the camera's x value rn it just shows up as zero lol
 			floorSkew.skew.x = FlxG.camera.x;
+		}
+		
+		if(SONG.player2 == ("glassgoblin"))
+		{
+			dad.x = (Math.sin((timerLol)) * 125) + 195;
+			dad.y = (Math.cos((timerLol)) * 100) + 320;
 		}
 		
 		super.update(elapsed);
@@ -4271,21 +4282,7 @@ class PlayState extends MusicBeatState
 				changeDaddy('screamer');
 			}
 		// FOUR EYES
-		if (curStep == 1217 && curSong.toLowerCase() == 'four-eyes')
-			{
-				health -= 1;
-				changeDaddy('glassgoblin');
-			}
-		if (curStep == 2561 && curSong.toLowerCase() == 'four-eyes')
-			{
-				health -= 1;
-				changeDaddy('glassbaby');
-			}
-		if (curStep == 4415 && curSong.toLowerCase() == 'four-eyes')
-			{
-				health -= 1;
-				changeDaddy('window-watcher');
-			}
+	
 		//trackstar lol
 		if (FlxG.save.data.cameraeffect)
 		{
@@ -4890,10 +4887,27 @@ class PlayState extends MusicBeatState
 									defaultCamZoom = 0.9;
 									camera.flash(FlxColor.WHITE, 5.0);
 									//crib.visible = false;
-								}							
+												
+								}
 					}
 				}
+			
+			if (curSong.toLowerCase() == 'four-eyes')
+			{
+				switch(curStep)
+				{
+					case 1184:
+						//Window Watcher P1 Ends
+					case 1217:
+						//Running Goblin Starts
+					case 2561:
+						//Baby Blue Part Starts
+					case 4415:
+						//Window Watcher Starts
+				}
 			}
+			
+			
 			/*
 			if (curSong.toLowerCase() == 'tutorial-2')
 				{
@@ -5075,6 +5089,25 @@ class PlayState extends MusicBeatState
 			{
 				dad.playAnim('hey', true);
 			}
+
+		if (curSong.toLowerCase() == 'four-eyes')
+				{
+					switch(curBeat)
+					{
+						case 296:
+							trace("it ended");
+							health -= 1;
+						case 304:
+							changeDaddy('glassgoblin');
+							SONG.player2 = ("glassgoblin");
+						case 2561:
+							health -= 1;
+							changeDaddy('glassbaby');
+						case 4415:
+							health -= 1;
+							changeDaddy('window-watcher');
+					}
+				}
 
 
 
