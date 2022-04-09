@@ -44,7 +44,7 @@ class ChooseSubState extends MusicBeatSubstate
 		arrowThing = new FlxSprite(600, 430).loadGraphic(Paths.image('arrowKek'), true, 60, 100);
 		arrowThing.animation.add('ok', [0, 1], 4, true, true);
 		arrowThing.screenCenter();
-		arrowThing.y = 445;
+		arrowThing.y = 500;
 		arrowThing.alpha = 0;
 		trace(arrowThing.y);
 		trace(arrowThing.x);
@@ -76,16 +76,16 @@ class ChooseSubState extends MusicBeatSubstate
 		}
 		if(curSelected == 1)
 		{
-			arrowThing.x = 403;
+			arrowThing.x = 613;
 		}
 		else if (curSelected == 2)
 		{
-			arrowThing.x = 817;
+			arrowThing.x = 1027;
 		}
 		if (controls.BACK)
 		{
 			close();
-			LoadingState.loadAndSwitchState(new TitleState());
+			LoadingState.loadAndSwitchState(new MainMenuState());
 		}
 		if (accepted)
 		{

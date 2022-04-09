@@ -53,7 +53,11 @@ import haxe.Json;
 import lime.utils.Assets;
 import openfl.display.BlendMode;
 import openfl.display.StageQuality;
+import openfl3.*;
 import openfl.filters.ShaderFilter;
+import openfl.filters.BitmapFilter;
+
+
 
 #if windows
 import Discord.DiscordClient;
@@ -126,6 +130,7 @@ class PlayState extends MusicBeatState
 	public static var cpuStrums:FlxTypedGroup<FlxSprite> = null;
 
 	private var camZooming:Bool = false;
+	private var zooming:Bool = true;
 	private var curSong:String = "";
 
 	private var gfSpeed:Int = 1;
@@ -251,6 +256,9 @@ class PlayState extends MusicBeatState
 	var runningGoblinExist:Bool = false;
 	var boyfriendSigning:Bool =true;
 
+	var filters:Array<BitmapFilter> = [];
+	var filterMap:Map<String, {filter:BitmapFilter, ?onUpdate:Void->Void}>;
+
 
 	override public function create()
 	{
@@ -346,6 +354,27 @@ class PlayState extends MusicBeatState
 		trace('INFORMATION ABOUT WHAT U PLAYIN WIT:\nFRAMES: ' + Conductor.safeFrames + '\nZONE: ' + Conductor.safeZoneOffset + '\nTS: ' + Conductor.timeScale + '\nBotPlay : ' + FlxG.save.data.botplay);
 	
 		//dialogue shit
+
+		//shader sus
+		filterMap = [
+			"Grain" => {
+				var shader = new Grain();
+				{
+					filter: new ShaderFilter(shader),
+					onUpdate: function()
+					{
+						#if (openfl >= "8.0.0")
+						shader.uTime.value = [Lib.getTimer() / 1000];
+						#else
+						shader.uTime = Lib.getTimer() / 1000;
+						#end
+					}
+				}
+			}
+		];
+
+		
+			
 		switch (SONG.song.toLowerCase())
 		{
 			case 'tutorial':
@@ -1001,6 +1030,14 @@ class PlayState extends MusicBeatState
 			crib.visible = false;
 			add(crib);
 		}
+		if (curSong.toLowerCase() == 'four-eyes')
+		{
+			//var lol:String = filterMap.get("Grain");
+			//filters.push(filterMap.get(lol));
+
+			//ITS NOT WOOOOORKING!!!!!!!!
+		}
+
 		var gfVersion:String = 'gf';
 
 		switch (SONG.gfVersion)
@@ -1123,8 +1160,10 @@ class PlayState extends MusicBeatState
 				camPos.set(dad.getGraphicMidpoint().x - 100, dad.getGraphicMidpoint().y);
 			case 'window-watcher':
 				//erm
+				dad.x += 75;
+				dad.y += 280;
 				FlxTween.tween(dad, {x: 260}, 2, {type: FlxTweenType.PINGPONG, ease: FlxEase.sineInOut});
-				FlxTween.tween(dad, {y: 170}, 6, {type: FlxTweenType.PINGPONG, ease: FlxEase.sineInOut});
+				FlxTween.tween(dad, {y: 180}, 6, {type: FlxTweenType.PINGPONG, ease: FlxEase.sineInOut});
 		}
 
 
@@ -1600,6 +1639,7 @@ class PlayState extends MusicBeatState
 								});
 				case 'four-eyes':
 					//healthLimit = 1;
+	
 					startCountdown();
 				default:
 					startCountdown();
@@ -1902,7 +1942,7 @@ class PlayState extends MusicBeatState
 
 		FlxG.sound.music.onComplete = endSong;
 		if (SONG.song.toLowerCase() == 'four-eyes')//BOYLE
-			FlxG.sound.music.volume = 0.9;
+			FlxG.sound.music.volume = 1;
 		vocals.play();
 
 		// Song duration in a float, useful for the time left feature
@@ -2419,21 +2459,26 @@ class PlayState extends MusicBeatState
 		}	
 		wiggleShit.update(elapsed);
 
-		timerLol += .01;
+		timerLol += .025;
 		
 		if(curStage == 'testshitlol')
 		{
 			//btw i dont know how to get the camera's x value rn it just shows up as zero lol
-			floorSkew.skew.x = FlxG.camera.x;
+			floorSkew.skew.x = camGame.x;
 		}
 		
 		if(SONG.player2 == ("glassgoblin"))
 		{
-			dad.x = (Math.sin((timerLol)) * 125) + 220;
-			dad.y = (Math.cos((timerLol)) * 100) + 320;
+			dad.x = (Math.sin((timerLol)) * 125) + 260;
+			dad.y = (Math.cos((timerLol)) * 100) + 350;
 		}
 		
 		super.update(elapsed);
+
+		for (filter in filterMap)
+			{
+				filter.onUpdate();
+			}
 
 		scoreTxt.text = Ratings.CalculateRanking(songScore,songScoreDef,nps,maxNPS,accuracy);
 		if (!FlxG.save.data.accuracyDisplay)
@@ -2709,6 +2754,8 @@ class PlayState extends MusicBeatState
 					case 'bob-ron':
 						camFollow.x = dad.getMidpoint().x - 100;
 						camFollow.y = dad.getMidpoint().y + 7;
+					case 'window-watcher':
+						camFollow.y = dad.getMidpoint().y + 4;
 				}
 
 				if (dad.curCharacter == 'mom')
@@ -2949,7 +2996,8 @@ class PlayState extends MusicBeatState
 					if (!daNote.mustPress && daNote.wasGoodHit)
 					{
 						if (SONG.song != 'Tutorial')
-							camZooming = true;
+							if (zooming)
+								camZooming = true;
 
 						var altAnim:String = "";
 	
@@ -4907,8 +4955,18 @@ class PlayState extends MusicBeatState
 			{
 				switch(curStep)
 				{
+					case 1:
+						defaultCamZoom = 1.05;
 					case 1184:
 						//Window Watcher P1 Ends
+						
+					case 1209:
+						FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom - 0.025}, 0.5, {
+							ease: FlxEase.quadInOut
+						});
+						FlxTween.tween(FlxG.camera, {alpha: .3}, 0.5, {
+							ease: FlxEase.quadInOut
+						});
 					case 1217:
 						//Running Goblin Starts
 					case 2561:
@@ -5105,12 +5163,40 @@ class PlayState extends MusicBeatState
 				{
 					switch(curBeat)
 					{
+						case 0:
+							//
+						case 16:
+							defaultCamZoom = 1.1;
+						case 30:
+							FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom - 0.3}, 1.8, {
+								ease: FlxEase.quadInOut
+							});
+						case 36:
+							defaultCamZoom = 2;
+						case 40:
+							defaultCamZoom = 0.9;
+						case 294:
+							FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom + 0.5}, 0.7, {
+								ease: FlxEase.quadIn
+							});
 						case 296:
-							trace("it ended");
+							//end of windowwathcers part
 							health -= 1;
+							camHUD.visible = false;
+							camGame.alpha = 0;
 						case 304:
+							defaultCamZoom = 1.25;
+							camGame.alpha = 1;
+							camHUD.visible = true;
 							changeDaddy('glassgoblin');
 							SONG.player2 = ("glassgoblin");
+						case 320:
+							defaultCamZoom = 1.05;
+						case 624:
+							FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom + 0.2}, 1.4, {
+								ease: FlxEase.quadOut
+							});
+						
 						case 2561:
 							health -= 1;
 							changeDaddy('glassbaby');
