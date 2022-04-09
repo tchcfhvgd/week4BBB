@@ -1,2 +1,1 @@
-THIS MOD FOLDER DOES NOT ENTIRELY WORK JUST YET!!!
-DONT EXPECT MUCH OUT OF IT RIGHT NOW!!!
+fuck this shit it ruined my life :/

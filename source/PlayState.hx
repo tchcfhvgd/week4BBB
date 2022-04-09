@@ -141,6 +141,7 @@ class PlayState extends MusicBeatState
 
 
 	private var healthBarBG:FlxSprite;
+	private var healthBarThingy:FlxSprite;
 	private var healthBar:FlxBar;
 	private var songPositionBar:Float = 0;
 	
@@ -1122,8 +1123,8 @@ class PlayState extends MusicBeatState
 				camPos.set(dad.getGraphicMidpoint().x - 100, dad.getGraphicMidpoint().y);
 			case 'window-watcher':
 				//erm
-				FlxTween.tween(dad, {x: 400}, 2, {type: FlxTweenType.PINGPONG, ease: FlxEase.sineInOut});
-				FlxTween.tween(dad, {y: 300}, 8, {type: FlxTweenType.PINGPONG, ease: FlxEase.sineInOut});
+				FlxTween.tween(dad, {x: 260}, 2, {type: FlxTweenType.PINGPONG, ease: FlxEase.sineInOut});
+				FlxTween.tween(dad, {y: 170}, 6, {type: FlxTweenType.PINGPONG, ease: FlxEase.sineInOut});
 		}
 
 
@@ -1326,14 +1327,22 @@ class PlayState extends MusicBeatState
 			healthBarBG.y = 50;
 		healthBarBG.screenCenter(X);
 		healthBarBG.scrollFactor.set();
-		add(healthBarBG);
 
 		healthBar = new FlxBar(healthBarBG.x + 4, healthBarBG.y + 4, RIGHT_TO_LEFT, Std.int(healthBarBG.width - 8), Std.int(healthBarBG.height - 8), this,
 			'health', 0, 2);
 		healthBar.scrollFactor.set();
 		healthBar.createFilledBar(FlxColor.fromString(Character.dadHealthColor), FlxColor.fromString(Character.bfHealthColor));
 		// healthBar
+
+		healthBarThingy = new FlxSprite(0, FlxG.height * 0.9).loadGraphic(Paths.image('healthBar2'));
+		if (FlxG.save.data.downscroll)
+			healthBarThingy.y = 50;
+		healthBarThingy.screenCenter(X);
+		healthBarThingy.scrollFactor.set();
+
 		add(healthBar);
+		add(healthBarThingy);
+		add(healthBarBG);
 
 
 		// Add Kade Engine watermark
@@ -1391,6 +1400,7 @@ class PlayState extends MusicBeatState
 		notes.cameras = [camHUD];
 		healthBar.cameras = [camHUD];
 		healthBarBG.cameras = [camHUD];
+		healthBarThingy.cameras = [camHUD];
 		iconP1.cameras = [camHUD];
 		iconP2.cameras = [camHUD];
 		scoreTxt.cameras = [camHUD];
@@ -1492,6 +1502,7 @@ class PlayState extends MusicBeatState
 							add(black);
 							healthBar.visible = false;
 							healthBarBG.visible = false;
+							healthBarThingy.visible = false;
 							iconP1.visible = false;
 							iconP2.visible = false;
 							scoreTxt.visible = false;
@@ -2418,7 +2429,7 @@ class PlayState extends MusicBeatState
 		
 		if(SONG.player2 == ("glassgoblin"))
 		{
-			dad.x = (Math.sin((timerLol)) * 125) + 195;
+			dad.x = (Math.sin((timerLol)) * 125) + 220;
 			dad.y = (Math.cos((timerLol)) * 100) + 320;
 		}
 		
