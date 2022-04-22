@@ -950,6 +950,31 @@ class PlayState extends MusicBeatState
 					pot.active = false;
 					pot.setGraphicSize(Std.int(pot.width * 1.2));
 					pot.updateHitbox();
+					
+					//Ben: Ben?
+					var v1:FlxSprite = new FlxSprite(-250, -100).loadGraphic(Paths.image('characters/glassbaby'));
+					v1.antialiasing = true;
+					v1.scrollFactor.set();
+					v1.active = false;
+					v1.updateHitbox();
+					v1.alpha = 0;
+					add(v1);
+
+					var v2:FlxSprite = new FlxSprite(-250, -100).loadGraphic(Paths.image('characters/glassgoblin'));
+					v2.antialiasing = true;
+					v2.scrollFactor.set();
+					v2.active = false;
+					v2.updateHitbox();
+					v2.alpha = 0;
+					add(v2);
+
+					var v3:FlxSprite = new FlxSprite(-250, -100).loadGraphic(Paths.image('characters/micbf'));
+					v3.antialiasing = true;
+					v3.scrollFactor.set();
+					v3.active = false;
+					v3.updateHitbox();
+					v3.alpha = 0;
+					add(v3);
 			}
 
 			case 'hospital':
@@ -1402,7 +1427,7 @@ class PlayState extends MusicBeatState
 		scoreTxt.setFormat(Paths.font("funkin.otf"), 25, FlxColor.WHITE, FlxTextAlign.CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		scoreTxt.scrollFactor.set();
 		scoreTxt.borderSize = 2;
-		add(scoreTxt);
+		
 
 		replayTxt = new FlxText(healthBarBG.x + healthBarBG.width / 2 - 75, healthBarBG.y + (FlxG.save.data.downscroll ? 100 : -100), 0, "this is a feature i guess", 20);
 		replayTxt.setFormat(Paths.font("vcr.ttf"), 42, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK);
@@ -1434,6 +1459,8 @@ class PlayState extends MusicBeatState
 		iconP2 = new HealthIcon(SONG.player2, false);
 		iconP2.y = healthBar.y - (iconP2.height / 2);
 		add(iconP2);
+
+		add(scoreTxt);
 
 		strumLineNotes.cameras = [camHUD];
 		notes.cameras = [camHUD];
@@ -2505,6 +2532,8 @@ class PlayState extends MusicBeatState
 			#if windows
 			DiscordClient.changePresence("Chart Editor", null, null, true);
 			#end
+			if (SONG.song.toLowerCase() == "four-eyes")
+				SONG.player2 = ("window-watcher");
 			FlxG.switchState(new ChartingState());
 			#if windows
 			if (luaModchart != null)
@@ -4973,11 +5002,11 @@ class PlayState extends MusicBeatState
 						//Running Goblin Starts
 
 					case 1824:
-						FlxG.camera.zoom += 0.3;
-						camHUD.zoom += 0.1;
+						FlxG.camera.zoom += 0.1;
+						camHUD.zoom += 0.05;
 					case 1826:
-						FlxG.camera.zoom += 0.3;
-						camHUD.zoom += 0.1;
+						FlxG.camera.zoom += 0.1;
+						camHUD.zoom += 0.05;
 					case 1840:
 						FlxG.camera.zoom += 0.3;
 						camHUD.zoom += 0.1;
@@ -4991,11 +5020,11 @@ class PlayState extends MusicBeatState
 						FlxG.camera.zoom += 0.3;
 						camHUD.zoom += 0.1;
 					case 1888:
-						FlxG.camera.zoom += 0.3;
-						camHUD.zoom += 0.1;
+						FlxG.camera.zoom += 0.1;
+						camHUD.zoom += 0.05;
 					case 1890:
-						FlxG.camera.zoom += 0.3;
-						camHUD.zoom += 0.1;
+						FlxG.camera.zoom += 0.1;
+						camHUD.zoom += 0.05;
 					case 1904:
 						FlxG.camera.zoom += 0.3;
 						camHUD.zoom += 0.1;
@@ -5009,11 +5038,11 @@ class PlayState extends MusicBeatState
 						FlxG.camera.zoom += 0.3;
 						camHUD.zoom += 0.1;
 					case 1952:
-						FlxG.camera.zoom += 0.3;
-						camHUD.zoom += 0.1;
+						FlxG.camera.zoom += 0.1;
+						camHUD.zoom += 0.05;
 					case 1954:
-						FlxG.camera.zoom += 0.3;
-						camHUD.zoom += 0.1;
+						FlxG.camera.zoom += 0.1;
+						camHUD.zoom += 0.05;
 					case 1968:
 						FlxG.camera.zoom += 0.3;
 						camHUD.zoom += 0.1;
@@ -5027,11 +5056,11 @@ class PlayState extends MusicBeatState
 						FlxG.camera.zoom += 0.3;
 						camHUD.zoom += 0.1;
 					case 2016:
-						FlxG.camera.zoom += 0.3;
-						camHUD.zoom += 0.1;
+						FlxG.camera.zoom += 0.1;
+						camHUD.zoom += 0.05;
 					case 2018:
-						FlxG.camera.zoom += 0.3;
-						camHUD.zoom += 0.1;
+						FlxG.camera.zoom += 0.1;
+						camHUD.zoom += 0.05;
 					case 2032:
 						FlxG.camera.zoom += 0.3;
 						camHUD.zoom += 0.1;
@@ -5045,11 +5074,11 @@ class PlayState extends MusicBeatState
 						FlxG.camera.zoom += 0.3;
 						camHUD.zoom += 0.1;
 					case 2080:
-						FlxG.camera.zoom += 0.3;
-						camHUD.zoom += 0.1;
+						FlxG.camera.zoom += 0.1;
+						camHUD.zoom += 0.05;
 					case 2082:
-						FlxG.camera.zoom += 0.3;
-						camHUD.zoom += 0.1;
+						FlxG.camera.zoom += 0.1;
+						camHUD.zoom += 0.05;
 					case 2096:
 						FlxG.camera.zoom += 0.3;
 						camHUD.zoom += 0.1;
@@ -5063,11 +5092,11 @@ class PlayState extends MusicBeatState
 						FlxG.camera.zoom += 0.3;
 						camHUD.zoom += 0.1;
 					case 2144:
-						FlxG.camera.zoom += 0.3;
-						camHUD.zoom += 0.1;
+						FlxG.camera.zoom += 0.1;
+						camHUD.zoom += 0.05;
 					case 2146:
-						FlxG.camera.zoom += 0.3;
-						camHUD.zoom += 0.1;
+						FlxG.camera.zoom += 0.1;
+						camHUD.zoom += 0.05;
 					case 2160:
 						FlxG.camera.zoom += 0.3;
 						camHUD.zoom += 0.1;
@@ -5304,15 +5333,19 @@ class PlayState extends MusicBeatState
 						case 320:
 							defaultCamZoom = 1.05;
 						case 624:
+							health -= 1;
 							FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom + 0.2}, 1.4, {
 								ease: FlxEase.quadOut
 							});
-						
-						case 2561:
-							health -= 1;
+						case 640:
+							SONG.player2 = ("glassbaby");
 							changeDaddy('glassbaby');
-						case 4415:
+						case 1088:
 							health -= 1;
+						case 1099:
+							//health -= 1;
+							changeBf('micbf');
+							SONG.player2 = ("window-watcher");
 							changeDaddy('window-watcher');
 					}
 				}
