@@ -2860,6 +2860,8 @@ class PlayState extends MusicBeatState
 
 			vocals.stop();
 			FlxG.sound.music.stop();
+			if (SONG.song.toLowerCase() == "four-eyes")
+				SONG.player2 = ("window-watcher");
 
 			openSubState(new GameOverSubstate(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
 
@@ -4969,6 +4971,115 @@ class PlayState extends MusicBeatState
 						});
 					case 1217:
 						//Running Goblin Starts
+
+					case 1824:
+						FlxG.camera.zoom += 0.3;
+						camHUD.zoom += 0.1;
+					case 1826:
+						FlxG.camera.zoom += 0.3;
+						camHUD.zoom += 0.1;
+					case 1840:
+						FlxG.camera.zoom += 0.3;
+						camHUD.zoom += 0.1;
+					case 1841:
+						FlxG.camera.zoom += 0.3;
+						camHUD.zoom += 0.1;
+					case 1842:
+						FlxG.camera.zoom += 0.3;
+						camHUD.zoom += 0.1;
+					case 1843:	
+						FlxG.camera.zoom += 0.3;
+						camHUD.zoom += 0.1;
+					case 1888:
+						FlxG.camera.zoom += 0.3;
+						camHUD.zoom += 0.1;
+					case 1890:
+						FlxG.camera.zoom += 0.3;
+						camHUD.zoom += 0.1;
+					case 1904:
+						FlxG.camera.zoom += 0.3;
+						camHUD.zoom += 0.1;
+					case 1905:
+						FlxG.camera.zoom += 0.3;
+						camHUD.zoom += 0.1;
+					case 1906:
+						FlxG.camera.zoom += 0.3;
+						camHUD.zoom += 0.1;
+					case 1907:
+						FlxG.camera.zoom += 0.3;
+						camHUD.zoom += 0.1;
+					case 1952:
+						FlxG.camera.zoom += 0.3;
+						camHUD.zoom += 0.1;
+					case 1954:
+						FlxG.camera.zoom += 0.3;
+						camHUD.zoom += 0.1;
+					case 1968:
+						FlxG.camera.zoom += 0.3;
+						camHUD.zoom += 0.1;
+					case 1969:
+						FlxG.camera.zoom += 0.3;
+						camHUD.zoom += 0.1;
+					case 1970:
+						FlxG.camera.zoom += 0.3;
+						camHUD.zoom += 0.1;
+					case 1971:
+						FlxG.camera.zoom += 0.3;
+						camHUD.zoom += 0.1;
+					case 2016:
+						FlxG.camera.zoom += 0.3;
+						camHUD.zoom += 0.1;
+					case 2018:
+						FlxG.camera.zoom += 0.3;
+						camHUD.zoom += 0.1;
+					case 2032:
+						FlxG.camera.zoom += 0.3;
+						camHUD.zoom += 0.1;
+					case 2033:
+						FlxG.camera.zoom += 0.3;
+						camHUD.zoom += 0.1;
+					case 2034:
+						FlxG.camera.zoom += 0.3;
+						camHUD.zoom += 0.1;
+					case 2035:
+						FlxG.camera.zoom += 0.3;
+						camHUD.zoom += 0.1;
+					case 2080:
+						FlxG.camera.zoom += 0.3;
+						camHUD.zoom += 0.1;
+					case 2082:
+						FlxG.camera.zoom += 0.3;
+						camHUD.zoom += 0.1;
+					case 2096:
+						FlxG.camera.zoom += 0.3;
+						camHUD.zoom += 0.1;
+					case 2097:
+						FlxG.camera.zoom += 0.3;
+						camHUD.zoom += 0.1;
+					case 2098:
+						FlxG.camera.zoom += 0.3;
+						camHUD.zoom += 0.1;
+					case 2099:
+						FlxG.camera.zoom += 0.3;
+						camHUD.zoom += 0.1;
+					case 2144:
+						FlxG.camera.zoom += 0.3;
+						camHUD.zoom += 0.1;
+					case 2146:
+						FlxG.camera.zoom += 0.3;
+						camHUD.zoom += 0.1;
+					case 2160:
+						FlxG.camera.zoom += 0.3;
+						camHUD.zoom += 0.1;
+					case 2161:
+						FlxG.camera.zoom += 0.3;
+						camHUD.zoom += 0.1;
+					case 2162:
+						FlxG.camera.zoom += 0.3;
+						camHUD.zoom += 0.1;
+					case 2163:
+						FlxG.camera.zoom += 0.3;
+						camHUD.zoom += 0.1;
 					case 2561:
 						//Baby Blue Part Starts
 					case 4415:

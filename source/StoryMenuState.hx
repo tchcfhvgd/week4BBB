@@ -27,7 +27,8 @@ class StoryMenuState extends MusicBeatState
 		['Tutorial'],
 		['Nap-Time', 'Kidz-Bop', 'Baby-Blue'],
 		['Temper-Tantrum', 'Babys-Revenge', 'Un-Adieu', 'Trackstar'],
-		['Baby-Bob', 'Just-Like-You', 'Insignificance']
+		['Baby-Bob', 'Just-Like-You', 'Insignificance'],
+		['Babys-Lullaby', 'Rebound', 'Four-Eyes']
 	];
 	var curDifficulty:Int = 2;
 
@@ -37,7 +38,8 @@ class StoryMenuState extends MusicBeatState
 		['', 'bf', 'gf'],
 		['dad', 'bf', 'gf'],
 		['spooky', 'bf', 'gf'],
-		['pico', 'bf', 'gf']
+		['pico', 'bf', 'gf'],
+		['', 'bf', 'gf']
 	];
 
 	var weekNames:Array<String> = [
@@ -45,7 +47,7 @@ class StoryMenuState extends MusicBeatState
 		"Babysit your diaper shitting little brother",
 		"Brotherhood Rivalry",
 		"BOB BOB BOB BOB",
-		"A sweet hospital visit"
+		"Health Care Shenanigans"
 	];
 
 	var txtWeekTitle:FlxText;
