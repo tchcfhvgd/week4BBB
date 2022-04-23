@@ -876,7 +876,6 @@ class Character extends FlxSprite
 	
 				playAnim('idle');
 			case 'myth':
-				// DAD ANIMATION LOADING CODE
 				tex = Paths.getSparrowAtlas('characters/myth_sprites');
 				frames = tex;
 				animation.addByPrefix('idle', 'baby idle', 24);
@@ -884,6 +883,9 @@ class Character extends FlxSprite
 				animation.addByPrefix('singRIGHT', 'baby right', 24);
 				animation.addByPrefix('singDOWN', 'baby down', 24);
 				animation.addByPrefix('singLEFT', 'baby left', 24);
+				animation.addByPrefix('hi', 'baby appear', 24, false);
+				animation.addByPrefix('bye', 'baby dissapear', 24, false);
+				animation.addByPrefix('gone', 'baby gone', 24);
 
 				if(isPlayer)
 					bfHealthColor = '0xFFA5004D';
@@ -895,6 +897,9 @@ class Character extends FlxSprite
 				addOffset("singRIGHT", 41, 7);
 				addOffset("singLEFT", 52, -6);
 				addOffset("singDOWN", -5, -20);
+				addOffset('hi');
+				addOffset('bye');
+				addOffset('gone');
 
 				if(isPlayer)
 					bfHealthColor = '0xFFB3FFFF';

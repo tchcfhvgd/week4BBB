@@ -196,6 +196,8 @@ class PlayState extends MusicBeatState
 	var monitor:FlxSprite;
 	var pot:FlxSprite;
 
+	var blackUmm:FlxSprite;
+
 	var timerLol:Float = 0;
 
 	var fc:Bool = true;
@@ -338,9 +340,7 @@ class PlayState extends MusicBeatState
 		camHUD.bgColor.alpha = 0;
 
 		FlxG.cameras.reset(camGame);
-		FlxG.cameras.add(camHUD);
-
-		FlxCamera.defaultCameras = [camGame];
+		FlxG.cameras.add(camHUD, false);
 
 		persistentUpdate = true;
 		persistentDraw = true;
@@ -1002,9 +1002,9 @@ class PlayState extends MusicBeatState
 			case 'bathroom':
 				{
 					curStage = 'bathroom';
-					defaultCamZoom = 1;
+					defaultCamZoom = 0.65;
 
-					var bg:FlxSprite = new FlxSprite(-250, -200).loadGraphic(Paths.image('brfloor'));
+					var bg:FlxSprite = new FlxSprite(-320, -220).loadGraphic(Paths.image('brfloor'));
 					bg.antialiasing = true;
 					bg.scrollFactor.set();
 					bg.active = false;
@@ -1180,9 +1180,8 @@ class PlayState extends MusicBeatState
 				dad.y += 440;
 				dad.x += 120;
 			case 'myth':
-				dad.y -= 400;
+				dad.y -= 75;
 				dad.x += 200;
-				camPos.set(dad.getGraphicMidpoint().x - 100, dad.getGraphicMidpoint().y);
 			case 'window-watcher':
 				//erm
 				dad.x += 75;
@@ -1191,8 +1190,6 @@ class PlayState extends MusicBeatState
 				FlxTween.tween(dad, {y: 180}, 6, {type: FlxTweenType.PINGPONG, ease: FlxEase.sineInOut});
 		}
 
-
-		
 		boyfriend = new Boyfriend(770, 450, SONG.player1);
 		boyfriendAgain = new Boyfriend(770, 450, SONG.player1);
 		runningGoblin = new Boyfriend(770, 450, SONG.player1);
@@ -1219,7 +1216,7 @@ class PlayState extends MusicBeatState
 				boyfriend.x += 1000;
 				dad.x += 0;
 				dad.x -= 0;
-				dad.y -= 0;
+				dad.y += 500;
 			case 'limo':
 				boyfriend.y -= 220;
 				boyfriend.x += 700;
@@ -1273,7 +1270,16 @@ class PlayState extends MusicBeatState
 		add(dad);
 		add(boyfriend);
 
-	
+		if(curStage == 'bathroom')
+		{
+			var grain:FlxSprite = new FlxSprite(0, 0).loadGraphic(Paths.image('grain2'));
+			grain.antialiasing = true;
+			add(grain);
+			grain.cameras = [camHUD];
+			blackUmm = new FlxSprite(0, 0).makeGraphic(Std.int(FlxG.width * 2), Std.int(FlxG.height * 2), FlxColor.BLACK);
+			add(blackUmm);
+			blackUmm.cameras = [camHUD];
+		}
 		
 		//SONG NAMES
 		start = new FlxSprite(500, 0);
@@ -1611,13 +1617,6 @@ class PlayState extends MusicBeatState
 		{
 			switch (curSong.toLowerCase())
 			{
-				//case 'kitty':
-					//dadAgain.x -= 400;
-					//dadAgain.y += 300;
-					//dadAgain = new Character(dadAgain.x, dadAgain.y, 'bob');
-					//add(dadAgain);
-					//dadAgainExist = true;
-					//startCountdown();
 				case 'baby-bob':
 					//dream
 					startCountdown();
@@ -1645,13 +1644,6 @@ class PlayState extends MusicBeatState
 					grain.active = false;
 					add(grain);
 					startCountdown();
-				case 'myth':
-						var grain:FlxSprite = new FlxSprite(0, 0).loadGraphic(Paths.image('grain2'));
-						grain.antialiasing = true;
-						grain.scrollFactor.set();
-						grain.active = false;
-						add(grain);
-						startCountdown();
 				case 'baby-blue-new':
 							var blackScreen:FlxSprite = new FlxSprite(0, 0).loadGraphic(Paths.image('wowCrazy'));
 							add(blackScreen);
@@ -2768,6 +2760,9 @@ class PlayState extends MusicBeatState
 				{
 					case 'mom':
 						camFollow.y = dad.getMidpoint().y;
+					case 'myth':
+						camFollow.x = dad.getMidpoint().x - 83;
+						camFollow.y = dad.getMidpoint().y - 380;
 					case 'senpai':
 						camFollow.y = dad.getMidpoint().y - 430;
 						camFollow.x = dad.getMidpoint().x - 100;
@@ -2787,6 +2782,7 @@ class PlayState extends MusicBeatState
 						camFollow.y = dad.getMidpoint().y + 4;
 				}
 
+				//wtf is this
 				if (dad.curCharacter == 'mom')
 					vocals.volume = 1;
 			}
@@ -4034,20 +4030,30 @@ class PlayState extends MusicBeatState
 								FlxG.camera.targetOffset.y = -20;
 								FlxG.camera.targetOffset.x = 0;
 							}
-							if(boyfriendSigning && !note.isSustainNote)
-								boyfriend.playAnim('singUP', true);
-							if(boyfriendAgainSinging && !note.isSustainNote)
-								boyfriendAgain.playAnim('singUP', true);
-							if(runningGoblinSinging && !note.isSustainNote)
-								runningGoblin.playAnim('singUP', true);
+							if(FlxG.save.data.botplay) {
+								if(boyfriendSigning)
+									boyfriend.playAnim('singUP', true);
+							} else {
+								if(boyfriendSigning && !note.isSustainNote)
+									boyfriend.playAnim('singUP', true);
+							}
+								if(boyfriendAgainSinging && !note.isSustainNote)
+									boyfriendAgain.playAnim('singUP', true);
+								if(runningGoblinSinging && !note.isSustainNote)
+									runningGoblin.playAnim('singUP', true);
 						case 3:
 							if (PlayState.SONG.notes[Std.int(curStep / 16)].mustHitSection && FlxG.save.data.cameraeffect)
 							{
 								FlxG.camera.targetOffset.y = 0;
 								FlxG.camera.targetOffset.x = 20;
 							}
-							if(boyfriendSigning && !note.isSustainNote)
-								boyfriend.playAnim('singRIGHT', true);
+							if(FlxG.save.data.botplay) {
+								if(boyfriendSigning)
+									boyfriend.playAnim('singRIGHT', true);
+							} else {
+								if(boyfriendSigning && !note.isSustainNote)
+									boyfriend.playAnim('singRIGHT', true);
+							}
 							if(boyfriendAgainSinging && !note.isSustainNote)
 								boyfriendAgain.playAnim('singRIGHT', true);
 							if(runningGoblinSinging && !note.isSustainNote)
@@ -4058,8 +4064,13 @@ class PlayState extends MusicBeatState
 								FlxG.camera.targetOffset.y = 20;
 								FlxG.camera.targetOffset.x = 0;
 							}
-							if(boyfriendSigning && !note.isSustainNote)
-								boyfriend.playAnim('singDOWN', true);
+							if(FlxG.save.data.botplay) {
+								if(boyfriendSigning)
+									boyfriend.playAnim('singDOWN', true);
+							} else {
+								if(boyfriendSigning && !note.isSustainNote)
+									boyfriend.playAnim('singDOWN', true);
+							}
 							if(boyfriendAgainSinging && !note.isSustainNote)
 								boyfriendAgain.playAnim('singDOWN', true);
 							if(runningGoblinSinging && !note.isSustainNote)
@@ -4070,8 +4081,13 @@ class PlayState extends MusicBeatState
 								FlxG.camera.targetOffset.y = 0;
 								FlxG.camera.targetOffset.x = -20;
 							}
-							if(boyfriendSigning && !note.isSustainNote)
-								boyfriend.playAnim('singLEFT', true);
+							if(FlxG.save.data.botplay) {
+								if(boyfriendSigning)
+									boyfriend.playAnim('singLEFT', true);
+							} else {
+								if(boyfriendSigning && !note.isSustainNote)
+									boyfriend.playAnim('singLEFT', true);
+							}
 							if(boyfriendAgainSinging && !note.isSustainNote)
 								boyfriendAgain.playAnim('singLEFT', true);
 							if(runningGoblinSinging && !note.isSustainNote)
@@ -5237,13 +5253,31 @@ class PlayState extends MusicBeatState
 				runningGoblin.playAnim('idle');
 		}
 
-		if (!dad.animation.curAnim.name.startsWith("sing"))
+		if (!dad.animation.curAnim.name.startsWith("sing") && !dad.animation.curAnim.name.startsWith("hi") && !dad.animation.curAnim.name.startsWith("bye"))
 		{
-			dad.dance();
+			if(curSong == 'myth' && (curBeat > 353 || curBeat < 28)) {
+				dad.playAnim('gone', true);
+			} else {
+				dad.dance();
+			}
 			FlxG.camera.targetOffset.y = 0;
 			FlxG.camera.targetOffset.x = 0;
 			if (dadAgainExist)
 				dadAgain.dance();
+		}
+
+		if (curSong == 'myth')
+		{
+			switch(curBeat)
+			{
+				case 2:
+					//at 2 because haxeflixel lags at beat 0 and dont plays the thing LOL
+					blackUmm.visible = false;
+				case 28:
+					dad.playAnim('hi', true);
+				case 353:
+					dad.playAnim('bye', true);
+			}
 		}
 
 		if (curBeat % 8 == 7 && curSong == 'Bopeebo')
