@@ -15,12 +15,14 @@ import flixel.math.FlxMath;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import lime.utils.Assets;
+import WiggleEffect.WiggleEffectType;
 
 class OptionsMenu extends MusicBeatState
 {
 	public static var instance:OptionsMenu;
 
 	var selector:FlxText;
+	var wiggleShit:WiggleEffect = new WiggleEffect();
 	var curSelected:Int = 0;
 
 	var options:Array<OptionCategory> = [
@@ -76,6 +78,11 @@ class OptionsMenu extends MusicBeatState
 		var menuBG:FlxSprite = new FlxSprite().loadGraphic(Paths.image("menuBGOptions"));
 
 		menuBG.setGraphicSize(Std.int(menuBG.width * 1.1));
+		wiggleShit.effectType = WiggleEffectType.FLAG;
+		wiggleShit.waveAmplitude = 0.1;
+		wiggleShit.waveFrequency = 2;
+		wiggleShit.waveSpeed = 1;
+		menuBG.shader = wiggleShit.shader;
 		menuBG.updateHitbox();
 		menuBG.screenCenter();
 		menuBG.antialiasing = true;
@@ -117,6 +124,8 @@ class OptionsMenu extends MusicBeatState
 
 	override function update(elapsed:Float)
 	{
+		wiggleShit.update(elapsed);
+
 		super.update(elapsed);
 
 		if (acceptInput)
