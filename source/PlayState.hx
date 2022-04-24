@@ -1338,33 +1338,30 @@ class PlayState extends MusicBeatState
 		}
 		
 		//SONG NAMES
-		start = new FlxSprite(500, 0);
+		start = new FlxSprite(800, 0);
 		start.frames = Paths.getSparrowAtlas('Songs/songstart');
-		start.animation.addByPrefix('Tutorial', 'Tutorial', 1, true);
-		start.animation.addByPrefix('nap-time', 'nap-time', 1, true);
-		start.animation.addByPrefix('kidz-bop', 'kidz-bop', 1, true);
-		start.animation.addByPrefix('baby-blue', 'baby-blue', 1, true);
-		start.animation.addByPrefix('temper-tantrum', 'temper-tantrum', 1, true);
-		start.animation.addByPrefix('babys-revenge', 'babys-revenge', 1, true);
-		start.animation.addByPrefix('un-adieu', 'un-adieu', 1, true);
-		start.animation.addByPrefix('trackstar', 'trackstar', 1, true);
-		start.animation.addByPrefix('gametoons', 'gametoons', 1, true);
-		start.animation.addByPrefix('baby-bob', 'baby-bob', 1, true);
-		start.animation.addByPrefix('just-like-you', 'just-like-you', 1, true);
-		start.animation.addByPrefix('insignificance', 'insignificance', 1, true);
-		start.animation.addByPrefix('kitty', 'kitty', 1, true);
-		start.animation.addByPrefix('flower', 'flower', 1, true);
-		start.animation.addByPrefix('babys-lullaby', 'babys-lullaby', 1, true);
-		start.animation.addByPrefix('rebound', 'rebound', 1, true);
-		start.animation.addByPrefix('myth', 'myth', 1, true);
-		start.animation.play(curSong);
+		start.animation.addByPrefix('tutorial', 'Tutorial', 0);
+		start.animation.addByPrefix('nap-time', 'nap-time', 0);
+		start.animation.addByPrefix('kidz-bop', 'kidz-bop', 0);
+		start.animation.addByPrefix('baby-blue', 'baby-blue', 0);
+		start.animation.addByPrefix('temper-tantrum', 'temper-tantrum', 0);
+		start.animation.addByPrefix('babys-revenge', 'babys-revenge', 0);
+		start.animation.addByPrefix('un-adieu', 'un-adieu', 0);
+		start.animation.addByPrefix('trackstar', 'trackstar', 0);
+		start.animation.addByPrefix('gametoons', 'gametoons', 0);
+		start.animation.addByPrefix('baby-bob', 'baby-bob', 0);
+		start.animation.addByPrefix('just-like-you', 'just-like-you', 0);
+		start.animation.addByPrefix('insignificance', 'insignificance', 0);
+		start.animation.addByPrefix('kitty', 'kitty', 0);
+		start.animation.addByPrefix('flower', 'flower', 0);
+		start.animation.addByPrefix('babys-lullaby', 'babys-lullaby', 0);
+		start.animation.addByPrefix('rebound', 'rebound', 0);
+		start.animation.addByPrefix('myth', 'myth', 0);
 		start.antialiasing = true;
 		start.screenCenter(Y);
 		start.updateHitbox();
 		add(start);
 		start.alpha = 0;
-			
-
 
 		if (loadRep)
 		{
@@ -1885,7 +1882,8 @@ class PlayState extends MusicBeatState
 	{
 		inCutscene = false;
 
-		start.animation.play(curSong);
+		start.animation.play(curSong.toLowerCase());
+
 		FlxTween.tween(start, {alpha: 1, x: 800}, 0.5, {ease: FlxEase.quartInOut,startDelay: 0.2});
 		new FlxTimer().start(3, function(tmr:FlxTimer)
 		{
