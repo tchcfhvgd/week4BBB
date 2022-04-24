@@ -39,7 +39,7 @@ class StoryMenuState extends MusicBeatState
 		['dad', 'bf', 'gf'],
 		['spooky', 'bf', 'gf'],
 		['pico', 'bf', 'gf'],
-		['', 'bf', 'gf']
+		['mom', 'bf', 'gf']
 	];
 
 	var weekNames:Array<String> = [
@@ -139,7 +139,7 @@ class StoryMenuState extends MusicBeatState
 
 		trace("Line 96");
 
-		grpWeekCharacters.add(new MenuCharacter(460, 100, 0.5, false));
+		grpWeekCharacters.add(new MenuCharacter(390, 100, 0.5, false));
 		grpWeekCharacters.add(new MenuCharacter(1500, 25, 0.9, true));
 		grpWeekCharacters.add(new MenuCharacter(1500, 100, 0.5, true));
 

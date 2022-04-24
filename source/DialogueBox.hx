@@ -552,21 +552,21 @@ class DialogueBox extends FlxSpriteGroup
 					if (PlayState.videoDialogue == 1)
 						{
 							PlayState.videoDialogue += 1;
-							LoadingState.loadAndSwitchState(new VideoState(Paths.video('bobcut3'), new PlayState()));
+							LoadingState.loadAndSwitchState(new VideoState(Paths.video('fourcut1'), new PlayState()));
 						}
 					if (PlayState.videoDialogue == 2)
 						{
 							
 							PlayState.videoDialogue += 1;
-							trace(videoDialogue)
-							LoadingState.loadAndSwitchState(new VideoState(Paths.video('bobcut3'), new PlayState()));
+							trace(PlayState.videoDialogue);
+							LoadingState.loadAndSwitchState(new VideoState(Paths.video('fourcut1'), new PlayState()));
 						}
-					if (PlayState.videoDialogue == 3)
+					if (PlayState.videoDialogue == 4)
 						{
 								
 							//PlayState.videoDialogue += 1;
-							trace(videoDialogue)
-							LoadingState.loadAndSwitchState(new VideoState(Paths.video('bobcut2'), new PlayState()));
+							trace(PlayState.videoDialogue);
+							LoadingState.loadAndSwitchState(new VideoState(Paths.video('fourcut2'), new PlayState()));
 						}
 
 		}

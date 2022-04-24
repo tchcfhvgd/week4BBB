@@ -196,6 +196,11 @@ class PlayState extends MusicBeatState
 	var monitor:FlxSprite;
 	var pot:FlxSprite;
 
+	var bgevil:FlxSprite;
+	var epiclight:FlxSprite;
+	var windowpoppers:FlxSprite;
+	
+
 	var blackUmm:FlxSprite;
 
 	var timerLol:Float = 0;
@@ -434,15 +439,17 @@ class PlayState extends MusicBeatState
 			case 'rebound':
 				dialogue = CoolUtil.coolTextFile(Paths.txt('rebound/dialogue'));
 			case 'four-eyes':
+				trace(videoDialogue);
+				videoDialogue += 1;
 				if(videoDialogue == 1)
 				{
-					trace(videoDialogue)
+					trace(videoDialogue);
 					dialogue = CoolUtil.coolTextFile(Paths.txt('four-eyes/1'));
 				}
 				//this is such a bandaid fix lol
-				if(videoDialogue == 3)
+				else
 				{
-					trace(videoDialogue)
+					trace(videoDialogue);
 					dialogue = CoolUtil.coolTextFile(Paths.txt('four-eyes/2'));
 				}
 		}
@@ -920,7 +927,7 @@ class PlayState extends MusicBeatState
 
 					defaultCamZoom = 0.9;
 
-					var bg:FlxSprite = new FlxSprite(-250, -100).loadGraphic(Paths.image('evilhospital'));
+					var bg:FlxSprite = new FlxSprite(-320, -100).loadGraphic(Paths.image('evilhospital'));
 					bg.antialiasing = true;
 					bg.scrollFactor.set(0.9, 0.9);
 					bg.active = false;
@@ -929,45 +936,50 @@ class PlayState extends MusicBeatState
 					add(bg);
 
 					var hallowTex = Paths.getSparrowAtlas('windowbrocken');
-						halloweenBG = new FlxSprite(-234, 138);
-						halloweenBG.scrollFactor.set(0.9, 0.9);
-						halloweenBG.scale.set(1.2, 1.2);
-						halloweenBG.frames = hallowTex;
-						halloweenBG.animation.addByPrefix('idle', 'evil window instance');
-						halloweenBG.animation.play('idle');
-						halloweenBG.antialiasing = true;
-						add(halloweenBG);
+					halloweenBG = new FlxSprite(-304, 138);
+					halloweenBG.scrollFactor.set(0.9, 0.9);
+					halloweenBG.scale.set(1.2, 1.2);
+					halloweenBG.frames = hallowTex;
+					halloweenBG.animation.addByPrefix('idle', 'evil window instance');
+					halloweenBG.animation.play('idle');
+					halloweenBG.antialiasing = true;
+					add(halloweenBG);
 
-					chair2 = new FlxSprite(1219, 115).loadGraphic(Paths.image('evilchair'));
+					chair2 = new FlxSprite(1149, 115).loadGraphic(Paths.image('evilchair'));
 					chair2.antialiasing = true;
 					chair2.scrollFactor.set(0.9, 0.9);
 					chair2.active = false;
+					chair2.visible = false;
 					chair2.setGraphicSize(Std.int(chair2.width * 1.1));
 					chair2.updateHitbox();
 
-					table2 = new FlxSprite(972, 350).loadGraphic(Paths.image('eviltable'));
+					table2 = new FlxSprite(902, 350).loadGraphic(Paths.image('eviltable'));
 					table2.antialiasing = true;
 					table2.scrollFactor.set(0.9, 0.9);
 					table2.active = false;
+					table2.visible = false;
 					table2.setGraphicSize(Std.int(table2.width * 1.1));
 					table2.updateHitbox();
 			
 					
-					monitor = new FlxSprite(507, 37).loadGraphic(Paths.image('evilmonitor'));
+					monitor = new FlxSprite(437, 37).loadGraphic(Paths.image('evilmonitor'));
 					monitor.antialiasing = true;
 					monitor.scrollFactor.set(0.9, 0.9);
 					monitor.active = false;
+
+					monitor.visible = false;
 					monitor.setGraphicSize(Std.int(monitor.width * 1.25));
 					monitor.updateHitbox();
 			
-					pot = new FlxSprite(1122, 175).loadGraphic(Paths.image('potfloater'));
+					pot = new FlxSprite(1052, 175).loadGraphic(Paths.image('potfloater'));
 					pot.antialiasing = true;
 					pot.scrollFactor.set(0.9, 0.9);
 					pot.active = false;
+					pot.visible = false;
 					pot.setGraphicSize(Std.int(pot.width * 1.2));
 					pot.updateHitbox();
 					
-					//Ben: Ben?
+					//THIS IS SO WHEN NEW CHARACTERS COME IN IT DOESNT EXPLODE
 					var v1:FlxSprite = new FlxSprite(-250, -100).loadGraphic(Paths.image('characters/glassbaby'));
 					v1.antialiasing = true;
 					v1.scrollFactor.set();
@@ -991,6 +1003,29 @@ class PlayState extends MusicBeatState
 					v3.updateHitbox();
 					v3.alpha = 0;
 					add(v3);
+					//ugly fat shit poop
+					bgevil = new FlxSprite(-826, -383).loadGraphic(Paths.image('windowbgpng'));
+					bgevil.scrollFactor.set(1, 1);
+					bgevil.active = false;
+					bgevil.updateHitbox();
+					bgevil.antialiasing = true;
+					add(bgevil);
+
+					var windowTex = Paths.getSparrowAtlas('windowpoppers');
+					windowpoppers = new FlxSprite(62, 165);
+					windowpoppers.scrollFactor.set(1, 1);
+					windowpoppers.frames = windowTex;
+					windowpoppers.animation.addByPrefix('idle', 'windowpoppers');
+					windowpoppers.animation.play('idle');
+					windowpoppers.antialiasing = true;
+					add(windowpoppers);
+
+					epiclight = new FlxSprite(-167, -65).loadGraphic(Paths.image('epiclight'));
+					epiclight.scrollFactor.set(1, 1);
+					epiclight.active = false;
+					epiclight.updateHitbox();
+					epiclight.antialiasing = true;
+					
 			}
 
 			case 'hospital':
@@ -1198,10 +1233,13 @@ class PlayState extends MusicBeatState
 			case 'myth':
 				dad.y -= 75;
 				dad.x += 200;
+			case 'happy-baby':
+				camPos.set(dad.getGraphicMidpoint().x + 300, dad.getGraphicMidpoint().y + 40);
 			case 'window-watcher':
 				//erm
 				dad.x += 75;
 				dad.y += 280;
+				camPos.set(dad.getGraphicMidpoint().x + 300, dad.getGraphicMidpoint().y + 40);
 				FlxTween.tween(dad, {x: 260}, 2, {type: FlxTweenType.PINGPONG, ease: FlxEase.sineInOut});
 				FlxTween.tween(dad, {y: 180}, 6, {type: FlxTweenType.PINGPONG, ease: FlxEase.sineInOut});
 		}
@@ -1230,7 +1268,7 @@ class PlayState extends MusicBeatState
 				dad.x += 100;
 			case 'bathroom':
 				boyfriend.x += 1000;
-				dad.x += 0;
+				dad.x += 0; //who did this FUCK YOU.
 				dad.x -= 0;
 				dad.y += 500;
 			case 'limo':
@@ -1286,6 +1324,8 @@ class PlayState extends MusicBeatState
 		add(dad);
 		add(boyfriend);
 
+		if (curStage == 'evilhospital')
+			add(epiclight);
 		if(curStage == 'bathroom')
 		{
 			var grain:FlxSprite = new FlxSprite(0, 0).loadGraphic(Paths.image('grain2'));
@@ -1622,9 +1662,22 @@ class PlayState extends MusicBeatState
 						{
 							Sys.exit(0);
 						});
+				case "babys-lullaby":
+					funnyIntro(doof);
+				case 'rebound':
+					funnyIntro(doof);
 				case 'four-eyes':
+					if (videoDialogue == 5)
+					{
+						startCountdown();
+					}
+					else
+					{
+						funnyIntro(doof);
+					}
+				//	funnyIntro(doof);
 					//healthLimit = 1;
-					startCountdown();
+					//startCountdown();
 				default:
 					startCountdown();
 			}
@@ -1673,8 +1726,16 @@ class PlayState extends MusicBeatState
 									Sys.exit(0);
 								});
 				case 'four-eyes':
-					//healthLimit = 1;
-	
+					/*
+					if (videoDialogue == 5)
+						{
+							startCountdown();
+						}
+						else
+						{
+							funnyIntro(doof);
+						}
+					*/
 					startCountdown();
 				default:
 					startCountdown();
@@ -2505,6 +2566,10 @@ class PlayState extends MusicBeatState
 		if(SONG.player2 == ("glassgoblin"))
 		{
 			dad.x = (Math.sin((timerLol)) * 125) + 260;
+			dad.y = (Math.cos((timerLol)) * 100) + 350;
+		}
+		else if (SONG.player2 == ("glassbaby"))
+		{
 			dad.y = (Math.cos((timerLol)) * 100) + 350;
 		}
 		
@@ -5371,9 +5436,12 @@ class PlayState extends MusicBeatState
 							});
 						case 296:
 							//end of windowwathcers part
-							health -= 1;
+							health -= .75;
 							camHUD.visible = false;
 							camGame.alpha = 0;
+							epiclight.visible = false;
+							bgevil.visible = false;
+							windowpoppers.visible = false;
 						case 304:
 							defaultCamZoom = 1.25;
 							camGame.alpha = 1;
@@ -5391,12 +5459,14 @@ class PlayState extends MusicBeatState
 							SONG.player2 = ("glassbaby");
 							changeDaddy('glassbaby');
 						case 1088:
-							health -= 1;
+							health -= 1.25;
 						case 1099:
 							//health -= 1;
 							changeBf('micbf');
 							SONG.player2 = ("window-watcher");
 							changeDaddy('window-watcher');
+							FlxTween.tween(dad, {x: 260}, 2, {type: FlxTweenType.PINGPONG, ease: FlxEase.sineInOut});
+							FlxTween.tween(dad, {y: 180}, 6, {type: FlxTweenType.PINGPONG, ease: FlxEase.sineInOut});
 					}
 				}
 
@@ -5408,7 +5478,9 @@ class PlayState extends MusicBeatState
 				if(FlxG.save.data.distractions){
 					bgGirls.dance();
 				}
-
+			case 'evilhospital':
+				if(curBeat % 2 == 0)
+					windowpoppers.animation.play('idle');
 			case 'mall':
 				if(FlxG.save.data.distractions){
 					upperBoppers.animation.play('bop', true);

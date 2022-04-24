@@ -26,10 +26,10 @@ class MenuCharacter extends FlxSprite
 		'gf' => new CharacterSetting(50, 80, 1.5, true),
 		'dad' => new CharacterSetting(50, 100, 2),
 		'spooky' => new CharacterSetting(50, 100, 2),
-		'pico' => new CharacterSetting(-110, -60, 1.5),
-		'mom' => new CharacterSetting(-30, 140, 0.85),
+		'pico' => new CharacterSetting(-170, -135, 2),
+		'mom' => new CharacterSetting(0, -10, 3),
 		'parents-christmas' => new CharacterSetting(100, 130, 1.8),
-		'senpai' => new CharacterSetting(-40, -45, 1.4)
+		'senpai' => new CharacterSetting(-50, -45, 1.4)
 	];
 
 	private var flipped:Bool = false;
@@ -49,7 +49,7 @@ class MenuCharacter extends FlxSprite
 		animation.addByPrefix('dad', "Dad idle dance BLACK LINE", 24);
 		animation.addByPrefix('spooky', "Dad idle dance BLACK LINE", 48);
 		animation.addByPrefix('pico', "Pico menu asset", 24);
-		animation.addByPrefix('mom', "Mom Idle BLACK LINES", 24);
+		animation.addByPrefix('mom', "Mom Idle Black Lines smol", 24);
 		animation.addByPrefix('parents-christmas', "Parent Christmas Idle", 24);
 		animation.addByPrefix('senpai', "SENPAI idle Black Lines", 24);
 
