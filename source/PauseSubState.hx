@@ -56,7 +56,7 @@ class PauseSubState extends MusicBeatSubstate
 		levelDifficulty.scrollFactor.set();
 		levelDifficulty.setFormat(Paths.font('funkin.otf'), 32);
 		levelDifficulty.updateHitbox();
-		add(levelDifficulty);
+		//add(levelDifficulty);
 
 		levelDifficulty.alpha = 0;
 		levelInfo.alpha = 0;

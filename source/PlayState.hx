@@ -5207,6 +5207,8 @@ class PlayState extends MusicBeatState
 						camHUD.zoom += 0.1;
 					case 2561:
 						//Baby Blue Part Starts
+					case 4347:
+						dad.playAnim('bye');
 					case 4415:
 						//Window Watcher Starts
 				}
@@ -5449,24 +5451,26 @@ class PlayState extends MusicBeatState
 							SONG.player2 = ("glassgoblin");
 						case 320:
 							defaultCamZoom = 1.05;
-						case 559:
-							defaultCamZoom = 1.15;
+						case 558:
+							defaultCamZoom = 1.3;
 						case 624:
 							SONG.player2 = ("window-watcher");
 							health -= 1;
 							dad.playAnim('bye');
-							FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom + 0.2}, 1.4, {
+							FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom + 0.2}, 1.6, {
 								ease: FlxEase.quadInOut
 							});
+						case 625:
 							FlxTween.tween(camGame, {alpha: 0}, 1.4, {
 								ease: FlxEase.quadInOut
 							});
 							FlxTween.tween(camHUD, {alpha: 0}, 1.4, {
 								ease: FlxEase.quadInOut
 							});
-						case 628:
+						case 629:
 							camHUD.alpha = 0;
 							camGame.alpha = 0;
+							defaultCamZoom = 1.05;
 						case 640:
 							camHUD.alpha = 1;
 							camGame.alpha = 1;
@@ -5474,11 +5478,25 @@ class PlayState extends MusicBeatState
 							camHUD.zoom += 0.1;
 							SONG.player2 = ("glassbaby");
 							changeDaddy('glassbaby');
+						case 800:
+							defaultCamZoom = 1.15;
+						case 926:
+							FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom - 0.25}, 1.6, {
+								ease: FlxEase.quadInOut
+							});
+						case 930:
+							defaultCamZoom = 0.9;
+						case 943:
+							//defaultCamZoom = 1.05;
+						case 991:
+							defaultCamZoom = 1.25;
 						case 1088:
-							dad.playAnim('bye');
 							health -= 1.25;
+						case 1095:
+							camGame.x += 300;//AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
 						case 1099:
 							//health -= 1;
+							camGame.x -= 300;
 							changeBf('micbf');
 							SONG.player2 = ("window-watcher");
 							changeDaddy('window-watcher');
