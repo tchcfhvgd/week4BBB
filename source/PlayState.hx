@@ -415,7 +415,7 @@ class PlayState extends MusicBeatState
 			case 'trackstar':
 				dialogue = CoolUtil.coolTextFile(Paths.txt('trackstar/dialogue'));
 			case 'baby-bob':
-				dialogue = CoolUtil.coolTextFile(Paths.txt('baby-bob/dialogue2'));
+				dialogue = CoolUtil.coolTextFile(Paths.txt('baby-bob/dialogue'));
 			case 'just-like-you':
 				dialogue = CoolUtil.coolTextFile(Paths.txt('just-like-you/dialogue'));
 				//retweet if your a child rapist :) BRUH WHAT
@@ -428,6 +428,22 @@ class PlayState extends MusicBeatState
 				if(videoDialogue == 3)
 				{
 					dialogue = CoolUtil.coolTextFile(Paths.txt('insignificance/2'));
+				}
+			case 'babys-lullaby':
+				dialogue = CoolUtil.coolTextFile(Paths.txt('babys-lullaby/dialogue'));
+			case 'rebound':
+				dialogue = CoolUtil.coolTextFile(Paths.txt('rebound/dialogue'));
+			case 'four-eyes':
+				if(videoDialogue == 1)
+				{
+					trace(videoDialogue)
+					dialogue = CoolUtil.coolTextFile(Paths.txt('four-eyes/1'));
+				}
+				//this is such a bandaid fix lol
+				if(videoDialogue == 3)
+				{
+					trace(videoDialogue)
+					dialogue = CoolUtil.coolTextFile(Paths.txt('four-eyes/2'));
 				}
 		}
 

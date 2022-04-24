@@ -93,17 +93,18 @@ class StoryMenuState extends MusicBeatState
 
 		var rankText:FlxText = new FlxText(0, 10);
 		rankText.text = 'RANK: GREAT';
-		rankText.setFormat(Paths.font("funkin.otf"), 32);
+		rankText.setFormat(Paths.font("vcr.ttf"), 32);
 		rankText.size = scoreText.size;
 		rankText.screenCenter(X);
 
 		var ui_tex = Paths.getSparrowAtlas('campaign_menu_UI_assets');
-		var yellowBG:FlxSprite = new FlxSprite(-200, 0).makeGraphic(800, FlxG.height, 0xFFB3FFFF);
+		var yellowBG:FlxSprite = new FlxSprite(0, 56).makeGraphic(FlxG.width, 400, 0xFFB3FFFF);
 
 		grpWeekText = new FlxTypedGroup<MenuItem>();
 		add(grpWeekText);
 
-		var blackBarThingie:FlxSprite = new FlxSprite(0, 0).makeGraphic(FlxG.width, 56, FlxColor.BLACK);
+		var blackBarThingie:FlxSprite = new FlxSprite().makeGraphic(FlxG.width, 56, FlxColor.BLACK);
+		add(blackBarThingie);
 
 		grpWeekCharacters = new FlxTypedGroup<MenuCharacter>();
 
@@ -114,14 +115,12 @@ class StoryMenuState extends MusicBeatState
 
 		for (i in 0...weekData.length)
 		{
-			var weekThing:MenuItem = new MenuItem(0, yellowBG.y + yellowBG.height, i);
-			weekThing.y += ((weekThing.height + 10) * i);
+			var weekThing:MenuItem = new MenuItem(0, yellowBG.y + yellowBG.height + 10, i);
+			weekThing.y += ((weekThing.height + 20) * i);
 			weekThing.targetY = i;
 			grpWeekText.add(weekThing);
 
 			weekThing.screenCenter(X);
-			weekThing.x += 450;
-			weekThing.y -= 100;
 			weekThing.antialiasing = true;
 			// weekThing.updateHitbox();
 
@@ -140,12 +139,12 @@ class StoryMenuState extends MusicBeatState
 
 		trace("Line 96");
 
-		grpWeekCharacters.add(new MenuCharacter(-90, 200, 0.7, false));
-		grpWeekCharacters.add(new MenuCharacter(1600, 200, 0, true));
-		grpWeekCharacters.add(new MenuCharacter(1600, 100, 0, true));
+		grpWeekCharacters.add(new MenuCharacter(460, 100, 0.5, false));
+		grpWeekCharacters.add(new MenuCharacter(1500, 25, 0.9, true));
+		grpWeekCharacters.add(new MenuCharacter(1500, 100, 0.5, true));
 
 		difficultySelectors = new FlxGroup();
-		add(difficultySelectors);
+		//add(difficultySelectors);
 
 		trace("Line 124");
 
@@ -154,7 +153,7 @@ class StoryMenuState extends MusicBeatState
 		leftArrow.animation.addByPrefix('idle', "arrow left");
 		leftArrow.animation.addByPrefix('press', "arrow push left");
 		leftArrow.animation.play('idle');
-		difficultySelectors.add(leftArrow);
+		//difficultySelectors.add(leftArrow);
 
 		sprDifficulty = new FlxSprite(leftArrow.x + 130, leftArrow.y);
 		sprDifficulty.frames = ui_tex;
@@ -164,27 +163,24 @@ class StoryMenuState extends MusicBeatState
 		sprDifficulty.animation.play('easy');
 		changeDifficulty();
 
-		difficultySelectors.add(sprDifficulty);
+		//difficultySelectors.add(sprDifficulty);
 
 		rightArrow = new FlxSprite(sprDifficulty.x + sprDifficulty.width + 50, leftArrow.y);
 		rightArrow.frames = ui_tex;
 		rightArrow.animation.addByPrefix('idle', 'arrow right');
 		rightArrow.animation.addByPrefix('press', "arrow push right", 24, false);
 		rightArrow.animation.play('idle');
-		difficultySelectors.add(rightArrow);
+		//difficultySelectors.add(rightArrow);
 
 		trace("Line 150");
 
 		add(yellowBG);
-		add(blackBarThingie);
 		add(grpWeekCharacters);
 
 		txtTracklist = new FlxText(FlxG.width * 0.05, yellowBG.x + yellowBG.height + 100, 0, "Tracks", 32);
 		txtTracklist.alignment = CENTER;
 		txtTracklist.font = rankText.font;
 		txtTracklist.color = 0xFFe55777;
-		txtTracklist.y -= 245;
-	
 		add(txtTracklist);
 		// add(rankText);
 		add(scoreText);
@@ -229,6 +225,21 @@ class StoryMenuState extends MusicBeatState
 				{
 					changeWeek(1);
 				}
+
+				if (controls.RIGHT)
+					rightArrow.animation.play('press')
+				else
+					rightArrow.animation.play('idle');
+
+				if (controls.LEFT)
+					leftArrow.animation.play('press');
+				else
+					leftArrow.animation.play('idle');
+
+				if (controls.RIGHT_P)
+					changeDifficulty(1);
+				if (controls.LEFT_P)
+					changeDifficulty(-1);
 			}
 
 			if (controls.ACCEPT)
@@ -385,7 +396,7 @@ class StoryMenuState extends MusicBeatState
 		txtTracklist.text = txtTracklist.text.toUpperCase();
 
 		txtTracklist.screenCenter(X);
-		txtTracklist.x += 120;
+		txtTracklist.x -= FlxG.width * 0.35;
 
 		txtTracklist.text += "\n";
 
