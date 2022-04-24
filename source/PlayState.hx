@@ -1012,7 +1012,7 @@ class PlayState extends MusicBeatState
 					add(bgevil);
 
 					var windowTex = Paths.getSparrowAtlas('windowpoppers');
-					windowpoppers = new FlxSprite(62, 165);
+					windowpoppers = new FlxSprite(63, 112);
 					windowpoppers.scrollFactor.set(1, 1);
 					windowpoppers.frames = windowTex;
 					windowpoppers.animation.addByPrefix('idle', 'windowpoppers');
@@ -2570,7 +2570,8 @@ class PlayState extends MusicBeatState
 		}
 		else if (SONG.player2 == ("glassbaby"))
 		{
-			dad.y = (Math.cos((timerLol)) * 100) + 350;
+			dad.x = 125;
+			dad.y = (Math.cos((timerLol)) * 40) + 350;
 		}
 		
 		super.update(elapsed);
@@ -5450,15 +5451,33 @@ class PlayState extends MusicBeatState
 							SONG.player2 = ("glassgoblin");
 						case 320:
 							defaultCamZoom = 1.05;
+						case 559:
+							defaultCamZoom = 1.15;
 						case 624:
+							SONG.player2 = ("window-watcher");
 							health -= 1;
+							dad.playAnim('bye');
 							FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom + 0.2}, 1.4, {
-								ease: FlxEase.quadOut
+								ease: FlxEase.quadInOut
 							});
+							FlxTween.tween(camGame, {alpha: 0}, 1.4, {
+								ease: FlxEase.quadInOut
+							});
+							FlxTween.tween(camHUD, {alpha: 0}, 1.4, {
+								ease: FlxEase.quadInOut
+							});
+						case 628:
+							camHUD.alpha = 0;
+							camGame.alpha = 0;
 						case 640:
+							camHUD.alpha = 1;
+							camGame.alpha = 1;
+							FlxG.camera.zoom += 0.3;
+							camHUD.zoom += 0.1;
 							SONG.player2 = ("glassbaby");
 							changeDaddy('glassbaby');
 						case 1088:
+							dad.playAnim('bye');
 							health -= 1.25;
 						case 1099:
 							//health -= 1;

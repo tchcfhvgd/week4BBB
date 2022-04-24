@@ -558,12 +558,15 @@ class Character extends FlxSprite
 					animation.addByPrefix('singRIGHT', 'goblinglassright', 24);
 					animation.addByPrefix('singDOWN', 'goblinglassdown', 24);
 					animation.addByPrefix('singLEFT', 'goblinglassleft', 24);
+					animation.addByPrefix('bye', 'goblinfree', 16);
+
 				
 					addOffset('idle');
 					addOffset("singUP", -3, 70);
 					addOffset("singRIGHT", -61, 0);
 					addOffset("singLEFT", 80, -5);
 					addOffset("singDOWN", -2, -72);
+					addOffset("bye", 29, 52);
 		
 					if(isPlayer)
 						bfHealthColor = '0xFFCDDEE1';
@@ -581,12 +584,14 @@ class Character extends FlxSprite
 					animation.addByPrefix('singRIGHT', 'babyglassright', 24);
 					animation.addByPrefix('singDOWN', 'babyglassdown', 24);
 					animation.addByPrefix('singLEFT', 'babyglassleft', 24);
+					animation.addByPrefix('bye', 'babyfreeing', 24);
 				
 					addOffset('idle', 3, 0);
 					addOffset("singUP", -3, 80);
 					addOffset("singRIGHT", -53, 2);
 					addOffset("singLEFT", 105, -4);
 					addOffset("singDOWN", 12, -100);
+					addOffset("bye", 101, 135);
 		
 					if(isPlayer)
 						bfHealthColor = '0xFFCDDEE1';
