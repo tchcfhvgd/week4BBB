@@ -1353,13 +1353,12 @@ class PlayState extends MusicBeatState
 			add(epiclight);
 			add(fleedgoblin);
 			add(fleedbaby);
-			FlxG.camera.setFilters([ShadersHandler.chromaticAberration, ShadersHandler.radialBlur]);
-			camHUD.setFilters([ShadersHandler.chromaticAberration]);
-			var grain:FlxSprite = new FlxSprite(0, 0).loadGraphic(Paths.image('grain2'));
+			
+			var grain:FlxSprite = new FlxSprite(0, 0).loadGraphic(Paths.image('grain'));
 			grain.antialiasing = true;
 			grain.scrollFactor.set();
 			add(grain);
-			//grain.cameras = [camGame];
+			grain.cameras = [camHUD];
 		}
 		if(curStage == 'bathroom')
 		{
@@ -1396,8 +1395,8 @@ class PlayState extends MusicBeatState
 		start.screenCenter(Y);
 		start.updateHitbox();
 		add(start);
-		start.alpha = 0;
-
+		start.alpha = 1;
+		//sorry i had to do this genox, i dont want to make this work in time :(
 		if (loadRep)
 		{
 			FlxG.watch.addQuick('rep rpesses',repPresses);
@@ -1701,10 +1700,35 @@ class PlayState extends MusicBeatState
 				case 'four-eyes':
 					if (videoDialogue == 5)
 					{
+						FlxG.camera.setFilters([ShadersHandler.chromaticAberration, ShadersHandler.radialBlur]);
+						camHUD.setFilters([ShadersHandler.chromaticAberration]);
 						startCountdown();
+					}
+					else if (videoDialogue == 4)
+					{
+						var black:FlxSprite = new FlxSprite(-100, -100).makeGraphic(FlxG.width * 2, FlxG.height * 2, FlxColor.BLACK);
+						black.scrollFactor.set();
+						add(black);
+						healthBar.visible = false;
+						healthBarBG.visible = false;
+						healthBarThingy.visible = false;
+						iconP1.visible = false;
+						iconP2.visible = false;
+						scoreTxt.visible = false;
+						FlxG.camera.setFilters([ShadersHandler.chromaticAberration, ShadersHandler.radialBlur]);
+						camHUD.setFilters([ShadersHandler.chromaticAberration]);
+						funnyIntro(doof);
 					}
 					else
 					{
+						healthBar.visible = false;
+						healthBarBG.visible = false;
+						healthBarThingy.visible = false;
+						iconP1.visible = false;
+						iconP2.visible = false;
+						scoreTxt.visible = false;
+						epiclight.visible = false;
+						bgevil.visible = false;
 						funnyIntro(doof);
 					}
 				//	funnyIntro(doof);
@@ -1768,6 +1792,8 @@ class PlayState extends MusicBeatState
 							funnyIntro(doof);
 						}
 					*/
+					FlxG.camera.setFilters([ShadersHandler.chromaticAberration, ShadersHandler.radialBlur]);
+					camHUD.setFilters([ShadersHandler.chromaticAberration]);
 					startCountdown();
 				default:
 					startCountdown();
@@ -2611,7 +2637,7 @@ class PlayState extends MusicBeatState
 		if(curStage == "evilhospital" && coolshadergayshitlol)
 		{
 			ShadersHandler.setChrome(FlxG.random.int(3,4)/2000);
-			ShadersHandler.setRadialBlur(640, 360,  FlxG.random.float(0.095, 0.01));
+			ShadersHandler.setRadialBlur(640, 360, 0.004);
 		}
 		else if(curStage == "evilhospital" && !coolshadergayshitlol)
 		{

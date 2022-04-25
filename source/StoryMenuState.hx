@@ -28,7 +28,8 @@ class StoryMenuState extends MusicBeatState
 		['Nap-Time', 'Kidz-Bop', 'Baby-Blue'],
 		['Temper-Tantrum', 'Babys-Revenge', 'Un-Adieu', 'Trackstar'],
 		['Baby-Bob', 'Just-Like-You', 'Insignificance'],
-		['Babys-Lullaby', 'Rebound', 'Four-Eyes']
+		['Four-Eyes']
+	//	['Babys-Lullaby', 'Rebound', 'Four-Eyes']
 	];
 	var curDifficulty:Int = 2;
 
