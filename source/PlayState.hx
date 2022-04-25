@@ -199,6 +199,9 @@ class PlayState extends MusicBeatState
 	var bgevil:FlxSprite;
 	var epiclight:FlxSprite;
 	var windowpoppers:FlxSprite;
+
+	var fleedgoblin:FlxSprite;
+	var fleedbaby:FlxSprite;
 	
 
 	var blackUmm:FlxSprite;
@@ -1025,6 +1028,26 @@ class PlayState extends MusicBeatState
 					epiclight.active = false;
 					epiclight.updateHitbox();
 					epiclight.antialiasing = true;
+
+					var goblintexturruru = Paths.getSparrowAtlas('freedgoblin');
+	
+					fleedgoblin = new FlxSprite(1070, 570);
+					fleedgoblin.frames = goblintexturruru;
+					fleedgoblin.animation.addByPrefix('idle', "freedgoblin", 24);
+					fleedgoblin.antialiasing = true;
+					fleedgoblin.visible = true;
+					//add(fleedgoblin);
+					fleedgoblin.animation.play('idle');
+
+					var babybluefuckhead = Paths.getSparrowAtlas('babyfreedirl');
+	
+					fleedbaby = new FlxSprite(1150, 591);
+					fleedbaby.frames = babybluefuckhead;
+					fleedbaby.animation.addByPrefix('idle', "babyfreedirl", 24);
+					fleedbaby.antialiasing = true;
+					fleedbaby.visible = true;
+					//add(fleedbaby);
+					fleedbaby.animation.play('idle');
 					
 			}
 
@@ -1311,21 +1334,24 @@ class PlayState extends MusicBeatState
 			add(gf);
 
 		if (curStage == 'hospital')
+		{
 			add(chairummmm);
-		if (curStage == 'evilhospital')
 			add(chair2);
-		if (curStage == 'evilhospital')
 			add(table2);
-		if (curStage == 'evilhospital')
 			add(monitor);
-		if (curStage == 'evilhospital')
 			add(pot);
+		}
 		//boi
+		//simple as that loser.
 		add(dad);
 		add(boyfriend);
 
 		if (curStage == 'evilhospital')
+		{
 			add(epiclight);
+			add(fleedgoblin);
+			add(fleedbaby);
+		}
 		if(curStage == 'bathroom')
 		{
 			var grain:FlxSprite = new FlxSprite(0, 0).loadGraphic(Paths.image('grain2'));
@@ -5310,7 +5336,11 @@ class PlayState extends MusicBeatState
 				FlxG.camera.zoom += 0.10;
 				camHUD.zoom += 0.02;
 			}
-		
+		if (curSong.toLowerCase() == 'four-eyes' && curBeat >= 1024 && curBeat <= 1088)
+			{
+				FlxG.camera.zoom += 0.10;
+				camHUD.zoom += 0.025;
+			}
 		if (camZooming && FlxG.camera.zoom < 1.35 && curBeat % 4 == 0)
 		{
 			FlxG.camera.zoom += 0.015;
@@ -5443,6 +5473,11 @@ class PlayState extends MusicBeatState
 							epiclight.visible = false;
 							bgevil.visible = false;
 							windowpoppers.visible = false;
+							chairummmm.visible = true;
+							chair2.visible = true;
+							table2.visible = true;
+							monitor.visible = true;
+							pot.visible = true;
 						case 304:
 							defaultCamZoom = 1.25;
 							camGame.alpha = 1;
@@ -5472,6 +5507,7 @@ class PlayState extends MusicBeatState
 							camGame.alpha = 0;
 							defaultCamZoom = 1.05;
 						case 640:
+							fleedgoblin.visible = true;
 							camHUD.alpha = 1;
 							camGame.alpha = 1;
 							FlxG.camera.zoom += 0.3;
@@ -5488,7 +5524,7 @@ class PlayState extends MusicBeatState
 							defaultCamZoom = 0.9;
 						case 943:
 							//defaultCamZoom = 1.05;
-						case 991:
+						case 992:
 							defaultCamZoom = 1.25;
 						case 1088:
 							health -= 1.25;
@@ -5496,6 +5532,7 @@ class PlayState extends MusicBeatState
 							camGame.x += 300;//AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
 						case 1099:
 							//health -= 1;
+							fleedbaby.visible = true;
 							camGame.x -= 300;
 							changeBf('micbf');
 							SONG.player2 = ("window-watcher");
@@ -5514,8 +5551,10 @@ class PlayState extends MusicBeatState
 					bgGirls.dance();
 				}
 			case 'evilhospital':
-				if(curBeat % 2 == 0)
-					windowpoppers.animation.play('idle');
+				windowpoppers.animation.play('idle');
+				fleedbaby.animation.play('idle');
+				fleedgoblin.animation.play('idle');
+					
 			case 'mall':
 				if(FlxG.save.data.distractions){
 					upperBoppers.animation.play('bop', true);
