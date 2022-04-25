@@ -1158,6 +1158,7 @@ class PlayState extends MusicBeatState
 		}
 
 		gf = new Character(400, 130, gfVersion);
+
 		gf.scrollFactor.set(0.95, 0.95);
 
 		dad = new Character(100, 100, SONG.player2);
@@ -1357,6 +1358,7 @@ class PlayState extends MusicBeatState
 			var grain:FlxSprite = new FlxSprite(0, 0).loadGraphic(Paths.image('grain'));
 			grain.antialiasing = true;
 			grain.scrollFactor.set();
+			grain.alpha = .5;
 			add(grain);
 			grain.cameras = [camHUD];
 		}
@@ -1395,7 +1397,7 @@ class PlayState extends MusicBeatState
 		start.screenCenter(Y);
 		start.updateHitbox();
 		add(start);
-		start.alpha = 1;
+		start.visible = false;
 		//sorry i had to do this genox, i dont want to make this work in time :(
 		if (loadRep)
 		{
@@ -1721,6 +1723,16 @@ class PlayState extends MusicBeatState
 					}
 					else
 					{
+						remove(dad);
+						dad = new Character(150,530, 'running-goblin');
+						add(dad);
+						remove(gf);
+						gf = new Character(400, 130, 'baby-bopper');
+						gf.visible = true;
+						add(gf);
+						gf.y += 200;
+						gf.x += 300;
+						
 						healthBar.visible = false;
 						healthBarBG.visible = false;
 						healthBarThingy.visible = false;
@@ -2637,12 +2649,12 @@ class PlayState extends MusicBeatState
 		if(curStage == "evilhospital" && coolshadergayshitlol)
 		{
 			ShadersHandler.setChrome(FlxG.random.int(3,4)/2000);
-			ShadersHandler.setRadialBlur(640, 360, 0.004);
+			ShadersHandler.setRadialBlur(640, 360, 0.006);
 		}
 		else if(curStage == "evilhospital" && !coolshadergayshitlol)
 		{
-			ShadersHandler.setChrome(0);
-			ShadersHandler.setRadialBlur(0, 0, 0);
+			ShadersHandler.setChrome(FlxG.random.int(3,4)/2000);
+			ShadersHandler.setRadialBlur(640, 360, 0.006);
 		}
 
 		scoreTxt.text = Ratings.CalculateRanking(songScore,songScoreDef,nps,maxNPS,accuracy);
