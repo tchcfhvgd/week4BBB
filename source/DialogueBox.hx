@@ -336,6 +336,7 @@ class DialogueBox extends FlxSpriteGroup
 					portraitRight.y = box.y + -225;
 
 					portraitRight.visible = true;
+					box.visible = true;
 					portraitRight.animation.play('enter');
 				}
 			case 'dream-baby':
@@ -505,6 +506,7 @@ class DialogueBox extends FlxSpriteGroup
 						cave2.visible = false;
 						cave.visible = false;
 						cave3.visible = false;
+						box.visible = true;
 						if (!portraitLeft.visible)
 							{
 								portraitLeft.frames = Paths.getSparrowAtlas('dialogue/ports');
@@ -560,7 +562,8 @@ class DialogueBox extends FlxSpriteGroup
 											portraitLeft.x = box.x + 64;
 											portraitLeft.y = box.y - 196;
 							
-											portraitLeft.visible = true;
+											portraitLeft.visible = false;
+											box.visible = false;
 											portraitLeft.animation.play('enter');
 										}
 				case 'cave3':
@@ -581,7 +584,8 @@ class DialogueBox extends FlxSpriteGroup
 												portraitLeft.x = box.x + 64;
 												portraitLeft.y = box.y - 196;
 								
-												portraitLeft.visible = true;
+												portraitLeft.visible = false;
+												box.visible = false;
 												portraitLeft.animation.play('enter');
 											}
 				
