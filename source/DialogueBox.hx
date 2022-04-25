@@ -37,6 +37,9 @@ class DialogueBox extends FlxSpriteGroup
 	var handSelect:FlxSprite;
 	var bgFade:FlxSprite;
 	var noMore:Bool = false;
+	var cave:FlxSprite;
+	var cave2:FlxSprite;
+	var cave3:FlxSprite;
 
 
 	public function new(talkingRight:Bool = true, ?dialogueList:Array<String>)
@@ -103,6 +106,24 @@ class DialogueBox extends FlxSpriteGroup
 		bgFade.scrollFactor.set();
 		bgFade.alpha = 0;
 		add(bgFade);
+
+		cave = new FlxSprite(-150, -100).loadGraphic(Paths.image('cave'));
+		cave.screenCenter();
+		cave.scrollFactor.set();
+		cave.visible = false;
+		add(cave);
+
+		cave2 = new FlxSprite(-150, -100).loadGraphic(Paths.image('cave2'));
+		cave2.screenCenter();
+		cave2.scrollFactor.set();
+		cave2.visible = false;
+		add(cave2);
+
+		cave3 = new FlxSprite(-150, -100).loadGraphic(Paths.image('cave3'));
+		cave3.screenCenter();
+		cave3.scrollFactor.set();
+		cave3.visible = false;
+		add(cave3);
 
 		if (PlayState.noBlackShit = true)
 		{
@@ -300,6 +321,7 @@ class DialogueBox extends FlxSpriteGroup
 				swagDialogue.sounds = [FlxG.sound.load(Paths.sound('pixelText'), 1)];
 				swagDialogue.color = FlxColor.fromRGB(80, 165, 235);
 				portraitLeft.visible = false;
+				cave.visible = false;
 				if (!portraitRight.visible)
 				{
 					portraitRight.frames = Paths.getSparrowAtlas('dialogue/ports');
@@ -480,6 +502,9 @@ class DialogueBox extends FlxSpriteGroup
 						swagDialogue.sounds = [FlxG.sound.load(Paths.sound('pixelText'), 1)];
 						swagDialogue.color = FlxColor.fromRGB(26, 96, 237);
 						portraitRight.visible = false;
+						cave2.visible = false;
+						cave.visible = false;
+						cave3.visible = false;
 						if (!portraitLeft.visible)
 							{
 								portraitLeft.frames = Paths.getSparrowAtlas('dialogue/ports');
@@ -496,7 +521,70 @@ class DialogueBox extends FlxSpriteGroup
 								portraitLeft.visible = true;
 								portraitLeft.animation.play('enter');
 							}
-			
+			case 'cave1':
+								swagDialogue.sounds = [FlxG.sound.load(Paths.sound('pixelText'), 1)];
+								swagDialogue.color = FlxColor.fromRGB(26, 96, 237);
+								portraitRight.visible = false;
+								if (!portraitLeft.visible)
+									{
+										cave.visible = true;
+										portraitLeft.frames = Paths.getSparrowAtlas('dialogue/ports');
+										portraitLeft.animation.addByPrefix('enter', 'window port', 24, false);
+										portraitLeft.scale.set(1.3, 1.3);
+										portraitLeft.antialiasing = true;
+										portraitLeft.updateHitbox();
+										portraitLeft.scrollFactor.set();
+										// portraitLeft.screenCenter(X);
+						
+										portraitLeft.x = box.x + 64;
+										portraitLeft.y = box.y - 196;
+						
+										portraitLeft.visible = true;
+										portraitLeft.animation.play('enter');
+									}
+				case 'cave2':
+									swagDialogue.sounds = [FlxG.sound.load(Paths.sound('pixelText'), 1)];
+									swagDialogue.color = FlxColor.fromRGB(26, 96, 237);
+									portraitRight.visible = false;
+									if (!portraitLeft.visible)
+										{
+											cave2.visible = true;
+											portraitLeft.frames = Paths.getSparrowAtlas('dialogue/ports');
+											portraitLeft.animation.addByPrefix('enter', 'window port', 24, false);
+											portraitLeft.scale.set(1.3, 1.3);
+											portraitLeft.antialiasing = true;
+											portraitLeft.updateHitbox();
+											portraitLeft.scrollFactor.set();
+											// portraitLeft.screenCenter(X);
+							
+											portraitLeft.x = box.x + 64;
+											portraitLeft.y = box.y - 196;
+							
+											portraitLeft.visible = true;
+											portraitLeft.animation.play('enter');
+										}
+				case 'cave3':
+										swagDialogue.sounds = [FlxG.sound.load(Paths.sound('pixelText'), 1)];
+										swagDialogue.color = FlxColor.fromRGB(26, 96, 237);
+										portraitRight.visible = false;
+										if (!portraitLeft.visible)
+											{
+												cave3.visible = true;
+												portraitLeft.frames = Paths.getSparrowAtlas('dialogue/ports');
+												portraitLeft.animation.addByPrefix('enter', 'window port', 24, false);
+												portraitLeft.scale.set(1.3, 1.3);
+												portraitLeft.antialiasing = true;
+												portraitLeft.updateHitbox();
+												portraitLeft.scrollFactor.set();
+												// portraitLeft.screenCenter(X);
+								
+												portraitLeft.x = box.x + 64;
+												portraitLeft.y = box.y - 196;
+								
+												portraitLeft.visible = true;
+												portraitLeft.animation.play('enter');
+											}
+				
 			case 'video':
 					swagDialogue.sounds = [FlxG.sound.load(Paths.sound('pixelText'), 1)];
 					swagDialogue.color = FlxColor.fromRGB(26, 96, 237);

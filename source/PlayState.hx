@@ -202,6 +202,7 @@ class PlayState extends MusicBeatState
 
 	var fleedgoblin:FlxSprite;
 	var fleedbaby:FlxSprite;
+	var coolshadergayshitlol:Bool = true;
 	
 
 	var blackUmm:FlxSprite;
@@ -1020,6 +1021,7 @@ class PlayState extends MusicBeatState
 					windowpoppers.frames = windowTex;
 					windowpoppers.animation.addByPrefix('idle', 'windowpoppers');
 					windowpoppers.animation.play('idle');
+					windowpoppers.visible = false;
 					windowpoppers.antialiasing = true;
 					add(windowpoppers);
 
@@ -1031,21 +1033,21 @@ class PlayState extends MusicBeatState
 
 					var goblintexturruru = Paths.getSparrowAtlas('freedgoblin');
 	
-					fleedgoblin = new FlxSprite(1070, 570);
+					fleedgoblin = new FlxSprite(1070, 580);
 					fleedgoblin.frames = goblintexturruru;
 					fleedgoblin.animation.addByPrefix('idle', "freedgoblin", 24);
 					fleedgoblin.antialiasing = true;
-					fleedgoblin.visible = true;
+					fleedgoblin.visible = false;
 					//add(fleedgoblin);
 					fleedgoblin.animation.play('idle');
 
 					var babybluefuckhead = Paths.getSparrowAtlas('babyfreedirl');
 	
-					fleedbaby = new FlxSprite(1150, 591);
+					fleedbaby = new FlxSprite(1150, 600);
 					fleedbaby.frames = babybluefuckhead;
 					fleedbaby.animation.addByPrefix('idle', "babyfreedirl", 24);
 					fleedbaby.antialiasing = true;
-					fleedbaby.visible = true;
+					fleedbaby.visible = false;
 					//add(fleedbaby);
 					fleedbaby.animation.play('idle');
 					
@@ -1351,6 +1353,13 @@ class PlayState extends MusicBeatState
 			add(epiclight);
 			add(fleedgoblin);
 			add(fleedbaby);
+			FlxG.camera.setFilters([ShadersHandler.chromaticAberration, ShadersHandler.radialBlur]);
+			camHUD.setFilters([ShadersHandler.chromaticAberration]);
+			var grain:FlxSprite = new FlxSprite(0, 0).loadGraphic(Paths.image('grain2'));
+			grain.antialiasing = true;
+			grain.scrollFactor.set();
+			add(grain);
+			//grain.cameras = [camGame];
 		}
 		if(curStage == 'bathroom')
 		{
@@ -2599,11 +2608,16 @@ class PlayState extends MusicBeatState
 		}
 		
 		super.update(elapsed);
-
-		for (filter in filterMap)
-			{
-				filter.onUpdate();
-			}
+		if(curStage == "evilhospital" && coolshadergayshitlol)
+		{
+			ShadersHandler.setChrome(FlxG.random.int(3,4)/2000);
+			ShadersHandler.setRadialBlur(640, 360,  FlxG.random.float(0.095, 0.01));
+		}
+		else if(curStage == "evilhospital" && !coolshadergayshitlol)
+		{
+			ShadersHandler.setChrome(0);
+			ShadersHandler.setRadialBlur(0, 0, 0);
+		}
 
 		scoreTxt.text = Ratings.CalculateRanking(songScore,songScoreDef,nps,maxNPS,accuracy);
 		if (!FlxG.save.data.accuracyDisplay)
@@ -5467,18 +5481,22 @@ class PlayState extends MusicBeatState
 							});
 						case 296:
 							//end of windowwathcers part
+							coolshadergayshitlol = false;
 							health -= .75;
 							camHUD.visible = false;
 							camGame.alpha = 0;
 							epiclight.visible = false;
 							bgevil.visible = false;
-							windowpoppers.visible = false;
+							//windowpoppers.visible = false;
+							/*
 							chairummmm.visible = true;
 							chair2.visible = true;
 							table2.visible = true;
 							monitor.visible = true;
-							pot.visible = true;
+							*/
+							//pot.visible = true;
 						case 304:
+							coolshadergayshitlol = true;
 							defaultCamZoom = 1.25;
 							camGame.alpha = 1;
 							camHUD.visible = true;
@@ -5489,6 +5507,7 @@ class PlayState extends MusicBeatState
 						case 558:
 							defaultCamZoom = 1.3;
 						case 624:
+							coolshadergayshitlol = false;
 							SONG.player2 = ("window-watcher");
 							health -= 1;
 							dad.playAnim('bye');
@@ -5507,6 +5526,7 @@ class PlayState extends MusicBeatState
 							camGame.alpha = 0;
 							defaultCamZoom = 1.05;
 						case 640:
+							coolshadergayshitlol = true;
 							fleedgoblin.visible = true;
 							camHUD.alpha = 1;
 							camGame.alpha = 1;
@@ -5551,9 +5571,12 @@ class PlayState extends MusicBeatState
 					bgGirls.dance();
 				}
 			case 'evilhospital':
-				windowpoppers.animation.play('idle');
-				fleedbaby.animation.play('idle');
-				fleedgoblin.animation.play('idle');
+				if (curBeat % 2 == 0)
+				{
+					windowpoppers.animation.play('idle', true);
+					fleedbaby.animation.play('idle', true);
+					fleedgoblin.animation.play('idle', true);
+				}
 					
 			case 'mall':
 				if(FlxG.save.data.distractions){
