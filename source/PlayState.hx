@@ -267,6 +267,8 @@ class PlayState extends MusicBeatState
 	var runningGoblinExist:Bool = false;
 	var boyfriendSigning:Bool =true;
 
+	var poopmario:FlxSprite;
+
 	var filters:Array<BitmapFilter> = [];
 	var filterMap:Map<String, {filter:BitmapFilter, ?onUpdate:Void->Void}>;
 
@@ -1073,6 +1075,13 @@ class PlayState extends MusicBeatState
 						chairummmm.active = false;
 						chairummmm.setGraphicSize(Std.int(chairummmm.width * 1.1));
 						chairummmm.updateHitbox();
+
+						poopmario = new FlxSprite(15, -540).loadGraphic(Paths.image('floor'));
+						poopmario.antialiasing = true;
+						poopmario.scrollFactor.set(1, 1);
+						poopmario.active = false;
+						poopmario.visible = false;
+						add(poopmario);
 				}
 
 			case 'bathroom':
@@ -1253,14 +1262,13 @@ class PlayState extends MusicBeatState
 			case 'happy-baby':
 				dad.y += 440;
 				dad.x += 120;
+				camPos.set(dad.getGraphicMidpoint().x + 300, dad.getGraphicMidpoint().y + 10);
 			case 'kitty':
 				dad.y += 440;
 				dad.x += 120;
 			case 'myth':
 				dad.y -= 75;
 				dad.x += 200;
-			case 'happy-baby':
-				camPos.set(dad.getGraphicMidpoint().x + 300, dad.getGraphicMidpoint().y + 40);
 			case 'window-watcher':
 				//erm
 				dad.x += 75;
@@ -1339,6 +1347,9 @@ class PlayState extends MusicBeatState
 		if (curStage == 'hospital')
 		{
 			add(chairummmm);
+		}
+		else if (curStage == 'evilhospital')
+		{
 			add(chair2);
 			add(table2);
 			add(monitor);
@@ -1721,18 +1732,39 @@ class PlayState extends MusicBeatState
 						camHUD.setFilters([ShadersHandler.chromaticAberration]);
 						funnyIntro(doof);
 					}
-					else
+					else if (videoDialogue == 1)
 					{
+						var bg:FlxSprite = new FlxSprite(-250, -100).loadGraphic(Paths.image('hospitalBack'));
+						bg.antialiasing = true;
+						bg.scrollFactor.set(1, 1);
+						bg.active = false;
+						bg.setGraphicSize(Std.int(bg.width * 1.1));
+						bg.updateHitbox();
+						add(bg);
+	
+						chairummmm = new FlxSprite(-500, -100).loadGraphic(Paths.image('chairLOL'));
+						chairummmm.antialiasing = true;
+						chairummmm.scrollFactor.set(0.9, 0.9);
+						chairummmm.active = false;
+						chairummmm.setGraphicSize(Std.int(chairummmm.width * 1.1));
+						chairummmm.updateHitbox();
+						add(chairummmm);
 						remove(dad);
-						dad = new Character(150,530, 'running-goblin');
-						add(dad);
 						remove(gf);
-						gf = new Character(400, 130, 'baby-bopper');
+						gf = new Character(400, 130, "baby-bopper");
+						dad = new Character(100, 100, "running-goblin");
 						gf.visible = true;
-						add(gf);
-						gf.y += 200;
+						remove(boyfriend);
+						boyfriend = new Boyfriend(770, 450, SONG.player1);
+						boyfriend.x += 240;
+						gf.y += 350;
 						gf.x += 300;
-						
+						dad.x += 100;
+						add(gf);
+						add(dad);
+						//add(boyfriend);
+
+						//FUCK MY LIFE :/
 						healthBar.visible = false;
 						healthBarBG.visible = false;
 						healthBarThingy.visible = false;
@@ -1742,6 +1774,12 @@ class PlayState extends MusicBeatState
 						epiclight.visible = false;
 						bgevil.visible = false;
 						funnyIntro(doof);
+					}
+					else
+					{
+						FlxG.camera.setFilters([ShadersHandler.chromaticAberration, ShadersHandler.radialBlur]);
+						camHUD.setFilters([ShadersHandler.chromaticAberration]);
+						startCountdown();
 					}
 				//	funnyIntro(doof);
 					//healthLimit = 1;
@@ -3415,6 +3453,10 @@ class PlayState extends MusicBeatState
 					if (curSong.toLowerCase() == "trackstar")
 					{
 						FlxG.switchState(new EndState());
+					}
+					if (curSong.toLowerCase() == "four-eyes")
+					{
+						FlxG.switchState(new EndEndState());
 					}
 					if (curSong.toLowerCase() == "insignificance")
 						{
@@ -5142,6 +5184,8 @@ class PlayState extends MusicBeatState
 								{
 									defaultCamZoom = 1.45;
 									camera.flash(FlxColor.WHITE, 5.0);
+									chairummmm.visible = false;
+									poopmario.visible = true;
 									//crib.visible = true;
 
 								}
@@ -5150,6 +5194,8 @@ class PlayState extends MusicBeatState
 								{
 									defaultCamZoom = 0.9;
 									camera.flash(FlxColor.WHITE, 5.0);
+									chairummmm.visible = true;
+									poopmario.visible = false;
 									//crib.visible = false;
 												
 								}
@@ -5587,16 +5633,58 @@ class PlayState extends MusicBeatState
 						case 1088:
 							health -= 1.25;
 						case 1095:
-							camGame.x += 300;//AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+							//camGame.x += 300;AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+							defaultCamZoom = 5;
 						case 1099:
+							defaultCamZoom = 0.9;
 							//health -= 1;
 							fleedbaby.visible = true;
-							camGame.x -= 300;
+							//camGame.x -= 300;
 							changeBf('micbf');
 							SONG.player2 = ("window-watcher");
 							changeDaddy('window-watcher');
 							FlxTween.tween(dad, {x: 260}, 2, {type: FlxTweenType.PINGPONG, ease: FlxEase.sineInOut});
 							FlxTween.tween(dad, {y: 180}, 6, {type: FlxTweenType.PINGPONG, ease: FlxEase.sineInOut});
+						case 1178:
+							FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom + 0.25}, 0.665, {
+								ease: FlxEase.quadOut
+							});
+						case 1194:
+							FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom + 0.25}, 0.665, {
+								ease: FlxEase.quadOut
+							});
+						case 1210:
+							FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom + 0.25}, 0.665, {
+								ease: FlxEase.quadOut
+							});
+						case 1226:
+							FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom + 0.25}, 0.665, {
+								ease: FlxEase.quadOut
+							});
+						case 1306:
+							FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom + 0.25}, 0.665, {
+								ease: FlxEase.quadOut
+							});
+						case 1322:
+							FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom + 0.25}, 0.665, {
+								ease: FlxEase.quadOut
+							});
+						case 1426:
+							FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom - .7}, 0.665, {
+								ease: FlxEase.quadOut
+							});
+						case 1428:
+							defaultCamZoom = 1.1;
+						case 1460:
+							camGame.visible = false;
+						case 1464:
+							FlxG.camera.zoom += 0.3;
+							camHUD.zoom += 0.1;
+							camGame.visible = true;
+						case 1560:
+							defaultCamZoom = 1;
+						case 1624:
+							FlxG.camera.fade(FlxColor.WHITE, 1.33, false);
 					}
 				}
 
