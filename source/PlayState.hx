@@ -1076,7 +1076,7 @@ class PlayState extends MusicBeatState
 						chairummmm.setGraphicSize(Std.int(chairummmm.width * 1.1));
 						chairummmm.updateHitbox();
 
-						poopmario = new FlxSprite(15, -540).loadGraphic(Paths.image('floor'));
+						poopmario = new FlxSprite(20, -540).loadGraphic(Paths.image('floor'));
 						poopmario.antialiasing = true;
 						poopmario.scrollFactor.set(1, 1);
 						poopmario.active = false;
@@ -1262,7 +1262,7 @@ class PlayState extends MusicBeatState
 			case 'happy-baby':
 				dad.y += 440;
 				dad.x += 120;
-				camPos.set(dad.getGraphicMidpoint().x + 300, dad.getGraphicMidpoint().y + 10);
+				camPos.set(dad.getGraphicMidpoint().x + 300, dad.getGraphicMidpoint().y - 20);
 			case 'kitty':
 				dad.y += 440;
 				dad.x += 120;
@@ -3021,7 +3021,7 @@ class PlayState extends MusicBeatState
 				}
 			}
 		}
-
+		camHUD.y = FlxMath.lerp(0, camHUD.y, 0.95);
 		if (camZooming)
 		{
 			FlxG.camera.zoom = FlxMath.lerp(defaultCamZoom, FlxG.camera.zoom, 0.95);
@@ -5199,6 +5199,11 @@ class PlayState extends MusicBeatState
 									//crib.visible = false;
 												
 								}
+						case 1216:
+							if (FlxG.save.data.cameraeffect)
+								{
+									defaultCamZoom = 1.1;
+								}
 					}
 				}
 			
@@ -5439,6 +5444,93 @@ class PlayState extends MusicBeatState
 				FlxG.camera.zoom += 0.10;
 				camHUD.zoom += 0.025;
 			}
+		if (curSong.toLowerCase() == 'four-eyes' && curBeat >= 1328 && curBeat <= 1423)
+				{
+					FlxG.camera.zoom += 0.07;
+					camHUD.zoom += 0.025;
+				}
+		if (curSong.toLowerCase() == 'rebound')
+			{
+				switch(curBeat)
+				{
+					case 2:
+						FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom + 0.4}, 2.49, {
+							ease: FlxEase.quadInOut
+						});
+					case 6:
+						defaultCamZoom = 1.3;
+					case 8:
+						defaultCamZoom = 1;
+					case 72:
+						defaultCamZoom = 0.9;
+					case 84:
+						FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom + 0.2}, 1.66, {
+							ease: FlxEase.quadInOut
+						});
+					case 88:
+						defaultCamZoom = 1;
+					case 152:
+						defaultCamZoom = 1.25;
+					case 168:
+						defaultCamZoom = 1;
+					case 228:
+						FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom + 0.1}, 1.66, {
+							ease: FlxEase.quadInOut
+						});
+					case 292:
+						FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom + 0.1}, 1.66, {
+							ease: FlxEase.quadInOut
+						});
+					case 356:
+						FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom + 0.2}, 1.66, {
+							ease: FlxEase.quadInOut
+						});
+					case 360:
+						defaultCamZoom = 0.9;
+				}
+			}
+
+
+		if (curSong.toLowerCase() == 'rebound' && curBeat >= 8 && curBeat < 72)
+			{
+				FlxG.camera.zoom += 0.07;
+				camHUD.zoom += 0.025;
+				camHUD.y -= 30;
+				//FlxTween.tween(camHUD, {y: 0}, 0.5, {
+				//	ease: FlxEase.quartOut
+				//});
+
+			}
+		if (curSong.toLowerCase() == 'rebound' && curBeat >= 88 && curBeat < 152)
+			{
+				FlxG.camera.zoom += 0.07;
+				camHUD.zoom += 0.025;
+				camHUD.y -= 30;
+
+
+			}
+		if (curSong.toLowerCase() == 'rebound' && curBeat >= 168 && curBeat < 228)
+			{
+				FlxG.camera.zoom += 0.07;
+				camHUD.zoom += 0.025;
+				camHUD.y -= 30;
+			}
+		if (curSong.toLowerCase() == 'rebound' && curBeat >= 232 && curBeat < 292)
+			{
+				FlxG.camera.zoom += 0.07;
+				camHUD.zoom += 0.025;
+				camHUD.y -= 30;
+			}
+		if (curSong.toLowerCase() == 'rebound' && curBeat >= 296 && curBeat < 360)
+			{
+				FlxG.camera.zoom += 0.07;
+				camHUD.zoom += 0.025;
+				camHUD.y -= 30;
+			}
+
+
+
+
 		if (camZooming && FlxG.camera.zoom < 1.35 && curBeat % 4 == 0)
 		{
 			FlxG.camera.zoom += 0.015;
@@ -5669,6 +5761,12 @@ class PlayState extends MusicBeatState
 							FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom + 0.25}, 0.665, {
 								ease: FlxEase.quadOut
 							});
+						case 1324:
+							defaultCamZoom = 1.15;
+						case 1328:
+							FlxG.camera.zoom += 0.3;
+							camHUD.zoom += 0.1;
+							defaultCamZoom = 1;
 						case 1426:
 							FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom - .7}, 0.665, {
 								ease: FlxEase.quadOut
