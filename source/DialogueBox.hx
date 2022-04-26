@@ -95,13 +95,23 @@ class DialogueBox extends FlxSpriteGroup
 						FlxG.sound.music.fadeIn(1, 0, 0.8);
 					}
 				}
+			case 'babys-lullaby':
+				if (PlayState.isStoryMode) {
+					FlxG.sound.playMusic(Paths.music('shakey'), 0.485);
+					FlxG.sound.music.fadeIn(1, 0, 0.8);
+				}	
+			case 'rebound':
+					if (PlayState.isStoryMode) {
+						FlxG.sound.playMusic(Paths.music('shakey'), 0.485);
+						FlxG.sound.music.fadeIn(1, 0, 0.8);
+					}	
 			case 'four-eyes':
 				if (PlayState.isStoryMode) 
 				{
 					if (PlayState.videoDialogue == 1)
 					{
 						//PlayState.noBlackShit = true;
-						FlxG.sound.playMusic(Paths.music('LunchboxScary'), 0.485);
+						FlxG.sound.playMusic(Paths.music('shakey'), 0.485);
 						FlxG.sound.music.fadeIn(1, 0, 0.8);
 					}
 					else if(PlayState.videoDialogue == 4)
