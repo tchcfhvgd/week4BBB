@@ -241,6 +241,26 @@ class CameraEffects extends Option
 	}
 }
 
+class Shaders extends Option
+{
+	public function new(desc:String)
+	{
+		super();
+		description = desc;
+	}
+	public override function press():Bool
+	{
+		FlxG.save.data.shaders = !FlxG.save.data.shaders;
+		display = updateDisplay();
+		return true;
+	}
+
+	private override function updateDisplay():String
+	{
+		return "Shader " + (!FlxG.save.data.shaders ? "off" : "on");
+	}
+}
+
 
 class ResetButtonOption extends Option
 {

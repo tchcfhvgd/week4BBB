@@ -43,6 +43,7 @@ class OptionsMenu extends MusicBeatState
 		new OptionCategory("Appearance", [
 			#if desktop
 			new CameraEffects("Camera zooms and camera movement while pressing a note, for people who hate me as a person."),
+			new Shaders("Turns on or off shaders for the mod, shaders can cause crashes if you have a shit computer"),
 			new DistractionsAndEffectsOption("Toggle stage distractions that can hinder your gameplay."),
 			new AccuracyOption("Display accuracy information."),
 			new SongPositionOption("Show the songs current position (as a bar)"),

@@ -1262,7 +1262,7 @@ class PlayState extends MusicBeatState
 			case 'happy-baby':
 				dad.y += 440;
 				dad.x += 120;
-				camPos.set(dad.getGraphicMidpoint().x + 300, dad.getGraphicMidpoint().y - 20);
+				camPos.set(dad.getGraphicMidpoint().x + 300, dad.getGraphicMidpoint().y - 50);
 			case 'kitty':
 				dad.y += 440;
 				dad.x += 120;

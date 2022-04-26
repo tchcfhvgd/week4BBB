@@ -29,6 +29,9 @@ class KadeEngineData
 		if (FlxG.save.data.cameraeffect == null)
 			FlxG.save.data.cameraeffect = true;
 
+		if (FlxG.save.data.shaders == null)
+			FlxG.save.data.shaders = true;
+
 		if (FlxG.save.data.changedHit == null)
 		{
 			FlxG.save.data.changedHitX = -1;
@@ -76,7 +79,7 @@ class KadeEngineData
 			FlxG.save.data.botplay = false;
 
 		if (FlxG.save.data.cpuStrums == null)
-			FlxG.save.data.cpuStrums = false;
+			FlxG.save.data.cpuStrums = true;
 
 		if (FlxG.save.data.strumline == null)
 			FlxG.save.data.strumline = false;
