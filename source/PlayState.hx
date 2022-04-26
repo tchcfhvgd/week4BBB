@@ -1713,8 +1713,11 @@ class PlayState extends MusicBeatState
 				case 'four-eyes':
 					if (videoDialogue == 5)
 					{
-						FlxG.camera.setFilters([ShadersHandler.chromaticAberration, ShadersHandler.radialBlur]);
-						camHUD.setFilters([ShadersHandler.chromaticAberration]);
+						if(FlxG.save.data.shaders)
+						{
+							FlxG.camera.setFilters([ShadersHandler.chromaticAberration, ShadersHandler.radialBlur]);
+							camHUD.setFilters([ShadersHandler.chromaticAberration]);
+						}
 						startCountdown();
 					}
 					else if (videoDialogue == 4)
@@ -1728,8 +1731,11 @@ class PlayState extends MusicBeatState
 						iconP1.visible = false;
 						iconP2.visible = false;
 						scoreTxt.visible = false;
-						FlxG.camera.setFilters([ShadersHandler.chromaticAberration, ShadersHandler.radialBlur]);
-						camHUD.setFilters([ShadersHandler.chromaticAberration]);
+						if(FlxG.save.data.shaders)
+							{
+								FlxG.camera.setFilters([ShadersHandler.chromaticAberration, ShadersHandler.radialBlur]);
+								camHUD.setFilters([ShadersHandler.chromaticAberration]);
+							}
 						funnyIntro(doof);
 					}
 					else if (videoDialogue == 1)
@@ -1777,8 +1783,11 @@ class PlayState extends MusicBeatState
 					}
 					else
 					{
-						FlxG.camera.setFilters([ShadersHandler.chromaticAberration, ShadersHandler.radialBlur]);
-						camHUD.setFilters([ShadersHandler.chromaticAberration]);
+						if(FlxG.save.data.shaders)
+						{
+							FlxG.camera.setFilters([ShadersHandler.chromaticAberration, ShadersHandler.radialBlur]);
+							camHUD.setFilters([ShadersHandler.chromaticAberration]);
+						}
 						startCountdown();
 					}
 				//	funnyIntro(doof);
@@ -1842,8 +1851,11 @@ class PlayState extends MusicBeatState
 							funnyIntro(doof);
 						}
 					*/
-					FlxG.camera.setFilters([ShadersHandler.chromaticAberration, ShadersHandler.radialBlur]);
-					camHUD.setFilters([ShadersHandler.chromaticAberration]);
+					if(FlxG.save.data.shaders)
+					{
+						FlxG.camera.setFilters([ShadersHandler.chromaticAberration, ShadersHandler.radialBlur]);
+						camHUD.setFilters([ShadersHandler.chromaticAberration]);
+					}
 					startCountdown();
 				default:
 					startCountdown();
@@ -2686,13 +2698,19 @@ class PlayState extends MusicBeatState
 		super.update(elapsed);
 		if(curStage == "evilhospital" && coolshadergayshitlol)
 		{
-			ShadersHandler.setChrome(FlxG.random.int(3,4)/2000);
-			ShadersHandler.setRadialBlur(640, 360, 0.006);
+			if(FlxG.save.data.shaders)
+			{
+				ShadersHandler.setChrome(FlxG.random.int(3,4)/2000);
+				ShadersHandler.setRadialBlur(640, 360, 0.006);
+			}
 		}
 		else if(curStage == "evilhospital" && !coolshadergayshitlol)
 		{
-			ShadersHandler.setChrome(FlxG.random.int(3,4)/2000);
-			ShadersHandler.setRadialBlur(640, 360, 0.006);
+			if(FlxG.save.data.shaders)
+			{
+				ShadersHandler.setChrome(FlxG.random.int(3,4)/2000);
+				ShadersHandler.setRadialBlur(640, 360, 0.006);
+			}
 		}
 
 		scoreTxt.text = Ratings.CalculateRanking(songScore,songScoreDef,nps,maxNPS,accuracy);
