@@ -319,7 +319,6 @@ class TitleState extends MusicBeatState
 					returnedData[1] = data.substring(data.indexOf('-'), data.length);
 				  	if (!MainMenuState.kadeEngineVer.contains(returnedData[0].trim()) && !OutdatedSubState.leftState && MainMenuState.nightly == "")
 					{
-						#if windows
 							var randomnessLol:Int;
 							randomnessLol = 0;
 							randomnessLol = FlxG.random.int(0, 100);
@@ -333,7 +332,6 @@ class TitleState extends MusicBeatState
 								//FlxG.switchState(new AntiState());
 								FlxG.switchState(new MainMenuState());
 							}
-						#end
 
 						#if html5
 							FlxG.switchState(new AntiState());
@@ -341,7 +339,6 @@ class TitleState extends MusicBeatState
 					}
 					else
 					{
-						#if windows
 							var randomnessLol:Int;
 							randomnessLol = 0;
 							randomnessLol = FlxG.random.int(0, 100);
@@ -354,7 +351,6 @@ class TitleState extends MusicBeatState
 							{
 								FlxG.switchState(new MainMenuState());
 							}
-						#end
 
 						#if html5
 							FlxG.switchState(new AntiState());
