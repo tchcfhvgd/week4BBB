@@ -1,7 +1,7 @@
 package;
 //package openfl8;
 
-import flixel.system.FlxAssets.FlxShader;
+import tools.FlxShader;
 
 class Grain extends FlxShader
 {
