@@ -46,8 +46,7 @@ jobs:
           haxelib setup ~/haxelib
           haxelib install hxcpp > /dev/null
           haxelib install lime 7.9.0
-          haxelib git openfl https://github.com/MasterEric/openfl
-          haxelib install HxShaders
+          haxelib install openfl 9.1.0
           haxelib --never install flixel
           haxelib run lime setup flixel
           haxelib install flixel-ui
@@ -56,7 +55,7 @@ jobs:
           haxelib git extension-webview https://github.com/MatheusSilver/extension-webview
           haxelib git extension-webm https://github.com/Sirox228/extension-webm
           haxelib git polymod https://github.com/MasterEric/polymod
-          haxelib install newgrounds 1.3.0
+          haxelib install newgrounds
           haxelib list
       - name: Create Version Tag
         run: echo "${{github.run_id}}" > VERSION
@@ -69,6 +68,7 @@ jobs:
           haxelib run lime config JAVA_HOME $JAVA_HOME
           haxelib run lime config ANDROID_SETUP true
           haxelib set lime 7.9.0
+          haxelib set openfl 9.1.0
           haxelib set newgrounds 1.3.0
         env:
           ANDROID_NDK_HOME: ${{ steps.setup-ndk.outputs.ndk-path }}
