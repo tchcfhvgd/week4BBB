@@ -1,4 +1,4 @@
-/*import tools.FlxShader;
+/*import flixel.system.FlxAssets.FlxShader;
 
 class LuaShader extends FlxShader
 {

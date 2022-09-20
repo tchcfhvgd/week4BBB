@@ -1,6 +1,6 @@
 package;
 
-import tools.FlxShader;
+import flixel.system.FlxAssets.FlxShader;
 
 class Shockwave extends FlxShader
 {

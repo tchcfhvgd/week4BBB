@@ -1,7 +1,7 @@
 package;
 
 import flixel.*;
-import tools.FlxShader;
+import flixel.system.FlxAssets.FlxShader;
 /**
  * ...
  * @author bbpanzu
