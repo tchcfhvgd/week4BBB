@@ -55,7 +55,7 @@ jobs:
           haxelib git extension-webview https://github.com/MatheusSilver/extension-webview
           haxelib git extension-webm https://github.com/Sirox228/extension-webm
           haxelib git polymod https://github.com/MasterEric/polymod
-          haxelib install newgrounds
+          haxelib install newgrounds 1.3.0
           haxelib list
       - name: Create Version Tag
         run: echo "${{github.run_id}}" > VERSION
