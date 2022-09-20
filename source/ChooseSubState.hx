@@ -54,6 +54,10 @@ class ChooseSubState extends MusicBeatSubstate
 		FlxTween.tween(bg, {alpha: 0.8}, 0.4, {ease: FlxEase.quartInOut});
 		FlxTween.tween(selectorImage, {alpha: 1}, 0.4, {ease: FlxEase.quartInOut});
 		FlxTween.tween(arrowThing, {alpha: 1}, 0.4, {ease: FlxEase.quartInOut});
+
+    #if android
+  	addVirtualPad(LEFT_RIGHT, A_B);
+    #end
 	}
 
 	override function update(elapsed:Float)
