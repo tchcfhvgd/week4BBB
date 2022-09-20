@@ -134,7 +134,7 @@ class Ratings
         return 
         (FlxG.save.data.npsDisplay ? "" + (!FlxG.save.data.botplay ? " | " : "") : "") + (!FlxG.save.data.botplay ?	// NPS Toggle
         "Score:" + (Conductor.safeFrames != 10 ? score + " (" + scoreDef + ")" : "" + score) + 									// Score
-        " | Misses:" + PlayState.misses + 																				// Misses/Combo Breaks
+        " | Ported by Dxgamer and Sirox | Misses:" + PlayState.misses + 																				// Misses/Combo Breaks
         " | Accuracy:" + (FlxG.save.data.botplay ? "N/A" : HelperFunctions.truncateFloat(accuracy, 2) + "%") +  				// Accuracy
         "" + GenerateLetterRank(accuracy) : ""); 																			// Letter Rank
     }
