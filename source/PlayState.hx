@@ -3473,7 +3473,7 @@ class PlayState extends MusicBeatState
 					}
 					if (curSong.toLowerCase() == "insignificance")
 						{
-							LoadingState.loadAndSwitchState(new VideoState(Paths.video('bobcut4'), new StoryMenuState()));
+							LoadingState.loadAndSwitchState(new VideoState('assets/videos/bobcut4/bobcut4.webm'), new StoryMenuState()));
 						}
 					else
 					{
@@ -3533,9 +3533,9 @@ class PlayState extends MusicBeatState
 					switch(tempSong)
 					{
 						case "babys-revenge":
-							LoadingState.loadAndSwitchState(new VideoState(Paths.video('babycut2'), new PlayState()));
+							LoadingState.loadAndSwitchState(new VideoState('assets/videos/babycut2/babycut2.webm'), new PlayState()));
 						case "baby-bob":
-							LoadingState.loadAndSwitchState(new VideoState(Paths.video('bobcut2'), new PlayState()));
+							LoadingState.loadAndSwitchState(new VideoState(Paths.video('assets/videos/bobcut2/bobcut2.webm'), new PlayState()));
 						default:
 							LoadingState.loadAndSwitchState(new PlayState());
 					}
