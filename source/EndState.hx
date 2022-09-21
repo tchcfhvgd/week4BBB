@@ -31,7 +31,7 @@ class EndState extends FlxState
 	{
 		super.update(elapsed); 
         
-        if(FlxG.keys.pressed.ENTER)
+        if(FlxG.keys.pressed.ENTER #if android || FlxG.android.justReleased.BACK #end)
         {
 		    FlxG.switchState(new StoryMenuState());
         }
